@@ -4,7 +4,7 @@ import com.finance.project.applicationLayer.applicationServices.personServices.C
 import com.finance.project.dtos.dtos.*;
 import com.finance.project.dtos.dtosAssemblers.CreatePersonTransactionDTOAssembler;
 import com.finance.project.dtos.dtosAssemblers.DeletePersonTransactionDTOAssembler;
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Link;
 import org.springframework.http.HttpStatus;

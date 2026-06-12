@@ -1,6 +1,6 @@
 package com.finance.project.dtos.dtos;
 
-import jakarta.validation.constraints.NotBlank;
+import javax.validation.constraints.NotBlank;
 import org.springframework.hateoas.RepresentationModel;
 import java.util.Objects;
 

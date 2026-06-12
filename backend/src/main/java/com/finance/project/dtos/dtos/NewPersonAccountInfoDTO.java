@@ -1,6 +1,6 @@
 package com.finance.project.dtos.dtos;
 
-import jakarta.validation.constraints.NotBlank;
+import javax.validation.constraints.NotBlank;
 import java.util.Objects;
 
 public class NewPersonAccountInfoDTO {

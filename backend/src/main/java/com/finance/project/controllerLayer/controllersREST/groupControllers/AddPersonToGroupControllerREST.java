@@ -2,7 +2,7 @@ package com.finance.project.controllerLayer.controllersREST.groupControllers;
 
 import com.finance.project.applicationLayer.applicationServices.groupServices.AddPersonToGroupService;
 import com.finance.project.dtos.dtosAssemblers.AddPersonToGroupDTOAssembler;
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Link;
 import org.springframework.http.HttpStatus;

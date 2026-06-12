@@ -1,7 +1,7 @@
 package com.finance.project.dtos.dtos;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Positive;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
 import java.util.Objects;
 
 public class NewGroupTransactionInfoDTO {

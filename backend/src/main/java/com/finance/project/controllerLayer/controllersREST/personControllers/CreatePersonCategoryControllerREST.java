@@ -2,7 +2,7 @@ package com.finance.project.controllerLayer.controllersREST.personControllers;
 
 import com.finance.project.applicationLayer.applicationServices.personServices.CreatePersonCategoryService;
 import com.finance.project.dtos.dtosAssemblers.CreatePersonCategoryDTOAssembler;
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Link;
 import org.springframework.http.HttpStatus;
