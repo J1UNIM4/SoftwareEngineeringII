@@ -22,6 +22,11 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+
+        <!-- SonarQube: project key and JaCoCo coverage report for static analysis (rubrica item 4) -->
+        <sonar.projectKey>finance-ddd</sonar.projectKey>
+        <sonar.host.url>http://localhost:9000</sonar.host.url>
+        <sonar.coverage.jacoco.xmlReportPaths>${project.build.directory}/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
     </properties>
 
     <dependencies>
@@ -160,6 +165,7 @@
                     </execution>
                     <execution>
                         <id>default-report</id>
+                        <phase>test</phase>
                         <goals>
                             <goal>report</goal>
                         </goals>
@@ -196,6 +202,13 @@
                     </outputFormats>
                 </configuration>
             </plugin>
+            <!-- SonarQube scanner: run with `mvn sonar:sonar` after tests (rubrica item 4) -->
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.9.1.2184</version>
+            </plugin>
+
             <!-- Build an executable JAR -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
