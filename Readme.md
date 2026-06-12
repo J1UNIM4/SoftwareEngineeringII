@@ -774,3 +774,35 @@ by Abel Avram and Floyd Marinescu, which is an excellent summary of Eric's piece
 If you enjoyed this tutorial, feel free to say "hello" to me through my website at 
 [miguelemos.github.io](https://miguelemos.github.io/) - I am happy to discuss any question related to this tutorial
 or anything else that's on your mind!
+
+***
+
+### 5. Security (Persona 2) ###
+
+As part of the Software Engineering II final project, the following security vulnerabilities were identified and fixed:
+
+#### V1 — Authentication & Authorization ####
+- Added `spring-boot-starter-security` dependency
+- Implemented `SecurityConfig.java` with BCrypt password encoding
+- All endpoints now require authentication
+
+#### V2 — CORS Configuration ####
+- Removed `@CrossOrigin(origins = "*")` from `CreatePersonTransactionControllerREST.java`
+- Centralized CORS configuration in `SecurityConfig.java`
+- Only `http://localhost:3000` is allowed as origin
+
+#### V3 — H2 Console Disabled ####
+- Set `spring.h2.console.enabled=false` in `application.properties`
+- Prevents unauthorized access to the in-memory database in production
+
+#### V6 — Security Headers ####
+- Enabled the following HTTP security headers via Spring Security:
+  - `X-Frame-Options: DENY` (prevents clickjacking)
+  - `X-XSS-Protection` (prevents cross-site scripting)
+  - `Content-Security-Policy: default-src 'self'`
+  - `HTTP Strict Transport Security (HSTS)`
+
+#### Security Testing (OWASP ZAP) ####
+- Added `security/zap-scan.sh` script for automated baseline scan
+- Integrated with Jenkins pipeline (stage: Security)
+- Run manually with: `bash security/zap-scan.sh`
