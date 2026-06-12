@@ -14,7 +14,6 @@ import com.finance.project.dtos.dtosAssemblers.UpdatePersonTransactionDTOAssembl
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
-@CrossOrigin(origins = "*")
 @RestController
 public class CreatePersonTransactionControllerREST {
 
