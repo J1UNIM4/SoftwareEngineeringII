@@ -2,6 +2,7 @@ package com.finance.project.controllerLayer.controllersREST.personControllers;
 
 import com.finance.project.applicationLayer.applicationServices.personServices.CreatePersonAccountService;
 import com.finance.project.dtos.dtosAssemblers.CreatePersonAccountDTOAssembler;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Link;
 import org.springframework.http.HttpStatus;
@@ -17,7 +18,6 @@ import com.finance.project.dtos.dtos.PersonDTO;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
-
 @RestController
 public class CreatePersonAccountControllerREST {
 
@@ -25,7 +25,7 @@ public class CreatePersonAccountControllerREST {
     private CreatePersonAccountService service;
 
     @PostMapping("/persons/{personEmail}/accounts")
-    public ResponseEntity<Object> createPersonAccount(@RequestBody NewPersonAccountInfoDTO info, @PathVariable final String personEmail) {
+    public ResponseEntity<Object> createPersonAccount(@Valid @RequestBody NewPersonAccountInfoDTO info, @PathVariable final String personEmail) {
 
         CreatePersonAccountDTO createPersonAccountDTO = CreatePersonAccountDTOAssembler.
                 createDTOFromPrimitiveTypes(personEmail, info.getDescription(), info.getDenomination());
@@ -44,6 +44,4 @@ public class CreatePersonAccountControllerREST {
 
         return new ResponseEntity<>(result, HttpStatus.CREATED);
     }
-
-
 }

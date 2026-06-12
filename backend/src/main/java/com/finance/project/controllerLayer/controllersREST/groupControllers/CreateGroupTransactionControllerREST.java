@@ -3,6 +3,7 @@ package com.finance.project.controllerLayer.controllersREST.groupControllers;
 import com.finance.project.applicationLayer.applicationServices.groupServices.CreateGroupTransactionService;
 import com.finance.project.dtos.dtos.*;
 import com.finance.project.dtos.dtosAssemblers.CreateGroupTransactionDTOAssembler;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Link;
 import org.springframework.http.HttpStatus;
@@ -20,9 +21,8 @@ public class CreateGroupTransactionControllerREST {
     @Autowired
     private CreateGroupTransactionService service;
 
-
     @PostMapping("/persons/{personEmail}/groups/{groupDenomination}/ledgers/records")
-    public ResponseEntity<Object> createGroupTransaction(@RequestBody NewGroupTransactionInfoDTO info,
+    public ResponseEntity<Object> createGroupTransaction(@Valid @RequestBody NewGroupTransactionInfoDTO info,
                                                          @PathVariable final String personEmail,
                                                          @PathVariable final String groupDenomination) {
 
@@ -46,7 +46,7 @@ public class CreateGroupTransactionControllerREST {
     }
 
     @PutMapping("/persons/{personEmail}/groups/{groupDenomination}/ledgers/records/{transactionNumber}")
-    public ResponseEntity<Object> updateGroupTransaction(@RequestBody NewGroupTransactionInfoDTO info,
+    public ResponseEntity<Object> updateGroupTransaction(@Valid @RequestBody NewGroupTransactionInfoDTO info,
                                                          @PathVariable final String personEmail,
                                                          @PathVariable final String groupDenomination,
                                                          @PathVariable final int transactionNumber) {
