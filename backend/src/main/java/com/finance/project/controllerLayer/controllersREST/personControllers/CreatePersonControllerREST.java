@@ -5,7 +5,7 @@ import com.finance.project.controllerLayer.controllersREST.groupControllers.Crea
 import com.finance.project.dtos.dtos.*;
 import com.finance.project.dtos.dtosAssemblers.CreatePersonDTOAssembler;
 import com.finance.project.dtos.dtosAssemblers.GroupListDTOAssembler;
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;

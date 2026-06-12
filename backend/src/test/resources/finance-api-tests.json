@@ -7,66 +7,68 @@
     {
       "name": "Crear Persona",
       "request": {
+        "auth": {"type": "basic", "basic": [{"key": "username", "value": "admin", "type": "string"}, {"key": "password", "value": "admin123", "type": "string"}]},
         "method": "POST",
         "header": [{"key": "Content-Type", "value": "application/json"}],
         "url": {"raw": "http://localhost:8080/persons", "host": ["localhost"], "port": "8080", "path": ["persons"]},
-        "body": {
-          "mode": "raw",
-          "raw": "{\"email\": \"test@gmail.com\", \"name\": \"Test User\", \"birthdate\": \"1990-01-01\", \"birthplace\": \"Porto\"}"
-        }
+        "body": {"mode": "raw", "raw": "{\"email\": \"testqa@gmail.com\", \"name\": \"Test QA\", \"birthdate\": \"1990-01-01\", \"birthplace\": \"Porto\"}"}
       },
-      "event": [{
-        "listen": "test",
-        "script": {"exec": ["pm.test('Status 201', function(){ pm.response.to.have.status(201); });"]}
-      }]
+      "event": [{"listen": "test", "script": {"exec": ["pm.test('Status 201', function(){ pm.response.to.have.status(201); });"]}}]
     },
     {
-      "name": "Crear Cuenta",
+      "name": "Crear Cuenta Wallet",
       "request": {
+        "auth": {"type": "basic", "basic": [{"key": "username", "value": "admin", "type": "string"}, {"key": "password", "value": "admin123", "type": "string"}]},
         "method": "POST",
         "header": [{"key": "Content-Type", "value": "application/json"}],
-        "url": {"raw": "http://localhost:8080/persons/test@gmail.com/accounts", "host": ["localhost"], "port": "8080", "path": ["persons", "test@gmail.com", "accounts"]},
-        "body": {
-          "mode": "raw",
-          "raw": "{\"description\": \"My Wallet\", \"denomination\": \"Wallet\"}"
-        }
+        "url": {"raw": "http://localhost:8080/persons/testqa@gmail.com/accounts", "host": ["localhost"], "port": "8080", "path": ["persons", "testqa@gmail.com", "accounts"]},
+        "body": {"mode": "raw", "raw": "{\"description\": \"My Wallet\", \"denomination\": \"Wallet\"}"}
       },
-      "event": [{
-        "listen": "test",
-        "script": {"exec": ["pm.test('Status 201', function(){ pm.response.to.have.status(201); });"]}
-      }]
+      "event": [{"listen": "test", "script": {"exec": ["pm.test('Status 201', function(){ pm.response.to.have.status(201); });"]}}]
+    },
+    {
+      "name": "Crear Cuenta Bank",
+      "request": {
+        "auth": {"type": "basic", "basic": [{"key": "username", "value": "admin", "type": "string"}, {"key": "password", "value": "admin123", "type": "string"}]},
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "url": {"raw": "http://localhost:8080/persons/testqa@gmail.com/accounts", "host": ["localhost"], "port": "8080", "path": ["persons", "testqa@gmail.com", "accounts"]},
+        "body": {"mode": "raw", "raw": "{\"description\": \"My Bank\", \"denomination\": \"Bank\"}"}
+      },
+      "event": [{"listen": "test", "script": {"exec": ["pm.test('Status 201', function(){ pm.response.to.have.status(201); });"]}}]
+    },
+    {
+      "name": "Crear Categoria",
+      "request": {
+        "auth": {"type": "basic", "basic": [{"key": "username", "value": "admin", "type": "string"}, {"key": "password", "value": "admin123", "type": "string"}]},
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "url": {"raw": "http://localhost:8080/persons/testqa@gmail.com/categories", "host": ["localhost"], "port": "8080", "path": ["persons", "testqa@gmail.com", "categories"]},
+        "body": {"mode": "raw", "raw": "{\"denomination\": \"Food\"}"}
+      },
+      "event": [{"listen": "test", "script": {"exec": ["pm.test('Status 201', function(){ pm.response.to.have.status(201); });"]}}]
     },
     {
       "name": "Crear Transaccion",
       "request": {
+        "auth": {"type": "basic", "basic": [{"key": "username", "value": "admin", "type": "string"}, {"key": "password", "value": "admin123", "type": "string"}]},
         "method": "POST",
         "header": [{"key": "Content-Type", "value": "application/json"}],
-        "url": {"raw": "http://localhost:8080/persons/test@gmail.com/ledgers/records", "host": ["localhost"], "port": "8080", "path": ["persons", "test@gmail.com", "ledgers", "records"]},
-        "body": {
-          "mode": "raw",
-          "raw": "{\"denominationCategory\": \"Food\", \"type\": \"debit\", \"description\": \"Lunch\", \"amount\": 50.0, \"denominationAccountDeb\": \"Wallet\", \"denominationAccountCred\": \"Bank\", \"date\": \"2024-01-01\"}"
-        }
+        "url": {"raw": "http://localhost:8080/persons/testqa@gmail.com/ledgers/records", "host": ["localhost"], "port": "8080", "path": ["persons", "testqa@gmail.com", "ledgers", "records"]},
+        "body": {"mode": "raw", "raw": "{\"denominationCategory\": \"Food\", \"type\": \"debit\", \"description\": \"Lunch\", \"amount\": 50.0, \"denominationAccountDeb\": \"Wallet\", \"denominationAccountCred\": \"Bank\", \"date\": \"2024-01-01\"}"}
       },
-      "event": [{
-        "listen": "test",
-        "script": {"exec": ["pm.test('Status 201', function(){ pm.response.to.have.status(201); });"]}
-      }]
+      "event": [{"listen": "test", "script": {"exec": ["pm.test('Status 201', function(){ pm.response.to.have.status(201); });"]}}]
     },
     {
       "name": "Validacion - Monto Negativo",
       "request": {
+        "auth": {"type": "basic", "basic": [{"key": "username", "value": "admin", "type": "string"}, {"key": "password", "value": "admin123", "type": "string"}]},
         "method": "POST",
         "header": [{"key": "Content-Type", "value": "application/json"}],
-        "url": {"raw": "http://localhost:8080/persons/test@gmail.com/ledgers/records", "host": ["localhost"], "port": "8080", "path": ["persons", "test@gmail.com", "ledgers", "records"]},
-        "body": {
-          "mode": "raw",
-          "raw": "{\"denominationCategory\": \"Food\", \"type\": \"debit\", \"description\": \"Lunch\", \"amount\": -50.0, \"denominationAccountDeb\": \"Wallet\", \"denominationAccountCred\": \"Bank\", \"date\": \"2024-01-01\"}"
-        }
+        "url": {"raw": "http://localhost:8080/persons/testqa@gmail.com/ledgers/records", "host": ["localhost"], "port": "8080", "path": ["persons", "testqa@gmail.com", "ledgers", "records"]},
+        "body": {"mode": "raw", "raw": "{\"denominationCategory\": \"Food\", \"type\": \"debit\", \"description\": \"Lunch\", \"amount\": -50.0, \"denominationAccountDeb\": \"Wallet\", \"denominationAccountCred\": \"Bank\", \"date\": \"2024-01-01\"}"}
       },
-      "event": [{
-        "listen": "test",
-        "script": {"exec": ["pm.test('Status 400', function(){ pm.response.to.have.status(400); });"]}
-      }]
+      "event": [{"listen": "test", "script": {"exec": ["pm.test('Status 400', function(){ pm.response.to.have.status(400); });"]}}]
     }
   ]
 }

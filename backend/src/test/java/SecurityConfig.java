@@ -2,7 +2,6 @@ package com.finance.project.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -21,29 +20,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .headers()
+            // V6: cabeceras de seguridad
+            .headers()
                 .frameOptions().deny()
                 .xssProtection().and()
                 .contentSecurityPolicy("default-src 'self'").and()
                 .httpStrictTransportSecurity().and()
-                .and()
-                .cors().and()
-                .csrf().disable()
-                .authorizeRequests()
+            .and()
+            // V2: CORS solo para localhost:3000
+            .cors().and()
+            // CSRF deshabilitado por ser API REST
+            .csrf().disable()
+            .authorizeRequests()
                 .antMatchers("/h2-console/**").denyAll()
                 .anyRequest().authenticated()
-                .and()
-                .httpBasic();
+            .and()
+            .httpBasic();
     }
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("admin")
-                .password(passwordEncoder().encode("admin123"))
-                .roles("USER");
-    }
-
+    // V2: configuracion CORS centralizada
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
@@ -56,6 +51,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return source;
     }
 
+    // V1: BCrypt para passwords
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
