@@ -1,72 +1,29 @@
 package com.finance.project.dtos.dtos;
 
+import jakarta.validation.constraints.NotBlank;
 import java.util.Objects;
 
 public class NewGroupAccountInfoDTO {
 
+    @NotBlank(message = "Account description is required")
     private String accountDescription;
+
+    @NotBlank(message = "Account denomination is required")
     private String accountDenomination;
 
-    /**
-     * Instantiates a new Create group account dto.
-     *
-     * @param accountDescription  the account description
-     * @param accountDenomination the account denomination
-     */
-    public NewGroupAccountInfoDTO(String accountDescription, String accountDenomination){
+    public NewGroupAccountInfoDTO(String accountDescription, String accountDenomination) {
         this.accountDescription = accountDescription;
         this.accountDenomination = accountDenomination;
     }
 
-    public NewGroupAccountInfoDTO(){
+    public NewGroupAccountInfoDTO() {}
 
-    }
+    public String getAccountDenomination() { return accountDenomination; }
+    public String getAccountDescription() { return accountDescription; }
 
-    //GET
+    public void setAccountDenomination(String accountDenomination) { this.accountDenomination = accountDenomination; }
+    public void setAccountDescription(String accountDescription) { this.accountDescription = accountDescription; }
 
-    /**
-     * Gets account denomination.
-     *
-     * @return the account denomination
-     */
-    public String getAccountDenomination() {
-        return accountDenomination;
-    }
-
-    /**
-     * Get account description string.
-     *
-     * @return the string
-     */
-    public String getAccountDescription(){
-        return accountDescription;
-    }
-
-    //SET
-
-    /**
-     *
-     * @param accountDenomination  account denomination setter
-     */
-    public void setAccountDenomination(String accountDenomination) {
-        this.accountDenomination = accountDenomination;
-    }
-
-    /**
-     *
-     * @param accountDescription account description setter
-     */
-    public void setAccountDescription(String accountDescription) {
-        this.accountDescription = accountDescription;
-    }
-
-
-    /**
-     * Equals boolean.
-     *
-     * @param o the o
-     * @return the boolean
-     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -76,17 +33,8 @@ public class NewGroupAccountInfoDTO {
                 Objects.equals(accountDescription, that.accountDescription);
     }
 
-    /**
-     * Hash code int.
-     *
-     * @return the int
-     */
     @Override
     public int hashCode() {
         return Objects.hash(accountDenomination, accountDescription);
     }
-
 }
-
-
-

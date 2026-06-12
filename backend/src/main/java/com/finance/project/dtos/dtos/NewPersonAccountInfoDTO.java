@@ -1,39 +1,28 @@
 package com.finance.project.dtos.dtos;
 
+import jakarta.validation.constraints.NotBlank;
 import java.util.Objects;
 
 public class NewPersonAccountInfoDTO {
 
-    private String description;     // account description
-    private String denomination;    // account denomination
+    @NotBlank(message = "Description is required")
+    private String description;
+
+    @NotBlank(message = "Account denomination is required")
+    private String denomination;
 
     public NewPersonAccountInfoDTO(String description, String denomination) {
         this.description = description;
         this.denomination = denomination;
     }
 
-    public NewPersonAccountInfoDTO() {
-    }
+    public NewPersonAccountInfoDTO() {}
 
+    public String getDenomination() { return denomination; }
+    public String getDescription() { return description; }
 
-    // Getters
-    public String getDenomination() {
-        return denomination;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    // Setters
-    public void setDenomination(String denomination) {
-        this.denomination = denomination;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
+    public void setDenomination(String denomination) { this.denomination = denomination; }
+    public void setDescription(String description) { this.description = description; }
 
     @Override
     public boolean equals(Object o) {

@@ -1,27 +1,22 @@
 package com.finance.project.dtos.dtos;
 
+import jakarta.validation.constraints.NotBlank;
 import java.util.Objects;
 
 public class NewGroupCategoryInfoDTO {
 
-    //Deve ter sempre um construtor (vazio, pelo menos) + getters e setters
-
+    @NotBlank(message = "Category denomination is required")
     private String categoryDenomination;
 
     public NewGroupCategoryInfoDTO(String categoryDenomination) {
         this.categoryDenomination = categoryDenomination;
     }
 
-    public NewGroupCategoryInfoDTO() {
-    }
+    public NewGroupCategoryInfoDTO() {}
 
-    public String getCategoryDenomination() {
-        return categoryDenomination;
-    }
+    public String getCategoryDenomination() { return categoryDenomination; }
 
-    public void setCategoryDenomination(String categoryDenomination) {
-        this.categoryDenomination = categoryDenomination;
-    }
+    public void setCategoryDenomination(String categoryDenomination) { this.categoryDenomination = categoryDenomination; }
 
     @Override
     public boolean equals(Object o) {

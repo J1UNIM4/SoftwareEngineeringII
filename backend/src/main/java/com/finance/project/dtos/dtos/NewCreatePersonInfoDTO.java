@@ -1,113 +1,42 @@
 package com.finance.project.dtos.dtos;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import java.util.Objects;
-
-/**
- * * @author SWitCH 2019/2020 Group 3
- * * @author Miguel Pereira
-
- */
 
 public class NewCreatePersonInfoDTO {
 
+    @Email(message = "Must be a valid email")
+    @NotBlank(message = "Email is required")
     private String email;
+
+    @NotBlank(message = "Name is required")
     private String name;
+
+    @NotBlank(message = "Birthdate is required")
     private String birthdate;
+
+    @NotBlank(message = "Birthplace is required")
     private String birthplace;
 
-
-    /**
-     * NewCreatePersonInfoDTO class constructor with parameter
-     * @param email
-     * @param name
-     * @param birthdate
-     * @param birthplace
-     */
-
-    public NewCreatePersonInfoDTO(String email, String name, String  birthdate, String birthplace) {
+    public NewCreatePersonInfoDTO(String email, String name, String birthdate, String birthplace) {
         this.email = email;
         this.name = name;
         this.birthdate = birthdate;
         this.birthplace = birthplace;
     }
 
-    /**
-     * NewCreatePersonInfoDTO class constructor without parameters
-     */
+    public NewCreatePersonInfoDTO() {}
 
-    public NewCreatePersonInfoDTO() {
-    }
-
-    /**
-     * @return personEmail
-     */
-
-    public String getEmail() {
-        return email;
-    }
-
-    /**
-     * @return personName
-     */
-
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * @return personBirthdate
-     */
-
+    public String getEmail() { return email; }
+    public String getName() { return name; }
     public String getBirthdate() { return birthdate; }
+    public String getBirthplace() { return birthplace; }
 
-    /**
-     * @return personBirthplace
-     */
-
-    public String getBirthplace() {
-        return birthplace;
-    }
-
-
-
-    /**
-     * @param email
-     */
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    /**
-     * @param name
-     */
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * @param birthdate
-     */
-
-    public void setBirthdate(String birthdate) {
-        this.birthdate = birthdate;
-    }
-
-
-    /**
-     * @param birthplace
-     */
-
-    public void setBirthplace(String birthplace) {
-        this.birthplace = birthplace;
-    }
-
-    /**
-     * Equals boolean.
-     * @param o the o
-     * @return the boolean
-     */
+    public void setEmail(String email) { this.email = email; }
+    public void setName(String name) { this.name = name; }
+    public void setBirthdate(String birthdate) { this.birthdate = birthdate; }
+    public void setBirthplace(String birthplace) { this.birthplace = birthplace; }
 
     @Override
     public boolean equals(Object o) {
