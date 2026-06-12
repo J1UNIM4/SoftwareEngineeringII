@@ -1,76 +1,33 @@
 package com.finance.project.dtos.dtos;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import java.util.Objects;
 
-/**
- * The type New add person to group info dto.
- */
 public class NewAddPersonToGroupInfoDTO {
+
+    @Email(message = "Must be a valid email")
+    @NotBlank(message = "Email is required")
     private String email;
 
-    /**
-     * Instantiates a new New add person to group info dto.
-     */
-    public NewAddPersonToGroupInfoDTO(){
-    }
+    public NewAddPersonToGroupInfoDTO() {}
 
-    /**
-     * Instantiates a new New add person to group info dto.
-     *
-     * @param email        the email
-
-     */
-    public NewAddPersonToGroupInfoDTO(String email){
-        this.email= email;
-    }
-
-    /**
-     * Gets email.
-     *
-     * @return the email
-     */
-//Gets
-    public String getEmail() {
-        return email;
-    }
-
-
-
-    /**
-     * Sets email.
-     *
-     * @param email the email
-     */
-//Sets
-    public void setEmail(String email) {
+    public NewAddPersonToGroupInfoDTO(String email) {
         this.email = email;
     }
 
+    public String getEmail() { return email; }
 
-    //equals
+    public void setEmail(String email) { this.email = email; }
 
-
-    /**
-     * Equals boolean.
-     *
-     * @param o the o
-     * @return the boolean
-     */
     @Override
-
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof NewAddPersonToGroupInfoDTO)) return false;
-        NewAddPersonToGroupInfoDTO newAddPersonToGroupInfoDTO= (NewAddPersonToGroupInfoDTO) o;
-        return Objects.equals(getEmail(), newAddPersonToGroupInfoDTO.getEmail());
+        NewAddPersonToGroupInfoDTO that = (NewAddPersonToGroupInfoDTO) o;
+        return Objects.equals(getEmail(), that.getEmail());
     }
 
-    /**
-     * Hash code int.
-     *
-     * @return the int
-     */
-//hashcode
     @Override
     public int hashCode() {
         return Objects.hash(email);

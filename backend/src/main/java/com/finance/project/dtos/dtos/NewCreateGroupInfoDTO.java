@@ -1,28 +1,20 @@
 package com.finance.project.dtos.dtos;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import java.util.Objects;
-
-/**
- * * @author SWitCH 2019/2020 Group 3
- * * @author Elisabete do Vale
- * * @version %I%, %G%
- * * <p>
- * * NewCreateGroupInfoDTO class defines the DTO that results from Json and are responsible for:
- * * - transfer data required to create a group and become Person In Charge
- */
 
 public class NewCreateGroupInfoDTO {
 
+    @Email(message = "Must be a valid email")
+    @NotBlank(message = "Email is required")
     private String email;
-    private String denomination;
-    private String description;
 
-    /**
-     * NewCreateGroupInfoDTO class constructor with parameter
-     * @param email
-     * @param denomination
-     * @param description
-     */
+    @NotBlank(message = "Denomination is required")
+    private String denomination;
+
+    @NotBlank(message = "Description is required")
+    private String description;
 
     public NewCreateGroupInfoDTO(String email, String denomination, String description) {
         this.email = email;
@@ -30,66 +22,15 @@ public class NewCreateGroupInfoDTO {
         this.description = description;
     }
 
-    /**
-     * NewCreateGroupInfoDTO class constructor without parameters
-     */
+    public NewCreateGroupInfoDTO() {}
 
-    public NewCreateGroupInfoDTO() {
-    }
+    public String getEmail() { return email; }
+    public String getDenomination() { return denomination; }
+    public String getDescription() { return description; }
 
-    /**
-     * @return personEmail
-     */
-
-    public String getEmail() {
-        return email;
-    }
-
-    /**
-     * @return groupDenomination
-     */
-
-    public String getDenomination() {
-        return denomination;
-    }
-
-    /**
-     * @return groupDescription
-     */
-
-    public String getDescription() {
-        return description;
-    }
-
-    /**
-     * @param email
-     */
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    /**
-     * @param denomination
-     */
-
-    public void setDenomination(String denomination) {
-        this.denomination = denomination;
-    }
-
-    /**
-     * @param description
-     */
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    /**
-     * Equals boolean.
-     * @param o the o
-     * @return the boolean
-     */
+    public void setEmail(String email) { this.email = email; }
+    public void setDenomination(String denomination) { this.denomination = denomination; }
+    public void setDescription(String description) { this.description = description; }
 
     @Override
     public boolean equals(Object o) {
@@ -100,11 +41,6 @@ public class NewCreateGroupInfoDTO {
                 Objects.equals(getDenomination(), that.getDenomination()) &&
                 Objects.equals(getDescription(), that.getDescription());
     }
-
-    /**
-     * Hash code int.
-     * @return the int
-     */
 
     @Override
     public int hashCode() {

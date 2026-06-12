@@ -1,31 +1,23 @@
 package com.finance.project.dtos.dtos;
 
+import jakarta.validation.constraints.NotBlank;
 import org.springframework.hateoas.RepresentationModel;
-
 import java.util.Objects;
 
 public class NewPersonCategoryInfoDTO extends RepresentationModel<NewPersonCategoryInfoDTO> {
 
-    private String denomination;    // category denomination
+    @NotBlank(message = "Category denomination is required")
+    private String denomination;
 
     public NewPersonCategoryInfoDTO(String denomination) {
         this.denomination = denomination;
     }
 
-    public NewPersonCategoryInfoDTO() {
-    }
+    public NewPersonCategoryInfoDTO() {}
 
-    // Getters
+    public String getDenomination() { return denomination; }
 
-    public String getDenomination() {
-        return denomination;
-    }
-
-    // Setters
-
-    public void setDenomination(String denomination) {
-        this.denomination = denomination;
-    }
+    public void setDenomination(String denomination) { this.denomination = denomination; }
 
     @Override
     public boolean equals(Object o) {
@@ -39,5 +31,4 @@ public class NewPersonCategoryInfoDTO extends RepresentationModel<NewPersonCateg
     public int hashCode() {
         return Objects.hash(denomination);
     }
-    
 }
