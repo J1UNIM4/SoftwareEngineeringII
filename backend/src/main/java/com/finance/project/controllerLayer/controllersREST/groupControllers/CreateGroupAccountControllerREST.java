@@ -2,6 +2,7 @@ package com.finance.project.controllerLayer.controllersREST.groupControllers;
 
 import com.finance.project.applicationLayer.applicationServices.groupServices.CreateGroupAccountService;
 import com.finance.project.dtos.dtosAssemblers.CreateGroupAccountDTOAssembler;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Link;
 import org.springframework.http.HttpStatus;
@@ -17,7 +18,6 @@ import com.finance.project.dtos.dtos.NewGroupAccountInfoDTO;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
-
 @RestController
 public class CreateGroupAccountControllerREST {
 
@@ -25,7 +25,7 @@ public class CreateGroupAccountControllerREST {
     private CreateGroupAccountService createGroupAccountService;
 
     @PostMapping("/persons/{personEmail}/groups/{groupDenomination}/accounts")
-    public ResponseEntity<Object> createGroupAccount(@RequestBody NewGroupAccountInfoDTO info,
+    public ResponseEntity<Object> createGroupAccount(@Valid @RequestBody NewGroupAccountInfoDTO info,
                                                      @PathVariable final String personEmail,
                                                      @PathVariable final String groupDenomination) {
 

@@ -2,6 +2,7 @@ package com.finance.project.controllerLayer.controllersREST.personControllers;
 
 import com.finance.project.applicationLayer.applicationServices.personServices.CreatePersonCategoryService;
 import com.finance.project.dtos.dtosAssemblers.CreatePersonCategoryDTOAssembler;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Link;
 import org.springframework.http.HttpStatus;
@@ -23,9 +24,8 @@ public class CreatePersonCategoryControllerREST {
     @Autowired
     private CreatePersonCategoryService service;
 
-
     @PostMapping("/persons/{personEmail}/categories")
-    public ResponseEntity<Object> createPersonCategory(@RequestBody NewPersonCategoryInfoDTO info,
+    public ResponseEntity<Object> createPersonCategory(@Valid @RequestBody NewPersonCategoryInfoDTO info,
                                                        @PathVariable final String personEmail) {
 
         CreatePersonCategoryDTO createPersonCategoryDTO = CreatePersonCategoryDTOAssembler.createDTOFromPrimitiveTypes(personEmail, info.getDenomination());

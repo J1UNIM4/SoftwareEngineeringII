@@ -5,6 +5,7 @@ import com.finance.project.controllerLayer.controllersREST.groupControllers.Crea
 import com.finance.project.dtos.dtos.*;
 import com.finance.project.dtos.dtosAssemblers.CreatePersonDTOAssembler;
 import com.finance.project.dtos.dtosAssemblers.GroupListDTOAssembler;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
@@ -17,16 +18,14 @@ import java.util.List;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
-
 @RestController
 public class CreatePersonControllerREST {
 
     @Autowired
     private CreatePersonService service;
 
-    // Information related to URL for persons
     @PostMapping("/persons")
-    public ResponseEntity<Object> createPerson(@RequestBody NewCreatePersonInfoDTO info) {
+    public ResponseEntity<Object> createPerson(@Valid @RequestBody NewCreatePersonInfoDTO info) {
 
         CreatePersonDTO createPersonDTO = CreatePersonDTOAssembler.createDTOFromPrimitiveTypes(info.getEmail(), info.getName(), info.getBirthdate(), info.getBirthplace());
 
@@ -38,7 +37,6 @@ public class CreatePersonControllerREST {
 
         return new ResponseEntity<>(result, HttpStatus.CREATED);
     }
-
 
     @GetMapping("/persons/{personEmail}")
     public ResponseEntity<Object> getPersonByEmail(@PathVariable final String personEmail) {
@@ -60,7 +58,6 @@ public class CreatePersonControllerREST {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-
     @GetMapping("/persons/{personEmail}/accounts")
     public ResponseEntity<Object> getPersonAccounts(@PathVariable final String personEmail) {
 
@@ -70,7 +67,6 @@ public class CreatePersonControllerREST {
 
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
-
 
     @GetMapping("/persons/{personEmail}/categories")
     public ResponseEntity<Object> getPersonCategories(@PathVariable final String personEmail) {
@@ -107,6 +103,5 @@ public class CreatePersonControllerREST {
         GroupListDTO groupListDTO = GroupListDTOAssembler.createDTOFromDomainObject(result);
 
         return new ResponseEntity<>(groupListDTO, HttpStatus.OK);
-
     }
 }

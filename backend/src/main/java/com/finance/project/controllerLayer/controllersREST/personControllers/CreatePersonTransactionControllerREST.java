@@ -4,6 +4,7 @@ import com.finance.project.applicationLayer.applicationServices.personServices.C
 import com.finance.project.dtos.dtos.*;
 import com.finance.project.dtos.dtosAssemblers.CreatePersonTransactionDTOAssembler;
 import com.finance.project.dtos.dtosAssemblers.DeletePersonTransactionDTOAssembler;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Link;
 import org.springframework.http.HttpStatus;
@@ -22,7 +23,7 @@ public class CreatePersonTransactionControllerREST {
 
     // Create transaction
     @PostMapping("/persons/{personEmail}/ledgers/records")
-    public ResponseEntity<Object> createPersonTransaction(@RequestBody NewPersonTransactionInfoDTO info, @PathVariable final String personEmail) {
+    public ResponseEntity<Object> createPersonTransaction(@Valid @RequestBody NewPersonTransactionInfoDTO info, @PathVariable final String personEmail) {
 
         CreatePersonTransactionDTO createPersonTransactionDTO = CreatePersonTransactionDTOAssembler.createDTOFromPrimitiveTypes(personEmail, info.getDenominationCategory(), info.getType(), info.getDescription(), info.getAmount(), info.getDenominationAccountDeb(), info.getDenominationAccountCred(), info.getDate());
 
@@ -43,7 +44,7 @@ public class CreatePersonTransactionControllerREST {
 
     // Update transaction
     @PutMapping("/persons/{personEmail}/ledgers/records/{transactionNumber}")
-    public ResponseEntity<Object> updatePersonTransaction(@RequestBody NewPersonTransactionInfoDTO info, @PathVariable final String personEmail, @PathVariable final int transactionNumber) {
+    public ResponseEntity<Object> updatePersonTransaction(@Valid @RequestBody NewPersonTransactionInfoDTO info, @PathVariable final String personEmail, @PathVariable final int transactionNumber) {
 
         UpdatePersonTransactionDTO updatePersonTransactionDTO = UpdatePersonTransactionDTOAssembler.createDTOFromPrimitiveTypes(transactionNumber, personEmail, info.getDenominationCategory(), info.getType(), info.getDescription(), info.getAmount(), info.getDenominationAccountDeb(), info.getDenominationAccountCred());
 
@@ -60,7 +61,6 @@ public class CreatePersonTransactionControllerREST {
         result.add(link_to_personCategories);
 
         return new ResponseEntity<>(result, HttpStatus.OK);
-
     }
 
     // Delete transaction
@@ -83,5 +83,4 @@ public class CreatePersonTransactionControllerREST {
 
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
-
 }

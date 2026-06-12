@@ -2,6 +2,7 @@ package com.finance.project.controllerLayer.controllersREST.groupControllers;
 
 import com.finance.project.applicationLayer.applicationServices.groupServices.CreateGroupService;
 import com.finance.project.dtos.dtos.*;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Link;
 import org.springframework.http.HttpStatus;
@@ -12,16 +13,14 @@ import com.finance.project.dtos.dtosAssemblers.CreateGroupDTOAssembler;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
-
 @RestController
 public class CreateGroupControllerREST {
 
     @Autowired
     private CreateGroupService createGroupService;
 
-
     @PostMapping("/groups")
-    public ResponseEntity<Object> createGroupAsPersonInCharge(@RequestBody NewCreateGroupInfoDTO info) {
+    public ResponseEntity<Object> createGroupAsPersonInCharge(@Valid @RequestBody NewCreateGroupInfoDTO info) {
 
         CreateGroupDTO createGroupDTO = CreateGroupDTOAssembler.createDTOFromPrimitiveTypes(info.getEmail(), info.getDenomination(), info.getDescription());
 
@@ -38,8 +37,6 @@ public class CreateGroupControllerREST {
     public ResponseEntity<Object> getGroupByDenomination(@PathVariable final String groupDenomination) {
 
         GroupDTO result = createGroupService.getGroupByDenomination(groupDenomination);
-
-        // !!!!!!    Alterar URL para partir de person e corrigir link_to_accounts   !!!!!!!
 
         Link link_to_admins = linkTo(methodOn(CreateGroupControllerREST.class).getGroupAdmins(groupDenomination)).withRel("admins");
         Link link_to_members = linkTo(methodOn(CreateGroupControllerREST.class).getGroupMembers(groupDenomination)).withRel("members");
@@ -101,10 +98,8 @@ public class CreateGroupControllerREST {
         }
 
         if (isAdmin) {
-
             Link link_to_addAccount = linkTo(methodOn(CreateGroupAccountControllerREST.class).createGroupAccount(null, personEmail, groupDenomination)).withRel("addAccount");
             result.add(link_to_addAccount);
-
         }
 
         return new ResponseEntity<>(result, HttpStatus.OK);
@@ -127,6 +122,4 @@ public class CreateGroupControllerREST {
 
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
-
-
 }
