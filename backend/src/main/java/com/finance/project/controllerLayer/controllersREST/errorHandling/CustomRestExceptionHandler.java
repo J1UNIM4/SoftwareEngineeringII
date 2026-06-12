@@ -143,19 +143,11 @@ public class CustomRestExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Object> handleAll(Exception exception, WebRequest request) {
 
-//  1. Create payload containing exception details
+        String message = "An internal error occurred. Please verify your request.";
+        String error = "INTERNAL_SERVER_ERROR";
 
-//         Create a custom message for INTERNAL SERVER ERROR
-
-        String message = "This is an INTERNAL SERVER ERROR, some error occurred. " +
-                "Please don't forget to also verify the information sent (see message).";
-
-
-//        Wrap all the information to send to the client
-
-        ApiError apiError = new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, exception.getLocalizedMessage(), message);
-
-        return new ResponseEntity<Object>(apiError, new HttpHeaders(), apiError.getStatus());
+        ApiError apiError = new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, message, error);
+        return new ResponseEntity<>(apiError, new HttpHeaders(), apiError.getStatus());
     }
 
     /**
