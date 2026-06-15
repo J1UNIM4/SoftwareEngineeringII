@@ -1,7 +1,9 @@
 package com.finance.project.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -17,19 +19,24 @@ import java.util.Arrays;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    private CustomUserDetailsService userDetailsService;
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+    }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-            // V6: cabeceras de seguridad
             .headers()
                 .frameOptions().deny()
                 .xssProtection().and()
                 .contentSecurityPolicy("default-src 'self'").and()
                 .httpStrictTransportSecurity().and()
             .and()
-            // V2: CORS solo para localhost:3000
             .cors().and()
-            // CSRF deshabilitado por ser API REST
             .csrf().disable()
             .authorizeRequests()
                 .antMatchers("/h2-console/**").denyAll()
@@ -38,7 +45,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .httpBasic();
     }
 
-    // V2: configuracion CORS centralizada
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
@@ -51,7 +57,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return source;
     }
 
-    // V1: BCrypt para passwords
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
