@@ -1,5 +1,6 @@
 package com.finance.project.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -18,30 +19,30 @@ import java.util.Arrays;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    private CustomUserDetailsService userDetailsService;
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+    }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .headers()
+            .headers()
                 .frameOptions().deny()
                 .xssProtection().and()
                 .contentSecurityPolicy("default-src 'self'").and()
                 .httpStrictTransportSecurity().and()
-                .and()
-                .cors().and()
-                .csrf().disable()
-                .authorizeRequests()
+            .and()
+            .cors().and()
+            .csrf().disable()
+            .authorizeRequests()
                 .antMatchers("/h2-console/**").denyAll()
                 .anyRequest().authenticated()
-                .and()
-                .httpBasic();
-    }
-
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("admin")
-                .password(passwordEncoder().encode("admin123"))
-                .roles("USER");
+            .and()
+            .httpBasic();
     }
 
     @Bean
