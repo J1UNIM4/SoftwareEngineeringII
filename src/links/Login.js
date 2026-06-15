@@ -3,6 +3,7 @@ import {useHistory} from 'react-router-dom';
 import AppContext from '../context/AppContext';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import axios from 'axios';
 
 import {Api, login} from '../context/Actions';
 
@@ -12,6 +13,7 @@ const Login = () => {
     let history = useHistory();
 
     const [userID, setUserID] = useState('');
+    const [password, setPassword] = useState('');
 
     const handleClick = async (e) => {
         e.preventDefault();
@@ -22,21 +24,29 @@ const Login = () => {
         const username = array[0];
 
         try {
-            const res = await Api.get(url);
+            const res = await axios.get('http://localhost:8080' + url, {
+                auth: {
+                    username: userID,
+                    password: password
+                }
+            });
             if (res.status === 200) {
+                // Guardar credenciales para futuras peticiones
+                Api.defaults.auth = {
+                    username: userID,
+                    password: password
+                };
                 dispatch(login(userID, username));
                 history.push("/mypage");
             }
         } catch (err) {
-            alert(err.response.data.message);
+            alert("Usuario o contraseña incorrectos");
         }
     }
 
     return (
         <div className="outerDiv">
-
-            <div className="innerDiv" >
-
+            <div className="innerDiv">
                 <Form name="form">
                     <h3 className="loginTitle">Web App with React</h3>
                     <h4 className="secTitle">Personal Finance Management</h4>
@@ -44,17 +54,14 @@ const Login = () => {
                         <Form.Label>Username </Form.Label>
                         <Form.Control type="text" placeholder="Enter Username" autoFocus value={userID} required onChange={(e) => setUserID(e.target.value)}/>
                     </Form.Group>
-
                     <Form.Group controlId="password">
                         <Form.Label>Password </Form.Label>
-                        <Form.Control type="password" placeholder="Enter Password"/>
+                        <Form.Control type="password" placeholder="Enter Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                     </Form.Group>
-                    <br></br>
+                    <br/>
                     <Button variant="outline-primary" size="sm" block type="submit" onClick={handleClick}>Login</Button>
                 </Form>
-
             </div>
-
         </div>
     );
 };
