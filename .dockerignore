@@ -1,0 +1,9 @@
+# Contexto del frontend (raiz)
+node_modules
+build
+target
+backend/target
+.git
+.idea
+.mvn
+*.iml
