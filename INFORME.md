@@ -163,7 +163,9 @@ Build → Static Analysis (SonarQube) → Unit Tests (JUnit/Mockito)
       → Functional Tests (Selenium) → Performance (JMeter)
       → Security (OWASP ZAP) → Docker Build & Deploy
 ```
-*(Implementación de Jenkinsfile y Dockerfile a cargo de Persona 1.)*
+Implementado por Persona 1: [`Jenkinsfile`](Jenkinsfile), [`backend/Dockerfile`](backend/Dockerfile),
+[`Dockerfile.frontend`](Dockerfile.frontend) y [`docker-compose.yml`](docker-compose.yml).
+Detalle en [`docs/CI-CD.md`](docs/CI-CD.md).
 
 ## 12. Gestión de tareas y releases
 
