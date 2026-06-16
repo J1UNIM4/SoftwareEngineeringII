@@ -32,7 +32,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>2.3.0.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -44,13 +43,6 @@
                     <artifactId>junit-vintage-engine</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <version>RELEASE</version>
-            <scope>compile</scope>
         </dependency>
 
         <dependency>
@@ -100,16 +92,41 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.12</version>
+            <version>1.18.30</version>
             <scope>provided</scope>
+        </dependency>
+        <!-- Requerido por el paquete security/ (SecurityConfig, CustomUserDetailsService).
+             Debe mantenerse sincronizado con backend/pom.xml. -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
     </dependencies>
 
     <build>
+        <!-- El codigo Java vive en backend/ (la carpeta src/ de la raiz es el frontend React).
+             Por eso apuntamos las fuentes/recursos del backend explicitamente, para poder
+             ejecutar 'mvn spring-boot:run' desde la raiz del proyecto (FinalProject). -->
+        <sourceDirectory>${project.basedir}/backend/src/main/java</sourceDirectory>
+        <testSourceDirectory>${project.basedir}/backend/src/test/java</testSourceDirectory>
+        <resources>
+            <resource>
+                <directory>${project.basedir}/backend/src/main/resources</directory>
+            </resource>
+        </resources>
+        <testResources>
+            <testResource>
+                <directory>${project.basedir}/backend/src/test/resources</directory>
+            </testResource>
+        </testResources>
+
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.finance.project.ProjectApplication</mainClass>
+                </configuration>
             </plugin>
 
             <plugin><!-- Compiler configuration-->
@@ -121,7 +138,7 @@
                         <path>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
-                            <version>1.18.12</version>
+                            <version>1.18.30</version>
                         </path>
                     </annotationProcessorPaths>
                     <source>1.8</source>
