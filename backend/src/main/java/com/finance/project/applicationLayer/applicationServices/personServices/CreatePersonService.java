@@ -7,7 +7,6 @@ import com.finance.project.domainLayer.exceptions.NotFoundArgumentsBusinessExcep
 import com.finance.project.domainLayer.repositoriesInterfaces.*;
 import com.finance.project.dtos.dtos.*;
 import com.finance.project.dtos.dtosAssemblers.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.finance.project.domainLayer.domainEntities.aggregates.account.Account;
@@ -25,469 +24,289 @@ import java.util.Optional;
 @Service
 public class CreatePersonService {
 
-    @Autowired
-    private IPersonRepository personRepository;
-    @Autowired
-    private ILedgerRepository ledgerRepository;
-    @Autowired
-    private ICategoryRepository categoryRepository;
-    @Autowired
-    private IAccountRepository accountRepository;
-    @Autowired
-    private IGroupRepository groupRepository;
+    private final IPersonRepository personRepository;
+    private final ILedgerRepository ledgerRepository;
+    private final ICategoryRepository categoryRepository;
+    private final IAccountRepository accountRepository;
+    private final IGroupRepository groupRepository;
 
-    /**
-     * The constant SUCCESS.
-     */
-    public final static String SUCCESS = "Account created and added";
-    /**
-     * The constant ADDRESS_ALREADY_EXIST.
-     */
-    public final static String ADDRESS_ALREADY_EXIST = "Address already exists";
-    /**
-     * The constant ADDRESS_ALREADY_EXIST.
-     */
-    public final static String MOTHER_ALREADY_EXIST = "Mother already exists";
-    /**
-     * The constant ADDRESS_ALREADY_EXIST.
-     */
-    public final static String FATHER_ALREADY_EXIST = "Father already exists";
-    /**
-     * The constant ADDRESS_ALREADY_EXIST.
-     */
-    public final static String SIBLING_ALREADY_EXIST = "Sibling already exists";
-    /**
-     * The constant ACCOUNT_ALREADY_EXIST.
-     */
-    public final static String ACCOUNT_ALREADY_EXIST = "Account already exists";
-    /**
-     * The constant CATEGORY_ALREADY_EXIST.
-     */
-    public final static String CATEGORY_ALREADY_EXIST = "Category already exists";
-    /**
-     * The constant PERSON_DOES_NOT_EXIST.
-     */
-    public final static String PERSON_DOES_NOT_EXIST = "Person does not exist";
-    /**
-     * The constant PERSON_ALREADY_EXIST.
-     */
-    public final static String PERSON_ALREADY_EXIST = "Person already exists";
-    /**
-     * The constant ACCOUNT_DOES_NOT_EXIST.
-     */
-    public final static String ACCOUNT_DOES_NOT_EXIST = "Account does not exist";
-    /**
-     * The constant CATEGORY_DOES_NOT_EXIST.
-     */
-    public final static String CATEGORY_DOES_NOT_EXIST = "Category does not exist";
-    /**
-     * The constant CATEGORY_DOES_NOT_EXIST.
-     */
-    public final static String LEDGER_DOES_NOT_EXIST = "Ledger does not exist";
-    /**
-     * The constant CATEGORY_DOES_NOT_EXIST.
-     */
-    public final static String TRANSACTION_ALREADY_EXIST = "Transaction already exist";
+    public static final String SUCCESS = "Account created and added";
+    public static final String ADDRESS_ALREADY_EXIST = "Address already exists";
+    public static final String MOTHER_ALREADY_EXIST = "Mother already exists";
+    public static final String FATHER_ALREADY_EXIST = "Father already exists";
+    public static final String SIBLING_ALREADY_EXIST = "Sibling already exists";
+    public static final String ACCOUNT_ALREADY_EXIST = "Account already exists";
+    public static final String CATEGORY_ALREADY_EXIST = "Category already exists";
+    public static final String PERSON_DOES_NOT_EXIST = "Person does not exist";
+    public static final String PERSON_ALREADY_EXIST = "Person already exists";
+    public static final String ACCOUNT_DOES_NOT_EXIST = "Account does not exist";
+    public static final String CATEGORY_DOES_NOT_EXIST = "Category does not exist";
+    public static final String LEDGER_DOES_NOT_EXIST = "Ledger does not exist";
+    public static final String TRANSACTION_ALREADY_EXIST = "Transaction already exist";
+
+    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
 
-    public CreatePersonService(IPersonRepository personRepository, ILedgerRepository ledgerRepository, ICategoryRepository categoryRepository, IAccountRepository accountRepository) {
+    public CreatePersonService(IPersonRepository personRepository,
+                               ILedgerRepository ledgerRepository,
+                               ICategoryRepository categoryRepository,
+                               IAccountRepository accountRepository,
+                               IGroupRepository groupRepository) {
         this.personRepository = personRepository;
         this.ledgerRepository = ledgerRepository;
         this.categoryRepository = categoryRepository;
         this.accountRepository = accountRepository;
+        this.groupRepository = groupRepository;
     }
 
+
+    // -------------------------------------------------------------------------
+    // Person CRUD
+    // -------------------------------------------------------------------------
 
     public PersonDTO createPerson(CreatePersonDTO createPersonDTO) {
         PersonID personID = PersonID.createPersonID(createPersonDTO.getEmail());
-        Optional<Person> optPerson = personRepository.findById(personID);
 
-        if (optPerson.isPresent()) {
-
+        if (personRepository.findById(personID).isPresent()) {
             throw new InvalidArgumentsBusinessException(PERSON_ALREADY_EXIST);
-
-        } else {
-
-            Person newPerson = Person.createPerson(createPersonDTO.getEmail(), createPersonDTO.getName(), createPersonDTO.getBirthdate(), createPersonDTO.getBirthplace());
-            Person newSavedPerson = personRepository.save(newPerson);
-
-            PersonDTO personDTO = PersonDTOAssembler.createDTOFromDomainObject(
-                    newSavedPerson.getPersonID().getEmail(),
-                    newSavedPerson.getName(),
-                    newSavedPerson.getBirthdate(),
-                    newSavedPerson.getBirthplace(),
-                    newSavedPerson.getFather(),
-                    newSavedPerson.getMother());
-
-            return personDTO;
         }
+
+        Person newPerson = Person.createPerson(
+                createPersonDTO.getEmail(),
+                createPersonDTO.getName(),
+                createPersonDTO.getBirthdate(),
+                createPersonDTO.getBirthplace());
+
+        Person saved = personRepository.save(newPerson);
+        return toPersonDTO(saved);
+    }
+
+    public CreatePersonDTO createAndSavePerson(CreatePersonDTO createPersonDTO) {
+        Person newPerson = Person.createPerson(
+                createPersonDTO.getEmail(),
+                createPersonDTO.getName(),
+                LocalDate.parse(createPersonDTO.getBirthdate().toString()),
+                createPersonDTO.getBirthplace());
+
+        Person saved = personRepository.save(newPerson);
+
+        return CreatePersonDTOAssembler.createDTOFromPrimitiveTypes(
+                saved.getEmail().getEmail(),
+                saved.getName().getName(),
+                saved.getBirthdate().getBirthdate().format(DATE_FORMATTER),
+                saved.getBirthplace().getBirthplace());
     }
 
 
+    // -------------------------------------------------------------------------
     // Getters
+    // -------------------------------------------------------------------------
 
     public PersonDTO getPersonByEmail(PersonEmailDTO personEmailDTO) {
-        PersonID personID = PersonID.createPersonID(personEmailDTO.getEmail());
-        Optional<Person> optPerson = personRepository.findById(personID);
-
-        if (!optPerson.isPresent()) {
-
-            throw new NotFoundArgumentsBusinessException(PERSON_DOES_NOT_EXIST);
-
-        } else {
-
-            Person person = optPerson.get();
-
-            Email personEmail = person.getPersonID().getEmail();
-            Name personName = person.getName();
-            Birthdate personBirthdate = person.getBirthdate();
-            Birthplace personBirthplace = person.getBirthplace();
-            PersonID fatherID = person.getFather();
-            PersonID motherID = person.getMother();
-
-            return PersonDTOAssembler.createDTOFromDomainObject(personEmail, personName, personBirthdate, personBirthplace, fatherID, motherID);
-        }
+        Person person = findPersonOrThrow(personEmailDTO.getEmail());
+        return toPersonDTO(person);
     }
 
     @Transactional
     public TransactionsDTO getPersonLedger(PersonEmailDTO personEmailDTO) {
-        PersonID personID = PersonID.createPersonID(personEmailDTO.getEmail());
-        Optional<Person> optPerson = personRepository.findById(personID);
-
-        if (!optPerson.isPresent()) {
-
-            throw new NotFoundArgumentsBusinessException(PERSON_DOES_NOT_EXIST);
-
-        } else {
-
-            Person person = optPerson.get();
-
-            LedgerID ledgerID = person.getLedgerID();
-
-            Optional<Ledger> optLedger = ledgerRepository.findById(ledgerID);
-
-            Ledger ledger = optLedger.get();
-
-            List<TransactionDTOout> transactions = ledger.getRecordsAsDTO();
-
-            return TransactionsDTOAssembler.createDTOFromPrimitiveTypes(transactions);
-        }
+        Person person = findPersonOrThrow(personEmailDTO.getEmail());
+        Ledger ledger = findLedgerOrThrow(person.getLedgerID());
+        List<TransactionDTOout> transactions = ledger.getRecordsAsDTO();
+        return TransactionsDTOAssembler.createDTOFromPrimitiveTypes(transactions);
     }
 
     @Transactional
     public AccountsDTO getPersonAccounts(PersonEmailDTO personEmailDTO) {
+        Person person = findPersonOrThrow(personEmailDTO.getEmail());
 
         List<AccountDTO> accountsDTO = new ArrayList<>();
-
-        PersonID personID = PersonID.createPersonID(personEmailDTO.getEmail());
-        Optional<Person> optPerson = personRepository.findById(personID);
-
-        if (!optPerson.isPresent()) {
-
-            throw new NotFoundArgumentsBusinessException(PERSON_DOES_NOT_EXIST);
-
-        } else {
-
-            Person person = optPerson.get();
-
-            List<AccountID> accounts = person.getListOfAccounts();
-
-            for (AccountID accountID : accounts) {
-                Optional<Account> optAccount = accountRepository.findById(personEmailDTO.getEmail(), accountID.getDenomination().getDenomination());
-
-                Account account = optAccount.get();
-
-                AccountDTO accountDTO = AccountDTOAssembler.createDTOFromPrimitiveTypes(account.getAccountID().getDenomination().getDenomination(), account.getDescription().getDescription());
-
-                accountsDTO.add(accountDTO);
-
-            }
-
-            return AccountsDTOAssembler.createDTOFromDomainObject(accountsDTO);
+        for (AccountID accountID : person.getListOfAccounts()) {
+            Account account = accountRepository
+                    .findById(personEmailDTO.getEmail(), accountID.getDenomination().getDenomination())
+                    .orElseThrow(() -> new NotFoundArgumentsBusinessException(ACCOUNT_DOES_NOT_EXIST));
+            accountsDTO.add(AccountDTOAssembler.createDTOFromPrimitiveTypes(
+                    account.getAccountID().getDenomination().getDenomination(),
+                    account.getDescription().getDescription()));
         }
+
+        return AccountsDTOAssembler.createDTOFromDomainObject(accountsDTO);
     }
 
     @Transactional
     public CategoriesDTO getPersonCategories(PersonEmailDTO personEmailDTO) {
-        PersonID personID = PersonID.createPersonID(personEmailDTO.getEmail());
-        Optional<Person> optPerson = personRepository.findById(personID);
-
-        if (!optPerson.isPresent()) {
-
-            throw new NotFoundArgumentsBusinessException(PERSON_DOES_NOT_EXIST);
-
-        } else {
-
-            Person person = optPerson.get();
-
-            List<CategoryID> categories = person.getListOfCategories();
-
-            return CategoriesDTOAssembler.createDTOFromDomainObject(categories);
-        }
+        Person person = findPersonOrThrow(personEmailDTO.getEmail());
+        return CategoriesDTOAssembler.createDTOFromDomainObject(person.getListOfCategories());
     }
 
     public SiblingsDTO getPersonSiblings(PersonEmailDTO personEmailDTO) {
-        PersonID personID = PersonID.createPersonID(personEmailDTO.getEmail());
-        Optional<Person> optPerson = personRepository.findById(personID);
-
-        if (!optPerson.isPresent()) {
-
-            throw new NotFoundArgumentsBusinessException(PERSON_DOES_NOT_EXIST);
-
-        } else {
-
-            Person person = optPerson.get();
-
-            List<PersonID> siblings = person.getListOfSiblings();
-
-            return SiblingsDTOAssembler.createDTOFromDomainObject(siblings);
-        }
+        Person person = findPersonOrThrow(personEmailDTO.getEmail());
+        return SiblingsDTOAssembler.createDTOFromDomainObject(person.getListOfSiblings());
     }
 
     @Transactional
     public List<GroupDTO> getPersonGroups(PersonEmailDTO personEmailDTO) {
         PersonID personID = PersonID.createPersonID(personEmailDTO.getEmail());
-        Optional<Person> optPerson = personRepository.findById(personID);
+        findPersonOrThrow(personEmailDTO.getEmail());
 
-        if (!optPerson.isPresent()) {
-
-            throw new NotFoundArgumentsBusinessException(PERSON_DOES_NOT_EXIST);
-
-        } else {
-            List<Group> listGroups = this.groupRepository.findAll();
-
-            List<GroupDTO> listToReturn = new ArrayList<>();
-
-            for (Group group : listGroups) {
-                if (group.getAllMembers().contains(personID)) {
-                    listToReturn.add(GroupDTOAssembler.createDTOFromDomainObject(group.getGroupID().getDenomination(), group.getDescription(), group.getDateOfCreation()));
-                }
+        List<GroupDTO> result = new ArrayList<>();
+        for (Group group : groupRepository.findAll()) {
+            if (group.getAllMembers().contains(personID)) {
+                result.add(GroupDTOAssembler.createDTOFromDomainObject(
+                        group.getGroupID().getDenomination(),
+                        group.getDescription(),
+                        group.getDateOfCreation()));
             }
-            return listToReturn;
         }
+        return result;
     }
 
-    //-----------------------------------------   New   -------------------------------------------//
 
-
-    public CreatePersonDTO createAndSavePerson(CreatePersonDTO createPersonDTO) {
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-
-        Person newPerson = Person.createPerson
-                (createPersonDTO.getEmail(),
-                        createPersonDTO.getName(),
-                        LocalDate.parse(createPersonDTO.getBirthdate().toString()),
-                        createPersonDTO.getBirthplace());
-
-        Person newPersonSaved = personRepository.save(newPerson);
-
-        CreatePersonDTO personDTO = CreatePersonDTOAssembler.createDTOFromPrimitiveTypes
-                (newPersonSaved.getEmail().getEmail(),
-                        newPersonSaved.getName().getName(),
-                        newPersonSaved.getBirthdate().getBirthdate().format(formatter),
-                        newPersonSaved.getBirthplace().getBirthplace());
-
-        return personDTO;
-    }
-
+    // -------------------------------------------------------------------------
+    // Mutations
+    // -------------------------------------------------------------------------
 
     @Transactional
     public boolean addAddressToPerson(PersonID id, Address address) {
-
-        Optional<Person> opPerson = personRepository.findById(id);
-        if (!opPerson.isPresent())
-            throw new NotFoundArgumentsBusinessException(PERSON_DOES_NOT_EXIST);
-
-        Person person = opPerson.get();
-        boolean success = person.addAddress(address.getStreet(), address.getDoorNumber(), address.getPostCode(), address.getCity(), address.getCountry());
-        if (success) {
-            return personRepository.addAndSaveAddress(person);
-        } else
+        Person person = findPersonByIDOrThrow(id);
+        boolean added = person.addAddress(
+                address.getStreet(), address.getDoorNumber(),
+                address.getPostCode(), address.getCity(), address.getCountry());
+        if (!added) {
             throw new NotFoundArgumentsBusinessException(ADDRESS_ALREADY_EXIST);
+        }
+        return personRepository.addAndSaveAddress(person);
     }
 
-
     @Transactional
-    public boolean addMotherToPerson(PersonID id, PersonID mother) {
-
-        Optional<Person> opPerson = personRepository.findById(id);
-        if (!opPerson.isPresent())
-            throw new NotFoundArgumentsBusinessException(PERSON_DOES_NOT_EXIST);
-
-        Optional<Person> opPersonMother = personRepository.findById(mother);
-        if (!opPersonMother.isPresent())
-            throw new NotFoundArgumentsBusinessException(PERSON_DOES_NOT_EXIST);
-
-        Person person = opPerson.get();
-        boolean success = person.addMother(mother);
-        if (success) {
-            return personRepository.addAndSaveMother(person);
-        } else
+    public boolean addMotherToPerson(PersonID id, PersonID motherID) {
+        Person person = findPersonByIDOrThrow(id);
+        findPersonByIDOrThrow(motherID);
+        boolean added = person.addMother(motherID);
+        if (!added) {
             throw new NotFoundArgumentsBusinessException(MOTHER_ALREADY_EXIST);
+        }
+        return personRepository.addAndSaveMother(person);
     }
 
     @Transactional
-    public boolean addFatherToPerson(PersonID id, PersonID father) {
-
-        Optional<Person> opPerson = personRepository.findById(id);
-        if (!opPerson.isPresent())
-            throw new NotFoundArgumentsBusinessException(PERSON_DOES_NOT_EXIST);
-
-        Optional<Person> opPersonFather = personRepository.findById(father);
-        if (!opPersonFather.isPresent())
-            throw new NotFoundArgumentsBusinessException(PERSON_DOES_NOT_EXIST);
-
-        Person person = opPerson.get();
-        boolean success = person.addFather(father);
-        if (success) {
-            return personRepository.addAndSaveFather(person);
-        } else
+    public boolean addFatherToPerson(PersonID id, PersonID fatherID) {
+        Person person = findPersonByIDOrThrow(id);
+        findPersonByIDOrThrow(fatherID);
+        boolean added = person.addFather(fatherID);
+        if (!added) {
             throw new NotFoundArgumentsBusinessException(FATHER_ALREADY_EXIST);
+        }
+        return personRepository.addAndSaveFather(person);
     }
 
     @Transactional
     public boolean addSiblingToPerson(PersonID personID, PersonID siblingID) {
-
-        Optional<Person> opPerson = personRepository.findById(personID);
-        if (!opPerson.isPresent())
-            throw new NotFoundArgumentsBusinessException(PERSON_DOES_NOT_EXIST);
-
-        Optional<Person> opSibling = personRepository.findById(siblingID);
-        if (!opSibling.isPresent())
-            throw new NotFoundArgumentsBusinessException(PERSON_DOES_NOT_EXIST);
-
-        Person person = opPerson.get();
-        boolean success = person.addSibling(siblingID);
-        if (success) {
-            return personRepository.addAndSaveSibling(person, siblingID);
-        } else
+        Person person = findPersonByIDOrThrow(personID);
+        findPersonByIDOrThrow(siblingID);
+        boolean added = person.addSibling(siblingID);
+        if (!added) {
             throw new NotFoundArgumentsBusinessException(SIBLING_ALREADY_EXIST);
+        }
+        return personRepository.addAndSaveSibling(person, siblingID);
     }
 
     @Transactional
-    public boolean addCategoryToPerson(CreatePersonCategoryDTO createPersonCategoryDTO) {
+    public boolean addCategoryToPerson(CreatePersonCategoryDTO dto) {
+        PersonID personID = PersonID.createPersonID(dto.getEmail());
+        findPersonByIDOrThrow(personID);
 
-        // Create PersonID
-        PersonID personID = PersonID.createPersonID(createPersonCategoryDTO.getEmail());
-
-        // Assign the denomination argument to a variable
-        String denomination = createPersonCategoryDTO.getDenomination();
-
-        Optional<Person> opPerson = personRepository.findById(personID);
-        if (!opPerson.isPresent())
-            throw new NotFoundArgumentsBusinessException(PERSON_DOES_NOT_EXIST);
-
-        Optional<Category> opCategory = categoryRepository.findById(personID.getEmail().getEmail(), denomination);
-        if (opCategory.isPresent())
+        if (categoryRepository.findById(personID.getEmail().getEmail(), dto.getDenomination()).isPresent()) {
             throw new NotFoundArgumentsBusinessException(CATEGORY_ALREADY_EXIST);
+        }
 
-        Person person = opPerson.get();
-        boolean success = person.addCategory(CategoryID.createCategoryID(denomination, personID));
-        if (success) {
-            return personRepository.addAndSaveCategory(person);
-        } else
+        Person person = findPersonByIDOrThrow(personID);
+        boolean added = person.addCategory(CategoryID.createCategoryID(dto.getDenomination(), personID));
+        if (!added) {
             throw new NotFoundArgumentsBusinessException(CATEGORY_ALREADY_EXIST);
+        }
+        return personRepository.addAndSaveCategory(person);
     }
 
     @Transactional
-    public boolean addAccountToPerson(CreatePersonAccountDTO createPersonAccountDTO) {
+    public boolean addAccountToPerson(CreatePersonAccountDTO dto) {
+        PersonID personID = PersonID.createPersonID(dto.getEmail());
+        findPersonByIDOrThrow(personID);
 
-        // Create PersonID
-        PersonID personID = PersonID.createPersonID(createPersonAccountDTO.getEmail());
-
-        // Assign the denomination argument to a variable
-        String denomination = createPersonAccountDTO.getDenomination();
-
-        // Assign the denomination argument to a variable
-        String description = createPersonAccountDTO.getDescription();
-
-        Optional<Person> opPerson = personRepository.findById(personID);
-        if (!opPerson.isPresent())
-            throw new NotFoundArgumentsBusinessException(PERSON_DOES_NOT_EXIST);
-
-        Optional<Account> opAccount = accountRepository.findById(personID.getEmail().getEmail(), denomination);
-        if (opAccount.isPresent())
+        if (accountRepository.findById(personID.getEmail().getEmail(), dto.getDenomination()).isPresent()) {
             throw new NotFoundArgumentsBusinessException(ACCOUNT_ALREADY_EXIST);
+        }
 
-        Person person = opPerson.get();
-        boolean success = person.addAccount(AccountID.createAccountID(denomination, personID));
-        if (success) {
-            personRepository.addAndSaveAccount(person, description);
-            return true;
-        } else
+        Person person = findPersonByIDOrThrow(personID);
+        boolean added = person.addAccount(AccountID.createAccountID(dto.getDenomination(), personID));
+        if (!added) {
             throw new NotFoundArgumentsBusinessException(ACCOUNT_ALREADY_EXIST);
+        }
+        personRepository.addAndSaveAccount(person, dto.getDescription());
+        return true;
     }
 
-
     @Transactional
-    public boolean addPersonTransaction(CreatePersonTransactionDTO createPersonTransactionDTO) {
+    public boolean addPersonTransaction(CreatePersonTransactionDTO dto) {
+        PersonID personID = PersonID.createPersonID(dto.getEmail());
+        Person person = findPersonByIDOrThrow(personID);
 
-        // Create PersonID
-        PersonID personID = PersonID.createPersonID(createPersonTransactionDTO.getEmail());
+        String emailStr = personID.getEmail().getEmail();
+        CategoryID categoryID = CategoryID.createCategoryID(dto.getDenominationCategory(), personID);
+        AccountID creditAccountID = AccountID.createAccountID(dto.getDenominationAccountCred(), personID);
+        AccountID debitAccountID = AccountID.createAccountID(dto.getDenominationAccountDeb(), personID);
 
-        // Assign the category argument to a variable
-        String category = createPersonTransactionDTO.getDenominationCategory();
-
-        // Assign the categoryID argument to a variable
-        CategoryID categoryID = CategoryID.createCategoryID(category, personID);
-
-        // Assign the credAccount argument to a variable
-        String credAccount = createPersonTransactionDTO.getDenominationAccountCred();
-
-        // Assign the credAccountID argument to a variable
-        AccountID creditAccountID = AccountID.createAccountID(credAccount, personID);
-
-        // Assign the debAccount argument to a variable
-        String debAccount = createPersonTransactionDTO.getDenominationAccountDeb();
-
-        // Assign the dedAccountID argument to a variable
-        AccountID debitAccountID = AccountID.createAccountID(debAccount, personID);
-
-        // Assign the description argument to a variable
-        String description = createPersonTransactionDTO.getDescription();
-
-        // Assign the type argument to a variable
-        String type = createPersonTransactionDTO.getType();
-
-        // Assign the amount argument to a variable
-        double amount = createPersonTransactionDTO.getAmount();
-
-        Optional<Person> opPerson = personRepository.findById(personID);
-        if (!opPerson.isPresent())
-            throw new NotFoundArgumentsBusinessException(PERSON_DOES_NOT_EXIST);
-
-        Optional<Category> opCategory = categoryRepository.findById(personID.getEmail().getEmail(), category);
-        if (!opCategory.isPresent())
+        if (!categoryRepository.findById(emailStr, dto.getDenominationCategory()).isPresent()) {
             throw new NotFoundArgumentsBusinessException(CATEGORY_DOES_NOT_EXIST);
-
-        Optional<Account> opDebAccount = accountRepository.findById(personID.getEmail().getEmail(), debAccount);
-        if (!opDebAccount.isPresent())
+        }
+        if (!accountRepository.findById(emailStr, dto.getDenominationAccountDeb()).isPresent()) {
             throw new NotFoundArgumentsBusinessException(ACCOUNT_DOES_NOT_EXIST);
-
-        Optional<Account> opCredAccount = accountRepository.findById(personID.getEmail().getEmail(), credAccount);
-        if (!opCredAccount.isPresent())
+        }
+        if (!accountRepository.findById(emailStr, dto.getDenominationAccountCred()).isPresent()) {
             throw new NotFoundArgumentsBusinessException(ACCOUNT_DOES_NOT_EXIST);
+        }
 
-        Person person = opPerson.get();
+        Ledger ledger = findLedgerOrThrow(person.getLedgerID());
+        LocalDate date = LocalDate.parse(dto.getDate(), DATE_FORMATTER);
 
-        Optional<Ledger> opLedger = ledgerRepository.findById(person.getLedgerID());
-        if (!opLedger.isPresent())
-            throw new NotFoundArgumentsBusinessException(LEDGER_DOES_NOT_EXIST);
+        boolean added = ledger.createAndAddTransactionWithDate(
+                categoryID, dto.getType(), dto.getDescription(),
+                dto.getAmount(), date, debitAccountID, creditAccountID);
 
-        // Define the date of the transaction
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-
-        LocalDate date = LocalDate.parse(createPersonTransactionDTO.getDate(), formatter);
-
-        Ledger ledger = opLedger.get();
-        boolean success = ledger.createAndAddTransactionWithDate(categoryID, type, description, amount, date,
-                debitAccountID, creditAccountID);
-
-        if (success) {
+        if (added) {
             ledgerRepository.addAndSaveTransaction(ledger);
             return true;
-        } else
-            return false;
+        }
+        throw new InvalidArgumentsBusinessException(TRANSACTION_ALREADY_EXIST);
+    }
+
+
+    // -------------------------------------------------------------------------
+    // Private helpers
+    // -------------------------------------------------------------------------
+
+    private Person findPersonOrThrow(String email) {
+        PersonID personID = PersonID.createPersonID(email);
+        return personRepository.findById(personID)
+                .orElseThrow(() -> new NotFoundArgumentsBusinessException(PERSON_DOES_NOT_EXIST));
+    }
+
+    private Person findPersonByIDOrThrow(PersonID personID) {
+        return personRepository.findById(personID)
+                .orElseThrow(() -> new NotFoundArgumentsBusinessException(PERSON_DOES_NOT_EXIST));
+    }
+
+    private Ledger findLedgerOrThrow(LedgerID ledgerID) {
+        return ledgerRepository.findById(ledgerID)
+                .orElseThrow(() -> new NotFoundArgumentsBusinessException(LEDGER_DOES_NOT_EXIST));
+    }
+
+    private PersonDTO toPersonDTO(Person person) {
+        return PersonDTOAssembler.createDTOFromDomainObject(
+                person.getPersonID().getEmail(),
+                person.getName(),
+                person.getBirthdate(),
+                person.getBirthplace(),
+                person.getFather(),
+                person.getMother());
     }
 }

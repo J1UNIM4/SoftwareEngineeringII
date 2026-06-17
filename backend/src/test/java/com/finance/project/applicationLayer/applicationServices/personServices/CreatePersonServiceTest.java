@@ -1,6 +1,5 @@
 package com.finance.project.applicationLayer.applicationServices.personServices;
 
-import com.finance.project.applicationLayer.applicationServices.personServices.CreatePersonService;
 import com.finance.project.controllerLayer.integrationTests.AbstractTest;
 import com.finance.project.domainLayer.domainEntities.aggregates.account.Account;
 import com.finance.project.domainLayer.domainEntities.aggregates.category.Category;
@@ -16,12 +15,10 @@ import com.finance.project.domainLayer.exceptions.InvalidArgumentsBusinessExcept
 import com.finance.project.domainLayer.exceptions.NotFoundArgumentsBusinessException;
 import com.finance.project.dtos.dtos.*;
 import com.finance.project.dtos.dtosAssemblers.*;
-import com.finance.project.infrastructureLayer.repositories.AccountRepository;
-import com.finance.project.infrastructureLayer.repositories.CategoryRepository;
-import com.finance.project.infrastructureLayer.repositories.LedgerRepository;
-import com.finance.project.infrastructureLayer.repositories.PersonRepository;
+import com.finance.project.infrastructureLayer.repositories.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
@@ -43,6 +40,11 @@ public class CreatePersonServiceTest extends AbstractTest {
     private CategoryRepository categoryRepository;
     @Mock
     private AccountRepository accountRepository;
+    @Mock
+    private GroupRepository groupRepository;
+
+    @InjectMocks
+    private CreatePersonService createPersonService;
 
     // Tests
 
@@ -51,8 +53,6 @@ public class CreatePersonServiceTest extends AbstractTest {
     @Test
     @DisplayName("create person | happy path")
     public void createPerson() {
-
-        CreatePersonService createPersonService = new CreatePersonService(personRepository, ledgerRepository, categoryRepository, accountRepository);
 
         // Arrange
         String emailMaria = "maria@gmail.com";
@@ -85,8 +85,6 @@ public class CreatePersonServiceTest extends AbstractTest {
     @DisplayName("Create person - person already exists)")
     public void createPersonAlreadyExists() throws InvalidArgumentsBusinessException {
 
-        CreatePersonService createPersonService = new CreatePersonService(personRepository, ledgerRepository, categoryRepository, accountRepository);
-
         // Arrange
         String emailMaria = "maria@gmail.com";
         String nameMaria = "Maria";
@@ -115,9 +113,6 @@ public class CreatePersonServiceTest extends AbstractTest {
     @DisplayName("getPersonByEmail | Success | Happy Path")
     public void getPersonByEmail_HappyPath() {
 
-
-        CreatePersonService createPersonService = new CreatePersonService(personRepository, ledgerRepository, categoryRepository, accountRepository);
-
         // Arrange
         String emailMaria = "maria@gmail.com";
         String nameMaria = "Maria";
@@ -134,7 +129,7 @@ public class CreatePersonServiceTest extends AbstractTest {
 
         // Act
         PersonDTO expectedPersonDTO = PersonDTOAssembler.createDTOFromDomainObject
-                        (personMaria.getPersonID().getEmail(),
+                (personMaria.getPersonID().getEmail(),
                         personMaria.getName(),
                         personMaria.getBirthdate(),
                         personMaria.getBirthplace(),
@@ -152,8 +147,6 @@ public class CreatePersonServiceTest extends AbstractTest {
     @Test
     @DisplayName("getPersonByEmail | Person Does Not Exist")
     public void getPersonByEmail_PersonNotExist() {
-
-        CreatePersonService createPersonService = new CreatePersonService(personRepository, ledgerRepository, categoryRepository, accountRepository);
 
         // Arrange
         String emailMaria = "maria@gmail.com";
@@ -181,8 +174,6 @@ public class CreatePersonServiceTest extends AbstractTest {
     @Test
     @DisplayName("getPersonLedger | happy path")
     public void getPersonLedger() {
-
-        CreatePersonService createPersonService = new CreatePersonService(personRepository, ledgerRepository, categoryRepository, accountRepository);
 
         // Arrange
         String emailMaria = "maria@gmail.com";
@@ -244,8 +235,6 @@ public class CreatePersonServiceTest extends AbstractTest {
     @DisplayName("getPersonLedger | | Person Does Not Exist")
     public void getPersonLedger_PersonDoesNotExist() {
 
-        CreatePersonService createPersonService = new CreatePersonService(personRepository, ledgerRepository, categoryRepository, accountRepository);
-
         // Arrange
         String emailMaria = "maria@gmail.com";
         String nameMaria = "Maria";
@@ -270,8 +259,6 @@ public class CreatePersonServiceTest extends AbstractTest {
     @Test
     @DisplayName("getPersonAccounts | happy path")
     public void getPersonAccounts() {
-
-        CreatePersonService createPersonService = new CreatePersonService(personRepository, ledgerRepository, categoryRepository, accountRepository);
 
         // Arrange
         String emailMaria = "maria@gmail.com";
@@ -326,8 +313,6 @@ public class CreatePersonServiceTest extends AbstractTest {
     @DisplayName("getPersonAccounts | | Person Does Not Exist")
     public void getPersonAccounts_PersonDoesNotExist() {
 
-        CreatePersonService createPersonService = new CreatePersonService(personRepository, ledgerRepository, categoryRepository, accountRepository);
-
         // Arrange
         String emailMaria = "maria@gmail.com";
         String nameMaria = "Maria";
@@ -352,8 +337,6 @@ public class CreatePersonServiceTest extends AbstractTest {
     @Test
     @DisplayName("getPersonCategories | happy path")
     public void getPersonCategories() {
-
-        CreatePersonService createPersonService = new CreatePersonService(personRepository, ledgerRepository, categoryRepository, accountRepository);
 
         // Arrange
         String emailMaria = "maria@gmail.com";
@@ -396,8 +379,6 @@ public class CreatePersonServiceTest extends AbstractTest {
     @DisplayName("getPersonACategories || Person Does Not Exist")
     public void getPersonCategories_PersonDoesNotExist() {
 
-        CreatePersonService createPersonService = new CreatePersonService(personRepository, ledgerRepository, categoryRepository, accountRepository);
-
         // Arrange
         String emailMaria = "maria@gmail.com";
         String nameMaria = "Maria";
@@ -422,8 +403,6 @@ public class CreatePersonServiceTest extends AbstractTest {
     @Test
     @DisplayName("getPersonSiblings | happy path")
     public void getPersonSiblings() {
-
-        CreatePersonService createPersonService = new CreatePersonService(personRepository, ledgerRepository, categoryRepository, accountRepository);
 
         // Arrange
         String emailMaria = "maria@gmail.com";
@@ -468,8 +447,6 @@ public class CreatePersonServiceTest extends AbstractTest {
     @DisplayName("getPersonSiblings | | Person Does Not Exist")
     public void getPersonSiblings_PersonDoesNotExist() {
 
-        CreatePersonService createPersonService = new CreatePersonService(personRepository, ledgerRepository, categoryRepository, accountRepository);
-
         // Arrange
         String emailMaria = "maria@gmail.com";
         String nameMaria = "Maria";
@@ -494,8 +471,6 @@ public class CreatePersonServiceTest extends AbstractTest {
     @Test
     @DisplayName("CreateAndSavePerson | happy path")
     public void createAndSavePerson() {
-
-        CreatePersonService createPersonService = new CreatePersonService(personRepository, ledgerRepository, categoryRepository, accountRepository);
 
         // Arrange
         String emailMaria = "maria@gmail.com";
@@ -528,8 +503,6 @@ public class CreatePersonServiceTest extends AbstractTest {
     @Test
     @DisplayName("AddAddressToPerson | happy path")
     public void addAddressToPerson() {
-
-        CreatePersonService createPersonService = new CreatePersonService(personRepository, ledgerRepository, categoryRepository, accountRepository);
 
         // Arrange
         String emailMaria = "maria@gmail.com";
@@ -570,8 +543,6 @@ public class CreatePersonServiceTest extends AbstractTest {
     @DisplayName("addAddressToPerson | | Person Does Not Exist")
     public void addAddressToPerson_PersonDoesNotExist() {
 
-        CreatePersonService createPersonService = new CreatePersonService(personRepository, ledgerRepository, categoryRepository, accountRepository);
-
         // Arrange
         String emailMaria = "maria@gmail.com";
         String nameMaria = "Maria";
@@ -605,8 +576,6 @@ public class CreatePersonServiceTest extends AbstractTest {
     @Test
     @DisplayName("addAddressToPerson | | Not added")
     public void addAddressToPerson_NotAdded() {
-
-        CreatePersonService createPersonService = new CreatePersonService(personRepository, ledgerRepository, categoryRepository, accountRepository);
 
         // Arrange
         String emailMaria = "maria@gmail.com";
@@ -653,8 +622,6 @@ public class CreatePersonServiceTest extends AbstractTest {
     @DisplayName("AddMotherToPerson | happy path")
     public void addMotherToPerson() {
 
-        CreatePersonService createPersonService = new CreatePersonService(personRepository, ledgerRepository, categoryRepository, accountRepository);
-
         // Arrange
         String emailMaria = "maria@gmail.com";
         String nameMaria = "Maria";
@@ -695,8 +662,6 @@ public class CreatePersonServiceTest extends AbstractTest {
     @DisplayName("addMotherToPerson | | Person Does Not Exist")
     public void addMotherToPerson_PersonDoesNotExist() {
 
-        CreatePersonService createPersonService = new CreatePersonService(personRepository, ledgerRepository, categoryRepository, accountRepository);
-
         // Arrange
         String emailMaria = "maria@gmail.com";
         String nameMaria = "Maria";
@@ -729,8 +694,6 @@ public class CreatePersonServiceTest extends AbstractTest {
     @Test
     @DisplayName("addMotherToPerson | | Person Mother Does Not Exist")
     public void addMotherToPerson_PersonMotherDoesNotExist() {
-
-        CreatePersonService createPersonService = new CreatePersonService(personRepository, ledgerRepository, categoryRepository, accountRepository);
 
         // Arrange
         String emailMaria = "maria@gmail.com";
@@ -767,8 +730,6 @@ public class CreatePersonServiceTest extends AbstractTest {
     @Test
     @DisplayName("addMotherToPerson | | NotAdded")
     public void addMotherToPerson_NotAdded() {
-
-        CreatePersonService createPersonService = new CreatePersonService(personRepository, ledgerRepository, categoryRepository, accountRepository);
 
         // Arrange
         String emailMaria = "maria@gmail.com";
@@ -816,8 +777,6 @@ public class CreatePersonServiceTest extends AbstractTest {
     @DisplayName("AddFatherToPerson | happy path")
     public void addFatherToPerson() {
 
-        CreatePersonService createPersonService = new CreatePersonService(personRepository, ledgerRepository, categoryRepository, accountRepository);
-
         // Arrange
         String emailMaria = "maria@gmail.com";
         String nameMaria = "Maria";
@@ -858,8 +817,6 @@ public class CreatePersonServiceTest extends AbstractTest {
     @DisplayName("addFatherToPerson | | Person Does Not Exist")
     public void addFatherToPerson_PersonDoesNotExist() {
 
-        CreatePersonService createPersonService = new CreatePersonService(personRepository, ledgerRepository, categoryRepository, accountRepository);
-
         // Arrange
         String emailMaria = "maria@gmail.com";
         String nameMaria = "Maria";
@@ -892,8 +849,6 @@ public class CreatePersonServiceTest extends AbstractTest {
     @Test
     @DisplayName("addFatherToPerson | | Person Father Does Not Exist")
     public void addFatherToPerson_PersonFatherDoesNotExist() {
-
-        CreatePersonService createPersonService = new CreatePersonService(personRepository, ledgerRepository, categoryRepository, accountRepository);
 
         // Arrange
         String emailMaria = "maria@gmail.com";
@@ -930,8 +885,6 @@ public class CreatePersonServiceTest extends AbstractTest {
     @Test
     @DisplayName("addFatherToPerson | | NotAdded")
     public void addFatherToPerson_NotAdded() {
-
-        CreatePersonService createPersonService = new CreatePersonService(personRepository, ledgerRepository, categoryRepository, accountRepository);
 
         // Arrange
         String emailMaria = "maria@gmail.com";
@@ -979,8 +932,6 @@ public class CreatePersonServiceTest extends AbstractTest {
     @DisplayName("AddSiblingToPerson | happy path")
     public void addSiblingToPerson() {
 
-        CreatePersonService createPersonService = new CreatePersonService(personRepository, ledgerRepository, categoryRepository, accountRepository);
-
         // Arrange
         String emailMaria = "maria@gmail.com";
         String nameMaria = "Maria";
@@ -1021,8 +972,6 @@ public class CreatePersonServiceTest extends AbstractTest {
     @DisplayName("addFSiblingToPerson | | Person Does Not Exist")
     public void addSiblingToPerson_PersonDoesNotExist() {
 
-        CreatePersonService createPersonService = new CreatePersonService(personRepository, ledgerRepository, categoryRepository, accountRepository);
-
         // Arrange
         String emailMaria = "maria@gmail.com";
         String nameMaria = "Maria";
@@ -1055,8 +1004,6 @@ public class CreatePersonServiceTest extends AbstractTest {
     @Test
     @DisplayName("addFSiblingToPerson | | Person Sibling Does Not Exist")
     public void addSiblingToPerson_PersonSiblingDoesNotExist() {
-
-        CreatePersonService createPersonService = new CreatePersonService(personRepository, ledgerRepository, categoryRepository, accountRepository);
 
         // Arrange
         String emailMaria = "maria@gmail.com";
@@ -1093,8 +1040,6 @@ public class CreatePersonServiceTest extends AbstractTest {
     @Test
     @DisplayName("addFatherToPerson | | Person Sibling already Exist")
     public void addSiblingToPerson_PersonSiblingAlreadyExist() {
-
-        CreatePersonService createPersonService = new CreatePersonService(personRepository, ledgerRepository, categoryRepository, accountRepository);
 
         // Arrange
         String emailMaria = "maria@gmail.com";
@@ -1143,8 +1088,6 @@ public class CreatePersonServiceTest extends AbstractTest {
     @DisplayName("AddCategoryToPerson | happy path")
     public void addCategoryToPerson() {
 
-        CreatePersonService createPersonService = new CreatePersonService(personRepository, ledgerRepository, categoryRepository, accountRepository);
-
         // Arrange
         String emailMaria = "maria@gmail.com";
         String nameMaria = "Maria";
@@ -1182,8 +1125,6 @@ public class CreatePersonServiceTest extends AbstractTest {
     @DisplayName("AddCategoryToPerson | Person does not exist")
     public void addCategoryToPerson_PersonDoesNotExist() {
 
-        CreatePersonService createPersonService = new CreatePersonService(personRepository, ledgerRepository, categoryRepository, accountRepository);
-
         // Arrange
         String emailMaria = "maria@gmail.com";
         String nameMaria = "Maria";
@@ -1212,8 +1153,6 @@ public class CreatePersonServiceTest extends AbstractTest {
     @Test
     @DisplayName("AddCategoryToPerson | Category already exist")
     public void addCategoryToPerson_CategoryAlreadyExist() {
-
-        CreatePersonService createPersonService = new CreatePersonService(personRepository, ledgerRepository, categoryRepository, accountRepository);
 
         // Arrange
         String emailMaria = "maria@gmail.com";
@@ -1246,8 +1185,6 @@ public class CreatePersonServiceTest extends AbstractTest {
     @Test
     @DisplayName("AddCategoryToPerson | Category already exist 2")
     public void addCategoryToPerson_CategoryAlreadyExist2() {
-
-        CreatePersonService createPersonService = new CreatePersonService(personRepository, ledgerRepository, categoryRepository, accountRepository);
 
         // Arrange
         String emailMaria = "maria@gmail.com";
@@ -1285,8 +1222,6 @@ public class CreatePersonServiceTest extends AbstractTest {
     @Test
     @DisplayName("AddAccountToPerson | happy path")
     public void addAccountToPerson() {
-
-        CreatePersonService createPersonService = new CreatePersonService(personRepository, ledgerRepository, categoryRepository, accountRepository);
 
         // Arrange
         String emailMaria = "maria@gmail.com";
@@ -1327,8 +1262,6 @@ public class CreatePersonServiceTest extends AbstractTest {
     @DisplayName("AddAccountToPerson | Person does not exist")
     public void addAccountToPerson_PersonDoesNotExist() {
 
-        CreatePersonService createPersonService = new CreatePersonService(personRepository, ledgerRepository, categoryRepository, accountRepository);
-
         // Arrange
         String emailMaria = "maria@gmail.com";
         String nameMaria = "Maria";
@@ -1365,8 +1298,6 @@ public class CreatePersonServiceTest extends AbstractTest {
     @Test
     @DisplayName("AddAccountToPerson | Account already exist")
     public void addAccountToPerson_AccountAlreadyExist() {
-
-        CreatePersonService createPersonService = new CreatePersonService(personRepository, ledgerRepository, categoryRepository, accountRepository);
 
         // Arrange
         String emailMaria = "maria@gmail.com";
@@ -1405,8 +1336,6 @@ public class CreatePersonServiceTest extends AbstractTest {
     @Test
     @DisplayName("AddAccountToPerson | Account already exist2")
     public void addAccountToPerson_AccountAlreadyExist2() {
-
-        CreatePersonService createPersonService = new CreatePersonService(personRepository, ledgerRepository, categoryRepository, accountRepository);
 
         // Arrange
         String emailMaria = "maria@gmail.com";
@@ -1447,8 +1376,6 @@ public class CreatePersonServiceTest extends AbstractTest {
     @Test
     @DisplayName("AddTransactionToPerson | happy path")
     public void addTransactionToPerson() {
-
-        CreatePersonService createPersonService = new CreatePersonService(personRepository, ledgerRepository, categoryRepository, accountRepository);
 
         // Arrange
         String emailMaria = "maria@gmail.com";
@@ -1524,8 +1451,6 @@ public class CreatePersonServiceTest extends AbstractTest {
     @DisplayName("AddTransactionToPerson | Person does not exist")
     public void addTransactionToPerson_PersonDoesNotExist() {
 
-        CreatePersonService createPersonService = new CreatePersonService(personRepository, ledgerRepository, categoryRepository, accountRepository);
-
         // Arrange
         String emailMaria = "maria@gmail.com";
         String nameMaria = "Maria";
@@ -1597,8 +1522,6 @@ public class CreatePersonServiceTest extends AbstractTest {
     @Test
     @DisplayName("AddTransactionToPerson | Category does not exist")
     public void addTransactionToPerson_CategoryDoesNotExist() {
-
-        CreatePersonService createPersonService = new CreatePersonService(personRepository, ledgerRepository, categoryRepository, accountRepository);
 
         // Arrange
         String emailMaria = "maria@gmail.com";
@@ -1672,8 +1595,6 @@ public class CreatePersonServiceTest extends AbstractTest {
     @DisplayName("AddTransactionToPerson | DebitAccount does not exist")
     public void addTransactionToPerson_DebitAccountDoesNotExist() {
 
-        CreatePersonService createPersonService = new CreatePersonService(personRepository, ledgerRepository, categoryRepository, accountRepository);
-
         // Arrange
         String emailMaria = "maria@gmail.com";
         String nameMaria = "Maria";
@@ -1746,8 +1667,6 @@ public class CreatePersonServiceTest extends AbstractTest {
     @DisplayName("AddTransactionToPerson | CreditAccount does not exist")
     public void addTransactionToPerson_CreditAccountDoesNotExist() {
 
-        CreatePersonService createPersonService = new CreatePersonService(personRepository, ledgerRepository, categoryRepository, accountRepository);
-
         // Arrange
         String emailMaria = "maria@gmail.com";
         String nameMaria = "Maria";
@@ -1819,8 +1738,6 @@ public class CreatePersonServiceTest extends AbstractTest {
     @Test
     @DisplayName("AddTransactionToPerson | Ledger does not exist")
     public void addTransactionToPerson_LedgerDoesNotExist() {
-
-        CreatePersonService createPersonService = new CreatePersonService(personRepository, ledgerRepository, categoryRepository, accountRepository);
 
         // Arrange
         String emailMaria = "maria@gmail.com";
