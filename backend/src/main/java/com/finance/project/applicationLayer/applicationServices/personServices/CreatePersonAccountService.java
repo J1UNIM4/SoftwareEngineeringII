@@ -1,5 +1,6 @@
 package com.finance.project.applicationLayer.applicationServices.personServices;
 
+import com.finance.project.applicationLayer.ErrorMessages;
 import com.finance.project.domainLayer.domainEntities.vosShared.AccountID;
 import com.finance.project.domainLayer.domainEntities.vosShared.PersonID;
 import com.finance.project.domainLayer.exceptions.InvalidArgumentsBusinessException;
@@ -29,15 +30,9 @@ public class CreatePersonAccountService {
     /**
      * The constant SUCCESS.
      */
-    public final static String SUCCESS = "Account created and added";
-    /**
-     * The constant ACCOUNT_ALREADY_EXIST.
-     */
-    public final static String ACCOUNT_ALREADY_EXIST = "Account already exists";
-    /**
-     * The constant PERSON_DOES_NOT_EXIST.
-     */
-    public final static String PERSON_DOES_NOT_EXIST = "Person does not exist in the system";
+    public final static String SUCCESS               = ErrorMessages.ACCOUNT_CREATED;
+    public final static String ACCOUNT_ALREADY_EXIST = ErrorMessages.ACCOUNT_ALREADY_EXIST;
+    public final static String PERSON_DOES_NOT_EXIST = ErrorMessages.PERSON_DOES_NOT_EXIST;
 
 
     public CreatePersonAccountService(IPersonRepository personRepository, IAccountRepository accountRepository) {

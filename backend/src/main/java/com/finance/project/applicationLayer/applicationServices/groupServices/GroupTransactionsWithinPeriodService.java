@@ -1,5 +1,6 @@
 package com.finance.project.applicationLayer.applicationServices.groupServices;
 
+import com.finance.project.applicationLayer.ErrorMessages;
 import com.finance.project.domainLayer.exceptions.InvalidArgumentsBusinessException;
 import com.finance.project.domainLayer.exceptions.NotFoundArgumentsBusinessException;
 import com.finance.project.domainLayer.repositoriesInterfaces.IGroupRepository;
@@ -35,11 +36,8 @@ public class GroupTransactionsWithinPeriodService {
     /**
      * The constant GROUP_DOES_NOT_EXIST.
      */
-    public static final String GROUP_DOES_NOT_EXIST = "Group does not exist in the system";
-    /**
-     * The constant PERSON_NOT_MEMBER.
-     */
-    public static final String PERSON_NOT_MEMBER = "Person is not member of the group";
+    public static final String GROUP_DOES_NOT_EXIST = ErrorMessages.GROUP_DOES_NOT_EXIST;
+    public static final String PERSON_NOT_MEMBER    = ErrorMessages.PERSON_NOT_MEMBER;
     /**
      * The constant NO_TRANSACTIONS_TO_REPORT.
      */

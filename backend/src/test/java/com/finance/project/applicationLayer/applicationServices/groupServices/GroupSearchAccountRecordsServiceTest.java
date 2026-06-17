@@ -1,5 +1,6 @@
 package com.finance.project.applicationLayer.applicationServices.groupServices;
 
+import com.finance.project.applicationLayer.ErrorMessages;
 import com.finance.project.controllerLayer.integrationTests.AbstractTest;
 import com.finance.project.domainLayer.domainEntities.aggregates.group.Group;
 import com.finance.project.domainLayer.domainEntities.aggregates.ledger.Ledger;
@@ -229,7 +230,7 @@ class GroupSearchAccountRecordsServiceTest extends AbstractTest {
         //DTO in
         GroupSearchAccountRecordsInDTO dtoIn = GroupSearchAccountRecordsInDTOAssembler.groupSearchAccountRecordsInDTO(personEmail, groupDenomination, accountDenomination, startDate, endDate);
 
-        String expectedMessage = "Group does not exist in the system";
+        String expectedMessage = ErrorMessages.GROUP_DOES_NOT_EXIST;
 
         //Mock the behaviour of groupRepository, returning group
         Mockito.when(groupRepository.findById(GroupID.createGroupID(groupDenomination))).thenReturn(Optional.empty());
@@ -260,7 +261,7 @@ class GroupSearchAccountRecordsServiceTest extends AbstractTest {
         //DTO in
         GroupSearchAccountRecordsInDTO dtoIn = GroupSearchAccountRecordsInDTOAssembler.groupSearchAccountRecordsInDTO(personEmail, groupDenomination, accountDenomination, startDate, endDate);
 
-        String expectedMessage = "Person is not member of the group";
+        String expectedMessage = ErrorMessages.PERSON_NOT_MEMBER;
 
         //Mock the behaviour of groupRepository, returning group
         Mockito.when(groupRepository.findById(groupID)).thenReturn(Optional.of(group));
@@ -292,7 +293,7 @@ class GroupSearchAccountRecordsServiceTest extends AbstractTest {
         GroupSearchAccountRecordsInDTO dtoIn = GroupSearchAccountRecordsInDTOAssembler.groupSearchAccountRecordsInDTO(personEmail, groupDenomination, accountDenomination, startDate, endDate);
 
         //Expected message
-        String expectedMessage = "Account does not exist in the system";
+        String expectedMessage = ErrorMessages.ACCOUNT_DOES_NOT_EXIST;
 
         //Mock the behaviour of groupRepository, returning group
         Mockito.when(groupRepository.findById(groupID)).thenReturn(Optional.of(group));
@@ -339,7 +340,7 @@ class GroupSearchAccountRecordsServiceTest extends AbstractTest {
         groupSearchService = new GroupSearchAccountRecordsService(groupRepository, accountRepository, ledgerRepository);
 
         //Expected message
-        String expectedMessage = "Check the start and end dates for the period, since start date cannot be later than end date";
+        String expectedMessage = ErrorMessages.DATES_IN_REVERSE_ORDER;
 
         //ACT
         Throwable thrown = assertThrows(InvalidArgumentsBusinessException.class, () -> groupSearchService.getGroupAccountTransactionsWithinPeriod(dtoIn));
@@ -377,7 +378,7 @@ class GroupSearchAccountRecordsServiceTest extends AbstractTest {
         groupSearchService = new GroupSearchAccountRecordsService(groupRepository, accountRepository, ledgerRepository);
 
         //Expected message
-        String expectedMessage = "The time period provided falls outside the range of the ledger records";
+        String expectedMessage = ErrorMessages.TIME_PERIOD_OUTSIDE_OF_RECORDS_RANGE;
 
         //ACT
         Throwable thrown = assertThrows(NotFoundArgumentsBusinessException.class, () -> groupSearchService.getGroupAccountTransactionsWithinPeriod(dtoIn));
@@ -415,7 +416,7 @@ class GroupSearchAccountRecordsServiceTest extends AbstractTest {
         groupSearchService = new GroupSearchAccountRecordsService(groupRepository, accountRepository, ledgerRepository);
 
         //Expected message
-        String expectedMessage = "The time period provided falls outside the range of the ledger records";
+        String expectedMessage = ErrorMessages.TIME_PERIOD_OUTSIDE_OF_RECORDS_RANGE;
 
         //ACT
         Throwable thrown = assertThrows(NotFoundArgumentsBusinessException.class, () -> groupSearchService.getGroupAccountTransactionsWithinPeriod(dtoIn));
@@ -454,7 +455,7 @@ class GroupSearchAccountRecordsServiceTest extends AbstractTest {
         groupSearchService = new GroupSearchAccountRecordsService(groupRepository, accountRepository, ledgerRepository);
 
         //Expected message
-        String expectedMessage = "Ledger has no transactions within the searched period";
+        String expectedMessage = ErrorMessages.NO_TRANSACTIONS_TO_REPORT;
 
         //ACT
         Throwable thrown = assertThrows(NotFoundArgumentsBusinessException.class, () -> groupSearchService.getGroupAccountTransactionsWithinPeriod(dtoIn));
@@ -492,7 +493,7 @@ class GroupSearchAccountRecordsServiceTest extends AbstractTest {
         groupSearchService = new GroupSearchAccountRecordsService(groupRepository, accountRepository, ledgerRepository);
 
         //Expected message
-        String expectedMessage = "Ledger is empty";
+        String expectedMessage = ErrorMessages.EMPTY_LEDGER;
 
         //ACT
         Throwable thrown = assertThrows(NotFoundArgumentsBusinessException.class, () -> groupSearchService.getGroupAccountTransactionsWithinPeriod(dtoIn));
@@ -527,7 +528,7 @@ class GroupSearchAccountRecordsServiceTest extends AbstractTest {
         groupSearchService = new GroupSearchAccountRecordsService(groupRepository, accountRepository, ledgerRepository);
 
         //Expected message
-        String expectedMessage = "Search results cannot be displayed: account name is missing";
+        String expectedMessage = ErrorMessages.ACCOUNT_NAME_FIELD_MISSING;
 
         //ACT
         Throwable thrown = assertThrows(NotFoundArgumentsBusinessException.class, () -> groupSearchService.getGroupAccountTransactionsWithinPeriod(dtoIn));
@@ -565,7 +566,7 @@ class GroupSearchAccountRecordsServiceTest extends AbstractTest {
         groupSearchService = new GroupSearchAccountRecordsService(groupRepository, accountRepository, ledgerRepository);
 
         //Expected message
-        String expectedMessage = "Search results cannot be displayed: start date is missing";
+        String expectedMessage = ErrorMessages.START_DATE_FIELD_MISSING;
 
         //ACT
         Throwable thrown = assertThrows(NotFoundArgumentsBusinessException.class, () -> groupSearchService.getGroupAccountTransactionsWithinPeriod(dtoIn));
@@ -604,7 +605,7 @@ class GroupSearchAccountRecordsServiceTest extends AbstractTest {
         groupSearchService = new GroupSearchAccountRecordsService(groupRepository, accountRepository, ledgerRepository);
 
         //Expected message
-        String expectedMessage = "Search results cannot be displayed: end date is missing";
+        String expectedMessage = ErrorMessages.END_DATE_FIELD_MISSING;
 
         //ACT
         Throwable thrown = assertThrows(NotFoundArgumentsBusinessException.class, () -> groupSearchService.getGroupAccountTransactionsWithinPeriod(dtoIn));

@@ -1,5 +1,6 @@
 package com.finance.project.applicationLayer.applicationServices.groupServices;
 
+import com.finance.project.applicationLayer.ErrorMessages;
 import com.finance.project.domainLayer.domainEntities.vosShared.*;
 import com.finance.project.domainLayer.exceptions.InvalidArgumentsBusinessException;
 import com.finance.project.domainLayer.exceptions.NotFoundArgumentsBusinessException;
@@ -37,14 +38,8 @@ public class CreateGroupTransactionService {
     /**
      * The constant GROUP_DOES_NOT_EXIST.
      */
-    public final static String GROUP_DOES_NOT_EXIST = "Group does not exist in the system";
-    /**
-     * The constant PERSON_NOT_MEMBER.
-     */
-    public final static String PERSON_NOT_MEMBER = "Person is not member of the group";
-    /**
-     * The constant NEED_TO_CREATE_CATEGORY.
-     */
+    public final static String GROUP_DOES_NOT_EXIST    = ErrorMessages.GROUP_DOES_NOT_EXIST;
+    public final static String PERSON_NOT_MEMBER        = ErrorMessages.PERSON_NOT_MEMBER;
     public final static String NEED_TO_CREATE_CATEGORY = "Category does not exist; it needs to be created";
     /**
      * The constant NEED_TO_CREATE_ACCOUNT_TO_CREDIT.

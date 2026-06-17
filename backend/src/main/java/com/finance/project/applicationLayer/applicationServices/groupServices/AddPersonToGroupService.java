@@ -1,5 +1,6 @@
 package com.finance.project.applicationLayer.applicationServices.groupServices;
 
+import com.finance.project.applicationLayer.ErrorMessages;
 import com.finance.project.domainLayer.exceptions.InvalidArgumentsBusinessException;
 import com.finance.project.domainLayer.exceptions.NotFoundArgumentsBusinessException;
 import com.finance.project.domainLayer.repositoriesInterfaces.IGroupRepository;
@@ -29,15 +30,9 @@ public class AddPersonToGroupService {
     /**
      * The constant PERSON_DOES_NOT_EXIST.
      */
-    public static final String PERSON_DOES_NOT_EXIST = "Person does not exist";
-    /**
-     * The constant GROUP_DOES_NOT_EXIST.
-     */
-    public static final String GROUP_DOES_NOT_EXIST = "Group does not exist";
-    /**
-     * The constant PERSON_ALREADY_EXIST_IN_THE_GROUP.
-     */
-    public static final String PERSON_ALREADY_EXIST_IN_THE_GROUP = "Person is already member";
+    public static final String PERSON_DOES_NOT_EXIST          = ErrorMessages.PERSON_DOES_NOT_EXIST;
+    public static final String GROUP_DOES_NOT_EXIST            = ErrorMessages.GROUP_DOES_NOT_EXIST;
+    public static final String PERSON_ALREADY_EXIST_IN_THE_GROUP = ErrorMessages.PERSON_ALREADY_IN_GROUP;
 
 
     public AddPersonToGroupService(IPersonRepository personRepository, IGroupRepository groupRepository) {

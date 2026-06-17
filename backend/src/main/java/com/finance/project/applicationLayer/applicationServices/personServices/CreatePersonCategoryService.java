@@ -1,5 +1,6 @@
 package com.finance.project.applicationLayer.applicationServices.personServices;
 
+import com.finance.project.applicationLayer.ErrorMessages;
 import com.finance.project.domainLayer.exceptions.InvalidArgumentsBusinessException;
 import com.finance.project.domainLayer.exceptions.NotFoundArgumentsBusinessException;
 import com.finance.project.domainLayer.repositoriesInterfaces.ICategoryRepository;
@@ -33,15 +34,9 @@ public class CreatePersonCategoryService {
 
     // Return messages
 
-    public final static String SUCCESS = "Category created and added";
-    /**
-     * The constant CATEGORY_ALREADY_EXIST.
-     */
-    public final static String CATEGORY_ALREADY_EXIST = "Category already exists";
-    /**
-     * The constant PERSON_DOES_NOT_EXIST.
-     */
-    public final static String PERSON_DOES_NOT_EXIST = "Person does not exist";
+    public final static String SUCCESS               = ErrorMessages.CATEGORY_CREATED;
+    public final static String CATEGORY_ALREADY_EXIST = ErrorMessages.CATEGORY_ALREADY_EXISTS;
+    public final static String PERSON_DOES_NOT_EXIST = ErrorMessages.PERSON_DOES_NOT_EXIST;
 
 
     public PersonDTO createCategory(CreatePersonCategoryDTO createPersonCategoryDTO) {

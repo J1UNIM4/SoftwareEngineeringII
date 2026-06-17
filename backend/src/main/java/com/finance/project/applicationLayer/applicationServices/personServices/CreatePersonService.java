@@ -7,6 +7,7 @@ import com.finance.project.domainLayer.exceptions.NotFoundArgumentsBusinessExcep
 import com.finance.project.domainLayer.repositoriesInterfaces.*;
 import com.finance.project.dtos.dtos.*;
 import com.finance.project.dtos.dtosAssemblers.*;
+import com.finance.project.applicationLayer.ErrorMessages;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,54 +40,18 @@ public class CreatePersonService {
     /**
      * The constant SUCCESS.
      */
-    public final static String SUCCESS = "Account created and added";
-    /**
-     * The constant ADDRESS_ALREADY_EXIST.
-     */
-    public final static String ADDRESS_ALREADY_EXIST = "Address already exists";
-    /**
-     * The constant ADDRESS_ALREADY_EXIST.
-     */
-    public final static String MOTHER_ALREADY_EXIST = "Mother already exists";
-    /**
-     * The constant ADDRESS_ALREADY_EXIST.
-     */
-    public final static String FATHER_ALREADY_EXIST = "Father already exists";
-    /**
-     * The constant ADDRESS_ALREADY_EXIST.
-     */
-    public final static String SIBLING_ALREADY_EXIST = "Sibling already exists";
-    /**
-     * The constant ACCOUNT_ALREADY_EXIST.
-     */
-    public final static String ACCOUNT_ALREADY_EXIST = "Account already exists";
-    /**
-     * The constant CATEGORY_ALREADY_EXIST.
-     */
-    public final static String CATEGORY_ALREADY_EXIST = "Category already exists";
-    /**
-     * The constant PERSON_DOES_NOT_EXIST.
-     */
-    public final static String PERSON_DOES_NOT_EXIST = "Person does not exist";
-    /**
-     * The constant PERSON_ALREADY_EXIST.
-     */
-    public final static String PERSON_ALREADY_EXIST = "Person already exists";
-    /**
-     * The constant ACCOUNT_DOES_NOT_EXIST.
-     */
-    public final static String ACCOUNT_DOES_NOT_EXIST = "Account does not exist";
-    /**
-     * The constant CATEGORY_DOES_NOT_EXIST.
-     */
-    public final static String CATEGORY_DOES_NOT_EXIST = "Category does not exist";
-    /**
-     * The constant CATEGORY_DOES_NOT_EXIST.
-     */
-    public final static String LEDGER_DOES_NOT_EXIST = "Ledger does not exist";
-    /**
-     * The constant CATEGORY_DOES_NOT_EXIST.
-     */
+    public final static String SUCCESS                = ErrorMessages.ACCOUNT_CREATED;
+    public final static String ADDRESS_ALREADY_EXIST  = "Address already exists";
+    public final static String MOTHER_ALREADY_EXIST   = "Mother already exists";
+    public final static String FATHER_ALREADY_EXIST   = "Father already exists";
+    public final static String SIBLING_ALREADY_EXIST  = "Sibling already exists";
+    public final static String ACCOUNT_ALREADY_EXIST  = ErrorMessages.ACCOUNT_ALREADY_EXIST;
+    public final static String CATEGORY_ALREADY_EXIST = ErrorMessages.CATEGORY_ALREADY_EXISTS;
+    public final static String PERSON_DOES_NOT_EXIST  = ErrorMessages.PERSON_DOES_NOT_EXIST;
+    public final static String PERSON_ALREADY_EXIST   = ErrorMessages.PERSON_ALREADY_EXIST;
+    public final static String ACCOUNT_DOES_NOT_EXIST = ErrorMessages.ACCOUNT_DOES_NOT_EXIST;
+    public final static String CATEGORY_DOES_NOT_EXIST = ErrorMessages.CATEGORY_DOES_NOT_EXIST;
+    public final static String LEDGER_DOES_NOT_EXIST  = ErrorMessages.LEDGER_DOES_NOT_EXIST;
     public final static String TRANSACTION_ALREADY_EXIST = "Transaction already exist";
 
 

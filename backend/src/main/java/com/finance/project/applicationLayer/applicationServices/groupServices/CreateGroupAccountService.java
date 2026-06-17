@@ -1,5 +1,6 @@
 package com.finance.project.applicationLayer.applicationServices.groupServices;
 
+import com.finance.project.applicationLayer.ErrorMessages;
 import com.finance.project.domainLayer.exceptions.InvalidArgumentsBusinessException;
 import com.finance.project.domainLayer.exceptions.NotFoundArgumentsBusinessException;
 import com.finance.project.domainLayer.repositoriesInterfaces.IAccountRepository;
@@ -33,19 +34,10 @@ public class CreateGroupAccountService {
     /**
      * The constant SUCCESS.
      */
-    public final static String SUCCESS = "Account created and added";
-    /**
-     * The constant ACCOUNT_ALREADY_EXIST.
-     */
-    public final static String ACCOUNT_ALREADY_EXIST = "Account already exists";
-    /**
-     * The constant PERSON_NOT_IN_CHARGE.
-     */
-    public final static String PERSON_NOT_IN_CHARGE = "Person is not in charge";
-    /**
-     * The constant GROUP_DOES_NOT_EXIST.
-     */
-    public final static String GROUP_DOES_NOT_EXIST = "Group does not exist";
+    public final static String SUCCESS               = ErrorMessages.ACCOUNT_CREATED;
+    public final static String ACCOUNT_ALREADY_EXIST = ErrorMessages.ACCOUNT_ALREADY_EXIST;
+    public final static String PERSON_NOT_IN_CHARGE  = ErrorMessages.PERSON_NOT_IN_CHARGE;
+    public final static String GROUP_DOES_NOT_EXIST  = ErrorMessages.GROUP_DOES_NOT_EXIST;
 
 
     public GroupDTO createAccountAsPeopleInCharge(CreateGroupAccountDTO createGroupAccountDTO) {

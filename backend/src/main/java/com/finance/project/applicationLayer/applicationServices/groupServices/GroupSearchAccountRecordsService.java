@@ -1,5 +1,6 @@
 package com.finance.project.applicationLayer.applicationServices.groupServices;
 
+import com.finance.project.applicationLayer.ErrorMessages;
 import com.finance.project.domainLayer.exceptions.InvalidArgumentsBusinessException;
 import com.finance.project.domainLayer.exceptions.NotFoundArgumentsBusinessException;
 import com.finance.project.domainLayer.repositoriesInterfaces.IAccountRepository;
@@ -41,43 +42,16 @@ public class GroupSearchAccountRecordsService {
     /**
      * The constant GROUP_DOES_NOT_EXIST.
      */
-    public final static String GROUP_DOES_NOT_EXIST = "Group does not exist in the system";
-    /**
-     * The constant PERSON_NOT_MEMBER.
-     */
-    public final static String PERSON_NOT_MEMBER = "Person is not member of the group";
-    /**
-     * The constant ACCOUNT_DOES_NOT_EXIST.
-     */
-    public final static String ACCOUNT_DOES_NOT_EXIST = "Account does not exist in the system";
-    /**
-     * The constant TIME_PERIOD_OUTSIDE_OF_RECORDS_RANGE.
-     */
-    public final static String TIME_PERIOD_OUTSIDE_OF_RECORDS_RANGE = "The time period provided falls outside the range of the ledger records";
-    /**
-     * The constant NO_TRANSACTIONS_TO_REPORT.
-     */
-    public static final String NO_TRANSACTIONS_TO_REPORT = "Ledger has no transactions within the searched period";
-    /**
-     * The constant DATES_IN_REVERSE_ORDER.
-     */
-    public final static String DATES_IN_REVERSE_ORDER = "Check the start and end dates for the period, since start date cannot be later than end date";
-    /**
-     * The constant EMPTY_LEDGER.
-     */
-    public final static String EMPTY_LEDGER = "Ledger is empty";
-    /**
-     * The constant ACCOUNT_NAME_FIELD_MISSING.
-     */
-    public final static String ACCOUNT_NAME_FIELD_MISSING = "Search results cannot be displayed: account name is missing";
-    /**
-     * The constant START_DATE_FIELD_MISSING.
-     */
-    public final static String START_DATE_FIELD_MISSING = "Search results cannot be displayed: start date is missing";
-    /**
-     * The constant END_DATE_FIELD_MISSING.
-     */
-    public final static String END_DATE_FIELD_MISSING = "Search results cannot be displayed: end date is missing";
+    public final static String GROUP_DOES_NOT_EXIST             = ErrorMessages.GROUP_DOES_NOT_EXIST;
+    public final static String PERSON_NOT_MEMBER                = ErrorMessages.PERSON_NOT_MEMBER;
+    public final static String ACCOUNT_DOES_NOT_EXIST           = ErrorMessages.ACCOUNT_DOES_NOT_EXIST;
+    public final static String TIME_PERIOD_OUTSIDE_OF_RECORDS_RANGE = ErrorMessages.TIME_PERIOD_OUTSIDE_OF_RECORDS_RANGE;
+    public static final String NO_TRANSACTIONS_TO_REPORT        = ErrorMessages.NO_TRANSACTIONS_TO_REPORT;
+    public final static String DATES_IN_REVERSE_ORDER           = ErrorMessages.DATES_IN_REVERSE_ORDER;
+    public final static String EMPTY_LEDGER                     = ErrorMessages.EMPTY_LEDGER;
+    public final static String ACCOUNT_NAME_FIELD_MISSING       = ErrorMessages.ACCOUNT_NAME_FIELD_MISSING;
+    public final static String START_DATE_FIELD_MISSING         = ErrorMessages.START_DATE_FIELD_MISSING;
+    public final static String END_DATE_FIELD_MISSING           = ErrorMessages.END_DATE_FIELD_MISSING;
 
 
     public GroupSearchAccountRecordsService(IGroupRepository groupRepository, IAccountRepository accountRepository, ILedgerRepository ledgerRepository) {

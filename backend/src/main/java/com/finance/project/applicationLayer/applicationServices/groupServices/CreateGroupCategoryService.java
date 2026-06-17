@@ -1,5 +1,6 @@
 package com.finance.project.applicationLayer.applicationServices.groupServices;
 
+import com.finance.project.applicationLayer.ErrorMessages;
 import com.finance.project.domainLayer.exceptions.InvalidArgumentsBusinessException;
 import com.finance.project.domainLayer.exceptions.NotFoundArgumentsBusinessException;
 import com.finance.project.domainLayer.repositoriesInterfaces.ICategoryRepository;
@@ -29,19 +30,10 @@ public class CreateGroupCategoryService {
     /**
      * The constant SUCCESS.
      */
-    public final static String SUCCESS = "Category created and added";
-    /**
-     * The constant PERSON_NOT_IN_CHARGE.
-     */
-    public final static String PERSON_NOT_IN_CHARGE = "Person is not in charge";
-    /**
-     * The constant CATEGORY_ALREADY_EXIST.
-     */
-    public final static String CATEGORY_ALREADY_EXIST = "Category already exist";
-    /**
-     * The constant GROUP_DOES_NOT_EXIST.
-     */
-    public final static String GROUP_DOES_NOT_EXIST = "Group does not exist";
+    public final static String SUCCESS               = ErrorMessages.CATEGORY_CREATED;
+    public final static String PERSON_NOT_IN_CHARGE  = ErrorMessages.PERSON_NOT_IN_CHARGE;
+    public final static String CATEGORY_ALREADY_EXIST = ErrorMessages.CATEGORY_ALREADY_EXISTS;
+    public final static String GROUP_DOES_NOT_EXIST  = ErrorMessages.GROUP_DOES_NOT_EXIST;
 
 
     public CreateGroupCategoryService(IGroupRepository groupRepository, ICategoryRepository categoryRepository) {

@@ -1,5 +1,6 @@
 package com.finance.project.applicationLayer.applicationServices.otherServices;
 
+import com.finance.project.applicationLayer.ErrorMessages;
 import com.finance.project.domainLayer.domainEntities.vosShared.GroupID;
 import com.finance.project.domainLayer.domainEntities.vosShared.PersonID;
 import com.finance.project.domainLayer.exceptions.NotFoundArgumentsBusinessException;
@@ -36,7 +37,7 @@ public class CheckGroupsFamilyService {
     /**
      * The constant GROUP_DOES_NOT_EXIST.
      */
-    public static final String GROUP_DOES_NOT_EXIST = "Group does not exist";
+    public static final String GROUP_DOES_NOT_EXIST = ErrorMessages.GROUP_DOES_NOT_EXIST;
 
 
     public CheckGroupsFamilyService(IGroupRepository groupRepository, IPersonRepository personRepository) {

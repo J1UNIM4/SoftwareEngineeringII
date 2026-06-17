@@ -1,5 +1,6 @@
 package com.finance.project.applicationLayer.applicationServices.groupServices;
 
+import com.finance.project.applicationLayer.ErrorMessages;
 import com.finance.project.domainLayer.domainEntities.vosShared.*;
 import com.finance.project.domainLayer.exceptions.InvalidArgumentsBusinessException;
 import com.finance.project.domainLayer.exceptions.NotFoundArgumentsBusinessException;
@@ -44,15 +45,9 @@ public class CreateGroupService {
     /**
      * The constant PERSON_DOES_NOT_EXIST.
      */
-    public final static String PERSON_DOES_NOT_EXIST = "Person does not exist";
-    /**
-     * The constant GROUP_ALREADY_EXISTS.
-     */
-    public final static String GROUP_ALREADY_EXISTS = "Group already exist";
-    /**
-     * The constant GROUP_DOES_NOT_EXIST.
-     */
-    public final static String GROUP_DOES_NOT_EXISTS = "Group does not exist";
+    public final static String PERSON_DOES_NOT_EXIST = ErrorMessages.PERSON_DOES_NOT_EXIST;
+    public final static String GROUP_ALREADY_EXISTS  = ErrorMessages.GROUP_ALREADY_EXISTS;
+    public final static String GROUP_DOES_NOT_EXISTS = ErrorMessages.GROUP_DOES_NOT_EXIST;
 
 
     public CreateGroupService(IPersonRepository personRepository, IGroupRepository groupRepository,

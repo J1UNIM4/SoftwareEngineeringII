@@ -1,5 +1,6 @@
 package com.finance.project.applicationLayer.applicationServices.personServices;
 
+import com.finance.project.applicationLayer.ErrorMessages;
 import com.finance.project.domainLayer.exceptions.NotFoundArgumentsBusinessException;
 import com.finance.project.domainLayer.repositoriesInterfaces.IAccountRepository;
 import com.finance.project.domainLayer.repositoriesInterfaces.ICategoryRepository;
@@ -42,19 +43,10 @@ public class CreatePersonTransactionService {
     /**
      * The constant CATEGORY_DOES_NOT_EXIST.
      */
-    public final static String CATEGORY_DOES_NOT_EXIST = "Category doesn't exist";
-    /**
-     * The constant ACCOUNT_DEB_DOES_NOT_EXIST.
-     */
+    public final static String CATEGORY_DOES_NOT_EXIST    = ErrorMessages.CATEGORY_DOES_NOT_EXIST;
     public final static String ACCOUNT_DEB_DOES_NOT_EXIST = "Debit Account doesn't exist";
-    /**
-     * The constant ACCOUNT_CRED_DOES_NOT_EXIST.
-     */
     public final static String ACCOUNT_CRED_DOES_NOT_EXIST = "Credit Account doesn't exist";
-    /**
-     * The constant PERSON_DOES_NOT_EXIST.
-     */
-    public final static String PERSON_DOES_NOT_EXIST = "Person doesn't exist";
+    public final static String PERSON_DOES_NOT_EXIST      = ErrorMessages.PERSON_DOES_NOT_EXIST;
 
 
     public CreatePersonTransactionService(IPersonRepository personRepository, IAccountRepository accountRepository, ILedgerRepository ledgerRepository, ICategoryRepository categoryRepository) {

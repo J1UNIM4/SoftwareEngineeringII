@@ -1,5 +1,6 @@
 package com.finance.project.applicationLayer.applicationServices.groupServices;
 
+import com.finance.project.applicationLayer.ErrorMessages;
 import com.finance.project.controllerLayer.integrationTests.AbstractTest;
 import com.finance.project.domainLayer.domainEntities.aggregates.group.Group;
 import com.finance.project.domainLayer.domainEntities.aggregates.ledger.Ledger;
@@ -241,7 +242,7 @@ class GroupTransactionsWithinPeriodServiceTest extends AbstractTest {
         Mockito.when(groupRepository.findById(houseID)).thenReturn(Optional.of(house));
 
         //Expected message
-        String expectedMessage = "Group does not exist in the system";
+        String expectedMessage = ErrorMessages.GROUP_DOES_NOT_EXIST;
 
         //ACT
         groupTransactionsWithinPeriodService = new GroupTransactionsWithinPeriodService(groupRepository, ledgerRepository);
@@ -274,7 +275,7 @@ class GroupTransactionsWithinPeriodServiceTest extends AbstractTest {
         Mockito.when(groupRepository.findById(houseID)).thenReturn(Optional.of(house));
 
         //Expected message
-        String expectedMessage = "Person is not member of the group";
+        String expectedMessage = ErrorMessages.PERSON_NOT_MEMBER;
 
         //ACT
         groupTransactionsWithinPeriodService = new GroupTransactionsWithinPeriodService(groupRepository, ledgerRepository);
