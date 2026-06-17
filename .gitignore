@@ -127,3 +127,6 @@ buildNumber.properties
 
 
 # End of https://www.gitignore.io/api/java,maven,intellij
+
+# SonarQube - no commitear tokens ni cache del scanner
+.scannerwork/
