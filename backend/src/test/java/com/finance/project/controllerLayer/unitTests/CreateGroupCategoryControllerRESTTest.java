@@ -1,7 +1,7 @@
 package com.finance.project.controllerLayer.unitTests;
 
 import com.finance.project.modules.group.application.CreateGroupCategoryService;
-import com.finance.project.controllerLayer.controllersREST.groupControllers.CreateGroupCategoryControllerREST;
+import com.finance.project.modules.group.presentation.CreateGroupCategoryControllerREST;
 import com.finance.project.controllerLayer.integrationTests.AbstractTest;
 import com.finance.project.domainLayer.exceptions.InvalidArgumentsBusinessException;
 import com.finance.project.domainLayer.exceptions.NotFoundArgumentsBusinessException;
