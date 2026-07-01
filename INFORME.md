@@ -4,7 +4,8 @@ Aplicación web full-stack (Spring Boot + React) para la gestión de finanzas pe
 evolucionada con un **pipeline de CI/CD** y prácticas de calidad y seguridad de software.
 
 > El tutorial conceptual original sobre Domain-Driven Design (DDD) se conserva en
-> [`Readme.md`](Readme.md). Este documento es el **entregable del proyecto final**.
+> [`docs/DDD-Tutorial.md`](docs/DDD-Tutorial.md). Este documento es el **entregable del proyecto final**;
+> el [`Readme.md`](Readme.md) del repositorio resume este mismo contenido para la portada de GitHub.
 
 ---
 
@@ -22,19 +23,18 @@ evolucionada con un **pipeline de CI/CD** y prácticas de calidad y seguridad de
 10. [Seguridad — vulnerabilidades y correcciones](#10-seguridad--vulnerabilidades-y-correcciones)
 11. [Pipeline CI/CD](#11-pipeline-cicd)
 12. [Gestión de tareas y releases](#12-gestión-de-tareas-y-releases)
+13. [Migración a Arquitectura Modular DDD (Práctica 07)](#13-migración-a-arquitectura-modular-ddd-práctica-07)
 
 ---
 
 ## 1. Equipo de trabajo
 
-| Rol | Responsabilidades (rúbrica) |
-|-----|------------------------------|
-| Persona 1 — DevOps | Repositorio/ramas, pipeline Jenkins, build, Docker (ítems 1, 2, 3, 10) |
-| Persona 2 — Seguridad | Autenticación, CORS, OWASP ZAP (ítem 8, vulns V1–V3, V6) |
-| Persona 3 — QA | Validación, pruebas funcionales (Selenium) y performance (JMeter) (ítems 6, 7, V4, V7) |
-| Persona 4 — Calidad | SonarQube, pruebas unitarias, dependencias, README (ítems 4, 5, 9, 11, V5) |
-
-*(Completar con nombres y apellidos de los integrantes.)*
+| Integrante | Rol (Proyecto Final) | Rol (Práctica 07 — DDD) |
+|------------|------------------------|--------------------------|
+| Barreros Rodríguez, Olga Angélica | Persona 3 — QA: validación, funcionales, performance | Pruebas funcionales/performance/seguridad, migración `modules/person` |
+| Morales Huanca, Jossein | Persona 4 — Calidad: SonarQube, dependencias | Refactoring y análisis estático, migración `modules/group` |
+| Paredes Hallasi, Karoline Mishell | Persona 2 — Seguridad: auth, CORS, OWASP ZAP | Migración `modules/scheduling`, fix de seguridad (SecurityConfig) |
+| Reinoso Bengoa, Joel Andrés | Persona 1 — DevOps: pipeline Jenkins, build, Docker | Migración `modules/ledger` (Account, Category, Ledger, Transaction) |
 
 ## 2. Propósito del proyecto
 
@@ -65,7 +65,7 @@ dtos                → Data Transfer Objects + Assemblers entre capas
 ```
 
 Conceptos DDD aplicados: **Entidades, Value Objects, Agregados (un repositorio por agregado),
-Servicios y DTOs**. Detalle conceptual en [`Readme.md`](Readme.md) y [`UML.md`](UML.md).
+Servicios y DTOs**. Detalle conceptual en [`docs/DDD-Tutorial.md`](docs/DDD-Tutorial.md) y [`UML.md`](UML.md).
 
 ## 5. Módulos y servicios REST
 
@@ -172,3 +172,47 @@ Detalle en [`docs/CI-CD.md`](docs/CI-CD.md).
 - **GitHub Projects** (Kanban): TO-DO → CURRENT → IN PROGRESS → FIX VALIDATION → DONE.
 - Etiquetas: `Nuevo Requisito`, `Mejora` (refactor/smell), `Corrección` (bug/vulnerabilidad).
 - Flujo de release: GitHub Project → Issues → Commits → GitHub Release.
+
+## 13. Migración a Arquitectura Modular DDD (Práctica 07)
+
+Migración incremental del monolito (capas técnicas globales: `domainLayer/`, `applicationLayer/`,
+`infrastructureLayer/`, `controllerLayer/`) hacia **módulos por bounded context**, cada uno con
+sus propias capas internas (`domain/`, `application/`, `infrastructure/`, `presentation/`).
+
+### Modelo de dominio
+
+| Módulo | Tipo | Entidades / Value Objects principales |
+|--------|------|-----------------------------------------|
+| `modules/person` | Aggregate | Person (raíz), PersonID, Name, Address, Birthdate, Birthplace |
+| `modules/group` | Aggregate | Group (raíz), GroupID |
+| `modules/ledger` | Aggregate | Account, Category, Ledger, Transaction, AccountID, CategoryID, LedgerID |
+| `modules/scheduling` | Aggregate | Scheduling (raíz), SchedulingTask, Periodicity, TriggerDate, ScheduleID |
+
+Value Objects compartidos (`vosShared`): Amount, Date, DateOfCreation, Denomination, Description,
+Email, TransactionType, Type. Person y Group referencian Scheduling mediante `ScheduleID`
+(por identidad, no por objeto completo) — patrón de contextos delimitados.
+
+### Trabajo por integrante
+
+| Integrante | Módulo migrado | Evidencia (Issues / PRs) |
+|------------|-----------------|----------------------------|
+| Barreros Rodríguez, Olga Angélica | `modules/person` | Pruebas funcionales (Postman/Newman), performance (JMeter) y seguridad (OWASP ZAP) integradas al pipeline |
+| Morales Huanca, Jossein | `modules/group` (domain, infrastructure, application, presentation) | #32 (epic), #33–#36 / PRs #37–#40 — mergeado a `desarrollo` |
+| Paredes Hallasi, Karoline Mishell | `modules/scheduling` (domain, infrastructure) | #29 — Rediseñar módulo Scheduling / PR #30 — mergeado a `desarrollo`. Fix adicional: `SecurityConfig` duplicado que rompía la autenticación en tests |
+| Reinoso Bengoa, Joel Andrés | `modules/ledger` (domain, infrastructure): Account, Category, Ledger, Transaction | #42 — Rediseñar módulo Ledger / PR #41 (4 commits, 145 archivos) — mergeado a `desarrollo` |
+
+### Resultados
+
+- **1419 tests automatizados** (JUnit 5 + Mockito, Newman, JMeter, OWASP ZAP) — sin regresiones
+  tras la migración de cada módulo.
+- **4 módulos migrados a DDD**: Person, Group, Ledger, Scheduling — contextos delimitados con
+  comunicación por ID (bajo acoplamiento).
+- Hallazgos de calidad documentados durante la migración: Value Objects sin usar, acoplamiento
+  del dominio a infraestructura de concurrencia (`ScheduledExecutorService`), configuraciones
+  de seguridad duplicadas.
+
+### Próximos pasos
+
+- Completar diagrama de Casos de Uso y diagrama de Clases del dominio.
+- Documentar endpoints en formato OpenAPI/Swagger.
+- Resolver el bug de `Bootstrapping` en contextos de test múltiples.
