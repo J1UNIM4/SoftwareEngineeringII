@@ -1,5 +1,6 @@
 package com.finance.project.applicationLayer.applicationServices.groupServices;
 
+import com.finance.project.modules.group.application.AddPersonToGroupService;
 import com.finance.project.controllerLayer.integrationTests.AbstractTest;
 import com.finance.project.modules.group.domain.Group;
 import com.finance.project.modules.group.domain.GroupID;

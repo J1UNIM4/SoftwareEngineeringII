@@ -1,7 +1,7 @@
 package com.finance.project;
 
 import com.finance.project.modules.person.application.CreatePersonService;
-import com.finance.project.applicationLayer.applicationServices.groupServices.CreateGroupService;
+import com.finance.project.modules.group.application.CreateGroupService;
 import com.finance.project.modules.person.domain.Address;
 import com.finance.project.domainLayer.domainEntities.vosShared.AccountID;
 import com.finance.project.domainLayer.domainEntities.vosShared.CategoryID;

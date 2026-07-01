@@ -1,6 +1,6 @@
 package com.finance.project.controllerLayer.integrationTests;
 
-import com.finance.project.applicationLayer.applicationServices.groupServices.CreateGroupCategoryService;
+import com.finance.project.modules.group.application.CreateGroupCategoryService;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;

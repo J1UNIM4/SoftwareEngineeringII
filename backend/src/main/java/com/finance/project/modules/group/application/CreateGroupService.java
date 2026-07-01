@@ -1,4 +1,4 @@
-package com.finance.project.applicationLayer.applicationServices.groupServices;
+package com.finance.project.modules.group.application;
 
 import com.finance.project.domainLayer.domainEntities.vosShared.*;
 import com.finance.project.modules.group.domain.GroupID;

@@ -1,4 +1,4 @@
-package com.finance.project.applicationLayer.applicationServices.groupServices;
+package com.finance.project.modules.group.application;
 
 import com.finance.project.domainLayer.exceptions.InvalidArgumentsBusinessException;
 import com.finance.project.domainLayer.exceptions.NotFoundArgumentsBusinessException;

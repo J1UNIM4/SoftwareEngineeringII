@@ -1,6 +1,6 @@
 package com.finance.project.controllerLayer.controllersREST.groupControllers;
 
-import com.finance.project.applicationLayer.applicationServices.groupServices.CreateGroupTransactionService;
+import com.finance.project.modules.group.application.CreateGroupTransactionService;
 import com.finance.project.dtos.dtos.*;
 import com.finance.project.dtos.dtosAssemblers.CreateGroupTransactionDTOAssembler;
 import javax.validation.Valid;

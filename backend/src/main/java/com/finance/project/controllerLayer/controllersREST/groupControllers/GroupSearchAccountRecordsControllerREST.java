@@ -1,7 +1,7 @@
 package com.finance.project.controllerLayer.controllersREST.groupControllers;
 
-import com.finance.project.applicationLayer.applicationServices.groupServices.CreateGroupService;
-import com.finance.project.applicationLayer.applicationServices.groupServices.GroupSearchAccountRecordsService;
+import com.finance.project.modules.group.application.CreateGroupService;
+import com.finance.project.modules.group.application.GroupSearchAccountRecordsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Link;
 import org.springframework.http.HttpStatus;

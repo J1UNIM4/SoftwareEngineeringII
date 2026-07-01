@@ -1,6 +1,6 @@
 package com.finance.project.controllerLayer.integrationTests;
 
-import com.finance.project.applicationLayer.applicationServices.groupServices.CreateGroupTransactionService;
+import com.finance.project.modules.group.application.CreateGroupTransactionService;
 import org.json.JSONObject;
 import org.junit.jupiter.api.*;
 import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
