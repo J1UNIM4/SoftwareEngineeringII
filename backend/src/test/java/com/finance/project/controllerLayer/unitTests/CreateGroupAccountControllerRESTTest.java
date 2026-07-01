@@ -1,7 +1,7 @@
 package com.finance.project.controllerLayer.unitTests;
 
 import com.finance.project.modules.group.application.CreateGroupAccountService;
-import com.finance.project.controllerLayer.controllersREST.groupControllers.CreateGroupAccountControllerREST;
+import com.finance.project.modules.group.presentation.CreateGroupAccountControllerREST;
 import com.finance.project.controllerLayer.integrationTests.AbstractTest;
 import com.finance.project.domainLayer.exceptions.InvalidArgumentsBusinessException;
 import com.finance.project.domainLayer.exceptions.NotFoundArgumentsBusinessException;

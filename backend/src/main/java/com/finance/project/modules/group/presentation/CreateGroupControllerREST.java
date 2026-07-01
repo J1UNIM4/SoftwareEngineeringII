@@ -1,4 +1,4 @@
-package com.finance.project.controllerLayer.controllersREST.groupControllers;
+package com.finance.project.modules.group.presentation;
 
 import com.finance.project.modules.group.application.CreateGroupService;
 import com.finance.project.dtos.dtos.*;
