@@ -1,5 +1,9 @@
 package com.finance.project.dtos.dtos;
 
+import com.finance.project.modules.ledger.domain.Account;
+import com.finance.project.modules.ledger.domain.Category;
+import com.finance.project.modules.ledger.domain.Transaction;
+
 import java.util.Objects;
 
 /**

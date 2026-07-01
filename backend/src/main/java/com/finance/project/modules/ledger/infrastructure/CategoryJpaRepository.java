@@ -1,7 +1,9 @@
-package com.finance.project.persistenceLayer.repositoriesJPA;
+package com.finance.project.modules.ledger.infrastructure;
+
+import com.finance.project.modules.ledger.infrastructure.CategoryJpa;
+import com.finance.project.modules.ledger.infrastructure.CategoryJpaRepository;
 
 import com.finance.project.dataModel.dataModel.AbstractIdJpa;
-import com.finance.project.dataModel.dataModel.CategoryJpa;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

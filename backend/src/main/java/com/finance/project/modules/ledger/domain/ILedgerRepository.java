@@ -1,12 +1,14 @@
-package com.finance.project.domainLayer.repositoriesInterfaces;
+package com.finance.project.modules.ledger.domain;
+
+import com.finance.project.modules.ledger.domain.Ledger;
+import com.finance.project.modules.ledger.domain.LedgerID;
+import com.finance.project.modules.ledger.domain.ILedgerRepository;
 
 import org.springframework.stereotype.Repository;
 import com.finance.project.dtos.dtos.DeleteGroupTransactionDTO;
 import com.finance.project.dtos.dtos.DeletePersonTransactionDTO;
 import com.finance.project.dtos.dtos.UpdateGroupTransactionDTO;
 import com.finance.project.dtos.dtos.UpdatePersonTransactionDTO;
-import com.finance.project.domainLayer.domainEntities.aggregates.ledger.Ledger;
-import com.finance.project.domainLayer.domainEntities.vosShared.LedgerID;
 
 import java.util.Optional;
 

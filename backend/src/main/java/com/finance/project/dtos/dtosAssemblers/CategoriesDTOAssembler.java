@@ -1,7 +1,7 @@
 package com.finance.project.dtos.dtosAssemblers;
 
 import com.finance.project.dtos.dtos.CategoriesDTO;
-import com.finance.project.domainLayer.domainEntities.vosShared.CategoryID;
+import com.finance.project.modules.ledger.domain.CategoryID;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,17 +1,27 @@
-package com.finance.project.dataModel.dataAssemblers;
+package com.finance.project.modules.ledger.infrastructure;
 
 import com.finance.project.dataModel.dataModel.*;
+import com.finance.project.modules.ledger.infrastructure.AccountJpa;
+import com.finance.project.modules.ledger.infrastructure.CategoryJpa;
+import com.finance.project.modules.ledger.infrastructure.LedgerJpa;
+import com.finance.project.modules.ledger.infrastructure.TransactionJpa;
+import com.finance.project.modules.ledger.infrastructure.LedgerDomainDataAssembler;
+import com.finance.project.modules.ledger.infrastructure.AccountJpaRepository;
+import com.finance.project.modules.ledger.infrastructure.CategoryJpaRepository;
+import com.finance.project.modules.ledger.infrastructure.TransactionJpaRepository;
 import com.finance.project.domainLayer.domainEntities.vosShared.*;
+import com.finance.project.modules.ledger.domain.Ledger;
+import com.finance.project.modules.ledger.domain.Transaction;
+import com.finance.project.modules.ledger.domain.AccountID;
+import com.finance.project.modules.ledger.domain.CategoryID;
+import com.finance.project.modules.ledger.domain.LedgerID;
 import com.finance.project.modules.group.domain.GroupID;
 import com.finance.project.domainLayer.entitiesInterfaces.OwnerID;
 import com.finance.project.modules.person.domain.PersonID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.finance.project.domainLayer.domainEntities.aggregates.ledger.Ledger;
-import com.finance.project.domainLayer.domainEntities.aggregates.ledger.Transaction;
-import com.finance.project.persistenceLayer.repositoriesJPA.AccountJpaRepository;
-import com.finance.project.persistenceLayer.repositoriesJPA.CategoryJpaRepository;
-import com.finance.project.persistenceLayer.repositoriesJPA.TransactionJpaRepository;
+import com.finance.project.modules.ledger.domain.Ledger;
+import com.finance.project.modules.ledger.domain.Transaction;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

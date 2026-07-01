@@ -1,8 +1,10 @@
-package com.finance.project.persistenceLayer.repositoriesJPA;
+package com.finance.project.modules.ledger.infrastructure;
 
-import com.finance.project.dataModel.dataModel.LedgerJpa;
+import com.finance.project.modules.ledger.infrastructure.LedgerJpa;
+import com.finance.project.modules.ledger.infrastructure.LedgerJpaRepository;
+
 import org.springframework.data.repository.CrudRepository;
-import com.finance.project.domainLayer.domainEntities.vosShared.LedgerID;
+import com.finance.project.modules.ledger.domain.LedgerID;
 
 import java.util.List;
 import java.util.Optional;

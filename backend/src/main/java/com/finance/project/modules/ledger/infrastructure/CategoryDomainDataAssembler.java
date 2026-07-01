@@ -1,11 +1,13 @@
-package com.finance.project.dataModel.dataAssemblers;
+package com.finance.project.modules.ledger.infrastructure;
+
+import com.finance.project.modules.ledger.infrastructure.CategoryJpa;
+import com.finance.project.modules.ledger.infrastructure.CategoryDomainDataAssembler;
 
 import com.finance.project.domainLayer.entitiesInterfaces.OwnerID;
 import org.springframework.stereotype.Service;
-import com.finance.project.domainLayer.domainEntities.aggregates.category.Category;
+import com.finance.project.modules.ledger.domain.Category;
 import com.finance.project.modules.group.domain.GroupID;
 import com.finance.project.modules.person.domain.PersonID;
-import com.finance.project.dataModel.dataModel.CategoryJpa;
 
 @Service
 public class CategoryDomainDataAssembler {

@@ -1,5 +1,7 @@
 package com.finance.project.dtos.dtosAssemblers;
 
+import com.finance.project.modules.ledger.domain.Category;
+
 import com.finance.project.dtos.dtos.UpdateGroupTransactionDTO;
 
 /**

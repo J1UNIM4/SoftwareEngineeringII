@@ -1,10 +1,12 @@
 package com.finance.project.infrastructureLayer.repositories;
+
+import com.finance.project.modules.ledger.domain.TransactionType;
 import com.finance.project.modules.scheduling.infrastructure.ScheduleRepository;
 
-import com.finance.project.domainLayer.domainEntities.aggregates.ledger.Ledger;
+import com.finance.project.modules.ledger.domain.Ledger;
 import com.finance.project.modules.scheduling.domain.Scheduling;
-import com.finance.project.domainLayer.domainEntities.vosShared.AccountID;
-import com.finance.project.domainLayer.domainEntities.vosShared.CategoryID;
+import com.finance.project.modules.ledger.domain.AccountID;
+import com.finance.project.modules.ledger.domain.CategoryID;
 import com.finance.project.modules.person.domain.PersonID;
 import com.finance.project.domainLayer.domainEntities.vosShared.ScheduleID;
 import com.finance.project.modules.scheduling.domain.IScheduleRepository;

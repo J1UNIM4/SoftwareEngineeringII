@@ -1,9 +1,13 @@
 package com.finance.project.modules.person.application;
 
+import com.finance.project.modules.ledger.domain.Account;
+import com.finance.project.modules.ledger.domain.Category;
+import com.finance.project.modules.ledger.domain.Transaction;
+
 import com.finance.project.domainLayer.exceptions.NotFoundArgumentsBusinessException;
-import com.finance.project.domainLayer.repositoriesInterfaces.IAccountRepository;
-import com.finance.project.domainLayer.repositoriesInterfaces.ICategoryRepository;
-import com.finance.project.domainLayer.repositoriesInterfaces.ILedgerRepository;
+import com.finance.project.modules.ledger.domain.IAccountRepository;
+import com.finance.project.modules.ledger.domain.ICategoryRepository;
+import com.finance.project.modules.ledger.domain.ILedgerRepository;
 import com.finance.project.modules.person.domain.IPersonRepository;
 import com.finance.project.dtos.dtosAssemblers.PersonDTOAssembler;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +16,11 @@ import com.finance.project.dtos.dtos.CreatePersonTransactionDTO;
 import com.finance.project.dtos.dtos.DeletePersonTransactionDTO;
 import com.finance.project.dtos.dtos.PersonDTO;
 import com.finance.project.dtos.dtos.UpdatePersonTransactionDTO;
-import com.finance.project.domainLayer.domainEntities.aggregates.ledger.Ledger;
+import com.finance.project.modules.ledger.domain.Ledger;
 import com.finance.project.modules.person.domain.Person;
-import com.finance.project.domainLayer.domainEntities.vosShared.AccountID;
-import com.finance.project.domainLayer.domainEntities.vosShared.CategoryID;
-import com.finance.project.domainLayer.domainEntities.vosShared.LedgerID;
+import com.finance.project.modules.ledger.domain.AccountID;
+import com.finance.project.modules.ledger.domain.CategoryID;
+import com.finance.project.modules.ledger.domain.LedgerID;
 import com.finance.project.modules.person.domain.PersonID;
 
 import java.time.LocalDate;

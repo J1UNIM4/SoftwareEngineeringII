@@ -1,9 +1,12 @@
-package com.finance.project.domainLayer.domainEntities.aggregates.ledger;
+package com.finance.project.modules.ledger.domain;
 
-import com.finance.project.domainLayer.domainEntities.vosShared.AccountID;
-import com.finance.project.domainLayer.domainEntities.vosShared.CategoryID;
+import com.finance.project.modules.ledger.domain.Ledger;
+import com.finance.project.modules.ledger.domain.Transaction;
+import com.finance.project.modules.ledger.domain.AccountID;
+import com.finance.project.modules.ledger.domain.CategoryID;
+import com.finance.project.modules.ledger.domain.LedgerID;
+
 import com.finance.project.domainLayer.domainEntities.vosShared.Date;
-import com.finance.project.domainLayer.domainEntities.vosShared.LedgerID;
 import com.finance.project.modules.person.domain.PersonID;
 import com.finance.project.domainLayer.entitiesInterfaces.Entity;
 import com.finance.project.dtos.dtos.CreatePersonTransactionDTO;

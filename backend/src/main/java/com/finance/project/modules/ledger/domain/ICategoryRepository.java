@@ -1,8 +1,10 @@
-package com.finance.project.domainLayer.repositoriesInterfaces;
+package com.finance.project.modules.ledger.domain;
+
+import com.finance.project.modules.ledger.domain.Category;
+import com.finance.project.modules.ledger.domain.CategoryID;
+import com.finance.project.modules.ledger.domain.ICategoryRepository;
 
 import org.springframework.stereotype.Repository;
-import com.finance.project.domainLayer.domainEntities.aggregates.category.Category;
-import com.finance.project.domainLayer.domainEntities.vosShared.CategoryID;
 
 import java.util.List;
 import java.util.Optional;

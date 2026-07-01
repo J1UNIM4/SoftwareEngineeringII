@@ -1,11 +1,13 @@
-package com.finance.project.dataModel.dataAssemblers;
+package com.finance.project.modules.ledger.infrastructure;
+
+import com.finance.project.modules.ledger.infrastructure.AccountJpa;
+import com.finance.project.modules.ledger.infrastructure.AccountDomainDataAssembler;
 
 import com.finance.project.domainLayer.entitiesInterfaces.OwnerID;
 import org.springframework.stereotype.Service;
-import com.finance.project.domainLayer.domainEntities.aggregates.account.Account;
+import com.finance.project.modules.ledger.domain.Account;
 import com.finance.project.modules.group.domain.GroupID;
 import com.finance.project.modules.person.domain.PersonID;
-import com.finance.project.dataModel.dataModel.AccountJpa;
 
 @Service
 public class AccountDomainDataAssembler {

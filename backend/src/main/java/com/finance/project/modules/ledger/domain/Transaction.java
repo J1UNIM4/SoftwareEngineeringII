@@ -1,7 +1,10 @@
-package com.finance.project.domainLayer.domainEntities.aggregates.ledger;
+package com.finance.project.modules.ledger.domain;
 
 
 import com.finance.project.domainLayer.domainEntities.vosShared.*;
+import com.finance.project.modules.ledger.domain.Transaction;
+import com.finance.project.modules.ledger.domain.AccountID;
+import com.finance.project.modules.ledger.domain.CategoryID;
 import com.finance.project.domainLayer.entitiesInterfaces.ValueObject;
 
 import java.time.LocalDate;

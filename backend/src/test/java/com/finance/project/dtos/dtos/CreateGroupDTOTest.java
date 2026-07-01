@@ -1,5 +1,7 @@
 package com.finance.project.dtos.dtos;
 
+import com.finance.project.modules.ledger.domain.LedgerID;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

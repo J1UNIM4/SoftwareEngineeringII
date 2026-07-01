@@ -1,7 +1,9 @@
 package com.finance.project.dataModel.dataAssemblers;
 
-import com.finance.project.dataModel.dataModel.CategoryJpa;
-import com.finance.project.domainLayer.domainEntities.aggregates.category.Category;
+import com.finance.project.modules.ledger.infrastructure.CategoryDomainDataAssembler;
+
+import com.finance.project.modules.ledger.infrastructure.CategoryJpa;
+import com.finance.project.modules.ledger.domain.Category;
 import com.finance.project.modules.person.domain.PersonID;
 import com.finance.project.domainLayer.entitiesInterfaces.OwnerID;
 import org.junit.jupiter.api.Assertions;

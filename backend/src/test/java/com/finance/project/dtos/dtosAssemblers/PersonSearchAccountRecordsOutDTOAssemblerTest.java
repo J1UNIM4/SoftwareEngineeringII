@@ -1,8 +1,11 @@
 package com.finance.project.dtos.dtosAssemblers;
 
-import com.finance.project.domainLayer.domainEntities.aggregates.ledger.Transaction;
-import com.finance.project.domainLayer.domainEntities.vosShared.AccountID;
-import com.finance.project.domainLayer.domainEntities.vosShared.CategoryID;
+import com.finance.project.modules.ledger.domain.Account;
+import com.finance.project.modules.ledger.domain.Category;
+
+import com.finance.project.modules.ledger.domain.Transaction;
+import com.finance.project.modules.ledger.domain.AccountID;
+import com.finance.project.modules.ledger.domain.CategoryID;
 import com.finance.project.modules.person.domain.PersonID;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

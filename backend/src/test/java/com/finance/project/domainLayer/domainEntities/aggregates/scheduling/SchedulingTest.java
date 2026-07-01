@@ -1,8 +1,12 @@
 package com.finance.project.modules.scheduling.domain;
 
-import com.finance.project.domainLayer.domainEntities.aggregates.ledger.Ledger;
-import com.finance.project.domainLayer.domainEntities.vosShared.AccountID;
-import com.finance.project.domainLayer.domainEntities.vosShared.CategoryID;
+import com.finance.project.modules.ledger.domain.Account;
+import com.finance.project.modules.ledger.domain.Category;
+import com.finance.project.modules.ledger.domain.Transaction;
+
+import com.finance.project.modules.ledger.domain.Ledger;
+import com.finance.project.modules.ledger.domain.AccountID;
+import com.finance.project.modules.ledger.domain.CategoryID;
 import com.finance.project.modules.person.domain.PersonID;
 import com.finance.project.domainLayer.domainEntities.vosShared.ScheduleID;
 import org.junit.jupiter.api.DisplayName;

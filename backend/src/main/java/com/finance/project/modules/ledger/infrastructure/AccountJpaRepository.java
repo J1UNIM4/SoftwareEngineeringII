@@ -1,7 +1,9 @@
-package com.finance.project.persistenceLayer.repositoriesJPA;
+package com.finance.project.modules.ledger.infrastructure;
+
+import com.finance.project.modules.ledger.infrastructure.AccountJpa;
+import com.finance.project.modules.ledger.infrastructure.AccountJpaRepository;
 
 import com.finance.project.dataModel.dataModel.AbstractIdJpa;
-import com.finance.project.dataModel.dataModel.AccountJpa;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

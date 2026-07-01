@@ -1,14 +1,16 @@
-package com.finance.project.infrastructureLayer.repositories;
+package com.finance.project.modules.ledger.infrastructure;
 
-import com.finance.project.dataModel.dataAssemblers.CategoryDomainDataAssembler;
+import com.finance.project.modules.ledger.infrastructure.CategoryRepository;
+import com.finance.project.modules.ledger.infrastructure.CategoryJpa;
+import com.finance.project.modules.ledger.infrastructure.CategoryDomainDataAssembler;
+import com.finance.project.modules.ledger.infrastructure.CategoryJpaRepository;
+
 import com.finance.project.dataModel.dataModel.AbstractIdJpa;
-import com.finance.project.dataModel.dataModel.CategoryJpa;
-import com.finance.project.persistenceLayer.repositoriesJPA.CategoryJpaRepository;
-import com.finance.project.domainLayer.repositoriesInterfaces.ICategoryRepository;
+import com.finance.project.modules.ledger.domain.ICategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import com.finance.project.domainLayer.domainEntities.aggregates.category.Category;
-import com.finance.project.domainLayer.domainEntities.vosShared.CategoryID;
+import com.finance.project.modules.ledger.domain.Category;
+import com.finance.project.modules.ledger.domain.CategoryID;
 import com.finance.project.modules.group.domain.GroupID;
 import com.finance.project.modules.person.domain.PersonID;
 

@@ -1,13 +1,23 @@
 package com.finance.project.modules.group.application;
 
 import com.finance.project.domainLayer.domainEntities.vosShared.*;
+import com.finance.project.modules.ledger.domain.Account;
+import com.finance.project.modules.ledger.domain.Category;
+import com.finance.project.modules.ledger.domain.Ledger;
+import com.finance.project.modules.ledger.domain.Transaction;
+import com.finance.project.modules.ledger.domain.AccountID;
+import com.finance.project.modules.ledger.domain.CategoryID;
+import com.finance.project.modules.ledger.domain.LedgerID;
+import com.finance.project.modules.ledger.domain.IAccountRepository;
+import com.finance.project.modules.ledger.domain.ICategoryRepository;
+import com.finance.project.modules.ledger.domain.ILedgerRepository;
 import com.finance.project.modules.group.domain.GroupID;
 import com.finance.project.domainLayer.exceptions.InvalidArgumentsBusinessException;
 import com.finance.project.domainLayer.exceptions.NotFoundArgumentsBusinessException;
-import com.finance.project.domainLayer.repositoriesInterfaces.IAccountRepository;
-import com.finance.project.domainLayer.repositoriesInterfaces.ICategoryRepository;
+import com.finance.project.modules.ledger.domain.IAccountRepository;
+import com.finance.project.modules.ledger.domain.ICategoryRepository;
 import com.finance.project.modules.group.domain.IGroupRepository;
-import com.finance.project.domainLayer.repositoriesInterfaces.ILedgerRepository;
+import com.finance.project.modules.ledger.domain.ILedgerRepository;
 import com.finance.project.modules.person.domain.PersonID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +27,7 @@ import com.finance.project.dtos.dtos.GroupDTO;
 import com.finance.project.dtos.dtos.UpdateGroupTransactionDTO;
 import com.finance.project.dtos.dtosAssemblers.GroupDTOAssembler;
 import com.finance.project.modules.group.domain.Group;
-import com.finance.project.domainLayer.domainEntities.aggregates.ledger.Ledger;
+import com.finance.project.modules.ledger.domain.Ledger;
 
 import java.time.LocalDate;
 import java.util.Optional;

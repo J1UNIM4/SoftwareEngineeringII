@@ -1,8 +1,10 @@
-package com.finance.project.domainLayer.repositoriesInterfaces;
+package com.finance.project.modules.ledger.domain;
+
+import com.finance.project.modules.ledger.domain.Account;
+import com.finance.project.modules.ledger.domain.AccountID;
+import com.finance.project.modules.ledger.domain.IAccountRepository;
 
 import org.springframework.stereotype.Repository;
-import com.finance.project.domainLayer.domainEntities.aggregates.account.Account;
-import com.finance.project.domainLayer.domainEntities.vosShared.AccountID;
 
 import java.util.List;
 import java.util.Optional;

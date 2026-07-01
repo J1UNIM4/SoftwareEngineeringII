@@ -1,4 +1,9 @@
-package com.finance.project.dataModel.dataModel;
+package com.finance.project.modules.ledger.infrastructure;
+
+import com.finance.project.modules.ledger.infrastructure.AccountJpa;
+import com.finance.project.modules.ledger.infrastructure.CategoryJpa;
+import com.finance.project.modules.ledger.infrastructure.LedgerJpa;
+import com.finance.project.modules.ledger.infrastructure.TransactionJpa;
 
 import javax.persistence.*;
 import java.util.Objects;

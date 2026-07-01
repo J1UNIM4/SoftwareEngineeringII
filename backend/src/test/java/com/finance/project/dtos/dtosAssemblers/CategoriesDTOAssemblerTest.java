@@ -1,6 +1,6 @@
 package com.finance.project.dtos.dtosAssemblers;
 
-import com.finance.project.domainLayer.domainEntities.vosShared.CategoryID;
+import com.finance.project.modules.ledger.domain.CategoryID;
 import com.finance.project.modules.person.domain.PersonID;
 import com.finance.project.domainLayer.entitiesInterfaces.OwnerID;
 import org.junit.jupiter.api.DisplayName;

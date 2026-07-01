@@ -1,5 +1,8 @@
 package com.finance.project.domainLayer.domainEntities.vosShared;
 
+import com.finance.project.modules.ledger.domain.Account;
+import com.finance.project.modules.ledger.domain.AccountID;
+
 import com.finance.project.modules.group.domain.GroupID;
 import com.finance.project.modules.person.domain.PersonID;
 import org.junit.jupiter.api.Assertions;

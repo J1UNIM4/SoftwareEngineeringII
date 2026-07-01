@@ -3,7 +3,7 @@ package com.finance.project.controllerLayer.unitTests;
 import com.finance.project.modules.group.application.CreateGroupService;
 import com.finance.project.modules.group.presentation.CreateGroupControllerREST;
 import com.finance.project.controllerLayer.integrationTests.AbstractTest;
-import com.finance.project.domainLayer.domainEntities.aggregates.ledger.Transaction;
+import com.finance.project.modules.ledger.domain.Transaction;
 import com.finance.project.domainLayer.domainEntities.vosShared.*;
 import com.finance.project.domainLayer.entitiesInterfaces.OwnerID;
 import com.finance.project.domainLayer.exceptions.InvalidArgumentsBusinessException;

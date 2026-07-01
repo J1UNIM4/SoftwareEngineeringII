@@ -1,5 +1,7 @@
 package com.finance.project.dataModel.dataModel;
 
+import com.finance.project.modules.ledger.infrastructure.AccountJpa;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

@@ -1,6 +1,8 @@
-package com.finance.project.domainLayer.domainEntities.aggregates.category;
+package com.finance.project.modules.ledger.domain;
 
-import com.finance.project.domainLayer.domainEntities.vosShared.CategoryID;
+import com.finance.project.modules.ledger.domain.Category;
+import com.finance.project.modules.ledger.domain.CategoryID;
+
 import com.finance.project.domainLayer.entitiesInterfaces.Entity;
 import com.finance.project.domainLayer.entitiesInterfaces.OwnerID;
 

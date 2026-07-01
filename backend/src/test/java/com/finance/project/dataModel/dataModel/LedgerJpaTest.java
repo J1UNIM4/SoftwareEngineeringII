@@ -1,6 +1,14 @@
 package com.finance.project.dataModel.dataModel;
 
-import com.finance.project.domainLayer.domainEntities.vosShared.LedgerID;
+import com.finance.project.modules.ledger.domain.Ledger;
+import com.finance.project.modules.ledger.domain.Transaction;
+import com.finance.project.modules.ledger.infrastructure.AccountJpa;
+import com.finance.project.modules.ledger.infrastructure.CategoryJpa;
+import com.finance.project.modules.ledger.infrastructure.TransactionJpa;
+
+import com.finance.project.modules.ledger.infrastructure.LedgerJpa;
+
+import com.finance.project.modules.ledger.domain.LedgerID;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

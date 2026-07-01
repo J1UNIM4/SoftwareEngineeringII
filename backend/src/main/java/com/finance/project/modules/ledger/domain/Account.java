@@ -1,6 +1,8 @@
-package com.finance.project.domainLayer.domainEntities.aggregates.account;
+package com.finance.project.modules.ledger.domain;
 
-import com.finance.project.domainLayer.domainEntities.vosShared.AccountID;
+import com.finance.project.modules.ledger.domain.Account;
+import com.finance.project.modules.ledger.domain.AccountID;
+
 import com.finance.project.domainLayer.domainEntities.vosShared.Description;
 import com.finance.project.domainLayer.entitiesInterfaces.Entity;
 import com.finance.project.domainLayer.entitiesInterfaces.OwnerID;

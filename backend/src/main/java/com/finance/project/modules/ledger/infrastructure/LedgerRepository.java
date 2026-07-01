@@ -1,11 +1,16 @@
-package com.finance.project.infrastructureLayer.repositories;
+package com.finance.project.modules.ledger.infrastructure;
 
-import com.finance.project.dataModel.dataAssemblers.LedgerDomainDataAssembler;
 import com.finance.project.dataModel.dataModel.*;
-import com.finance.project.persistenceLayer.repositoriesJPA.AccountJpaRepository;
-import com.finance.project.persistenceLayer.repositoriesJPA.CategoryJpaRepository;
-import com.finance.project.persistenceLayer.repositoriesJPA.LedgerJpaRepository;
-import com.finance.project.domainLayer.repositoriesInterfaces.ILedgerRepository;
+import com.finance.project.modules.ledger.infrastructure.LedgerRepository;
+import com.finance.project.modules.ledger.infrastructure.AccountJpa;
+import com.finance.project.modules.ledger.infrastructure.CategoryJpa;
+import com.finance.project.modules.ledger.infrastructure.LedgerJpa;
+import com.finance.project.modules.ledger.infrastructure.TransactionJpa;
+import com.finance.project.modules.ledger.infrastructure.LedgerDomainDataAssembler;
+import com.finance.project.modules.ledger.infrastructure.AccountJpaRepository;
+import com.finance.project.modules.ledger.infrastructure.CategoryJpaRepository;
+import com.finance.project.modules.ledger.infrastructure.LedgerJpaRepository;
+import com.finance.project.modules.ledger.domain.ILedgerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,8 +18,8 @@ import com.finance.project.dtos.dtos.DeleteGroupTransactionDTO;
 import com.finance.project.dtos.dtos.DeletePersonTransactionDTO;
 import com.finance.project.dtos.dtos.UpdateGroupTransactionDTO;
 import com.finance.project.dtos.dtos.UpdatePersonTransactionDTO;
-import com.finance.project.domainLayer.domainEntities.aggregates.ledger.Ledger;
-import com.finance.project.domainLayer.domainEntities.vosShared.LedgerID;
+import com.finance.project.modules.ledger.domain.Ledger;
+import com.finance.project.modules.ledger.domain.LedgerID;
 
 
 import java.util.List;

@@ -1,8 +1,10 @@
 package com.finance.project.modules.group.application;
 
+import com.finance.project.modules.ledger.domain.Category;
+
 import com.finance.project.domainLayer.exceptions.InvalidArgumentsBusinessException;
 import com.finance.project.domainLayer.exceptions.NotFoundArgumentsBusinessException;
-import com.finance.project.domainLayer.repositoriesInterfaces.ICategoryRepository;
+import com.finance.project.modules.ledger.domain.ICategoryRepository;
 import com.finance.project.modules.group.domain.IGroupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,7 +12,7 @@ import com.finance.project.dtos.dtos.CreateGroupCategoryDTO;
 import com.finance.project.dtos.dtos.GroupDTO;
 import com.finance.project.dtos.dtosAssemblers.GroupDTOAssembler;
 import com.finance.project.modules.group.domain.Group;
-import com.finance.project.domainLayer.domainEntities.vosShared.CategoryID;
+import com.finance.project.modules.ledger.domain.CategoryID;
 import com.finance.project.modules.group.domain.GroupID;
 import com.finance.project.modules.person.domain.PersonID;
 

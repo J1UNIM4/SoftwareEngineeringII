@@ -1,7 +1,10 @@
-package com.finance.project.domainLayer.domainEntities.vosShared;
+package com.finance.project.modules.ledger.domain;
+
+import com.finance.project.modules.ledger.domain.AccountID;
 
 import com.finance.project.domainLayer.entitiesInterfaces.OwnerID;
 import com.finance.project.domainLayer.entitiesInterfaces.ValueObject;
+import com.finance.project.domainLayer.domainEntities.vosShared.Denomination;
 
 import java.util.Objects;
 

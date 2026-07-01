@@ -1,14 +1,16 @@
-package com.finance.project.infrastructureLayer.repositories;
+package com.finance.project.modules.ledger.infrastructure;
 
-import com.finance.project.dataModel.dataAssemblers.AccountDomainDataAssembler;
+import com.finance.project.modules.ledger.infrastructure.AccountRepository;
+import com.finance.project.modules.ledger.infrastructure.AccountJpa;
+import com.finance.project.modules.ledger.infrastructure.AccountDomainDataAssembler;
+import com.finance.project.modules.ledger.infrastructure.AccountJpaRepository;
+
 import com.finance.project.dataModel.dataModel.AbstractIdJpa;
-import com.finance.project.dataModel.dataModel.AccountJpa;
-import com.finance.project.persistenceLayer.repositoriesJPA.AccountJpaRepository;
-import com.finance.project.domainLayer.repositoriesInterfaces.IAccountRepository;
+import com.finance.project.modules.ledger.domain.IAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import com.finance.project.domainLayer.domainEntities.aggregates.account.Account;
-import com.finance.project.domainLayer.domainEntities.vosShared.AccountID;
+import com.finance.project.modules.ledger.domain.Account;
+import com.finance.project.modules.ledger.domain.AccountID;
 import com.finance.project.modules.group.domain.GroupID;
 import com.finance.project.modules.person.domain.PersonID;
 

@@ -1,7 +1,9 @@
 package com.finance.project.dataModel.dataAssemblers;
 
-import com.finance.project.dataModel.dataModel.AccountJpa;
-import com.finance.project.domainLayer.domainEntities.aggregates.account.Account;
+import com.finance.project.modules.ledger.infrastructure.AccountDomainDataAssembler;
+
+import com.finance.project.modules.ledger.infrastructure.AccountJpa;
+import com.finance.project.modules.ledger.domain.Account;
 import com.finance.project.modules.person.domain.PersonID;
 import com.finance.project.domainLayer.entitiesInterfaces.OwnerID;
 import org.junit.jupiter.api.Assertions;

@@ -1,4 +1,6 @@
-package com.finance.project.domainLayer.domainEntities.vosShared;
+package com.finance.project.modules.ledger.domain;
+
+import com.finance.project.modules.ledger.domain.LedgerID;
 
 import com.finance.project.domainLayer.entitiesInterfaces.ValueObject;
 

@@ -1,5 +1,8 @@
 package com.finance.project.controllerLayer.integrationTests;
 
+import com.finance.project.modules.ledger.domain.Account;
+import com.finance.project.modules.ledger.domain.Transaction;
+
 import com.finance.project.modules.group.application.CreateGroupTransactionService;
 import org.json.JSONObject;
 import org.junit.jupiter.api.*;
