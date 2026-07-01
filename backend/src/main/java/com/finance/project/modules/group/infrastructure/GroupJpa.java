@@ -1,5 +1,6 @@
-package com.finance.project.dataModel.dataModel;
+package com.finance.project.modules.group.infrastructure;
 
+import com.finance.project.dataModel.dataModel.*;
 import org.hibernate.annotations.Fetch;
 import org.springframework.transaction.annotation.Transactional;
 import com.finance.project.modules.group.domain.GroupID;

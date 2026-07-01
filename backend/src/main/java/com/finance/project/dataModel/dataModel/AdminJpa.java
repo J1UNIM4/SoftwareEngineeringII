@@ -1,5 +1,6 @@
 package com.finance.project.dataModel.dataModel;
 
+import com.finance.project.modules.group.infrastructure.GroupJpa;
 import com.finance.project.modules.person.domain.PersonID;
 
 import javax.persistence.*;

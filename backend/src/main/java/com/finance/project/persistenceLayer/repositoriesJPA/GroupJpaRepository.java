@@ -1,7 +1,7 @@
 package com.finance.project.persistenceLayer.repositoriesJPA;
 
 
-import com.finance.project.dataModel.dataModel.GroupJpa;
+import com.finance.project.modules.group.infrastructure.GroupJpa;
 import org.springframework.data.repository.CrudRepository;
 import com.finance.project.modules.group.domain.GroupID;
 

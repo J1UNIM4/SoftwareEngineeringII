@@ -1,4 +1,4 @@
-package com.finance.project.dataModel.dataAssemblers;
+package com.finance.project.modules.group.infrastructure;
 
 import com.finance.project.dataModel.dataModel.*;
 import org.springframework.beans.factory.annotation.Autowired;

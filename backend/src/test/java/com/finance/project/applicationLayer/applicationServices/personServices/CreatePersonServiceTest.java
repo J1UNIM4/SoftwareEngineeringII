@@ -17,6 +17,7 @@ import com.finance.project.domainLayer.exceptions.NotFoundArgumentsBusinessExcep
 import com.finance.project.dtos.dtos.*;
 import com.finance.project.dtos.dtosAssemblers.*;
 import com.finance.project.infrastructureLayer.repositories.*;
+import com.finance.project.modules.group.infrastructure.GroupRepository;
 import com.finance.project.modules.person.infrastructure.PersonRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
