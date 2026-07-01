@@ -1,7 +1,10 @@
 // Pipeline CI/CD - Proyecto Final IS2 (agente Windows)
 // Disparado por commit via webhook de GitHub (githubPush).
 // Sin webhook publico, usar como alternativa: pollSCM('H/2 * * * *')
-// Etapas: Build -> Unit Tests -> Analisis Estatico -> Despliegue Docker
+// Etapas: Checkout -> Build -> Unit Tests -> Analisis Estatico -> Despliegue Docker
+//
+// Compatible con job tipo "Pipeline" (script inline o from SCM):
+// el checkout es un paso git explicito, no depende de 'checkout scm'.
 
 pipeline {
     agent any
@@ -17,11 +20,16 @@ pipeline {
         timeout(time: 30, unit: 'MINUTES')
     }
 
+    environment {
+        REPO_URL      = 'https://github.com/J1UNIM4/SoftwareEngineeringII.git'
+        DEPLOY_BRANCH = 'desarrollo'
+    }
+
     stages {
 
         stage('Checkout') {
             steps {
-                checkout scm
+                git branch: env.DEPLOY_BRANCH, url: env.REPO_URL
             }
         }
 
@@ -64,13 +72,9 @@ pipeline {
 
         stage('Despliegue (Docker)') {
             // Gestion de entrega via contenedores (rubrica item 10).
-            // Solo en ramas estables: main (produccion) y desarrollo (staging).
-            when {
-                anyOf {
-                    branch 'main'
-                    branch 'desarrollo'
-                }
-            }
+            // El job compila la rama DEPLOY_BRANCH, por lo que todo build
+            // exitoso de esa rama se despliega. (La condicion when{branch}
+            // solo funciona en jobs Multibranch, no aplica aqui.)
             steps {
                 bat 'docker compose build'
                 bat 'docker compose up -d'
