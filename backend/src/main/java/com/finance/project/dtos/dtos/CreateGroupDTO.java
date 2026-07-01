@@ -1,6 +1,6 @@
 package com.finance.project.dtos.dtos;
 
-import com.finance.project.domainLayer.domainEntities.vosShared.LedgerID;
+import com.finance.project.modules.ledger.domain.LedgerID;
 
 import java.time.LocalDate;
 import java.util.Objects;

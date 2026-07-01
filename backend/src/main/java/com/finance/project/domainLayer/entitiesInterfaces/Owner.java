@@ -1,7 +1,7 @@
 package com.finance.project.domainLayer.entitiesInterfaces;
 
-import com.finance.project.domainLayer.domainEntities.vosShared.AccountID;
-import com.finance.project.domainLayer.domainEntities.vosShared.CategoryID;
+import com.finance.project.modules.ledger.domain.AccountID;
+import com.finance.project.modules.ledger.domain.CategoryID;
 
 
 public interface Owner {

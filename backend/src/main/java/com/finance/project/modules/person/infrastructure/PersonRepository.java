@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import com.finance.project.modules.person.domain.Person;
-import com.finance.project.domainLayer.domainEntities.vosShared.AccountID;
+import com.finance.project.modules.ledger.domain.AccountID;
 import com.finance.project.modules.person.domain.PersonID;
 
 import java.util.ArrayList;

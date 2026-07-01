@@ -1,6 +1,7 @@
 package com.finance.project.domainLayer.domainEntities.vosShared;
 
 import com.finance.project.domainLayer.entitiesInterfaces.ValueObject;
+import com.finance.project.modules.ledger.domain.TransactionType;
 import com.finance.project.modules.scheduling.domain.Periodicity;
 import com.finance.project.modules.scheduling.domain.TriggerDate;
 

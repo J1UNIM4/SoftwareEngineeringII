@@ -1,16 +1,19 @@
 package com.finance.project.modules.group.infrastructure;
 
 import com.finance.project.dataModel.dataModel.*;
+import com.finance.project.modules.ledger.infrastructure.AccountJpa;
+import com.finance.project.modules.ledger.infrastructure.CategoryJpa;
+import com.finance.project.modules.ledger.infrastructure.LedgerJpa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.finance.project.modules.group.domain.Group;
-import com.finance.project.domainLayer.domainEntities.vosShared.AccountID;
-import com.finance.project.domainLayer.domainEntities.vosShared.CategoryID;
+import com.finance.project.modules.ledger.domain.AccountID;
+import com.finance.project.modules.ledger.domain.CategoryID;
 import com.finance.project.modules.group.domain.GroupID;
 import com.finance.project.modules.person.domain.PersonID;
-import com.finance.project.persistenceLayer.repositoriesJPA.AccountJpaRepository;
+import com.finance.project.modules.ledger.infrastructure.AccountJpaRepository;
 import com.finance.project.persistenceLayer.repositoriesJPA.GroupJpaRepository;
-import com.finance.project.persistenceLayer.repositoriesJPA.LedgerJpaRepository;
+import com.finance.project.modules.ledger.infrastructure.LedgerJpaRepository;
 
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;

@@ -1,10 +1,12 @@
 package com.finance.project.modules.person.application;
 
-import com.finance.project.domainLayer.domainEntities.vosShared.AccountID;
+import com.finance.project.modules.ledger.domain.Account;
+
+import com.finance.project.modules.ledger.domain.AccountID;
 import com.finance.project.modules.person.domain.PersonID;
 import com.finance.project.domainLayer.exceptions.InvalidArgumentsBusinessException;
 import com.finance.project.domainLayer.exceptions.NotFoundArgumentsBusinessException;
-import com.finance.project.domainLayer.repositoriesInterfaces.IAccountRepository;
+import com.finance.project.modules.ledger.domain.IAccountRepository;
 import com.finance.project.modules.person.domain.IPersonRepository;
 import com.finance.project.dtos.dtos.CreatePersonAccountDTO;
 import com.finance.project.dtos.dtos.PersonDTO;

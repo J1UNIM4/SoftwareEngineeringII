@@ -1,6 +1,6 @@
 package com.finance.project.dtos.dtosAssemblers;
 
-import com.finance.project.domainLayer.domainEntities.aggregates.ledger.Transaction;
+import com.finance.project.modules.ledger.domain.Transaction;
 import com.finance.project.dtos.dtos.TransactionDTOout;
 
 /**

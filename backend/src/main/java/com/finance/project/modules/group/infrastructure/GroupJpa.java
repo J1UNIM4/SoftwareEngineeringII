@@ -1,10 +1,13 @@
 package com.finance.project.modules.group.infrastructure;
 
 import com.finance.project.dataModel.dataModel.*;
+import com.finance.project.modules.ledger.infrastructure.AccountJpa;
+import com.finance.project.modules.ledger.infrastructure.CategoryJpa;
+import com.finance.project.modules.ledger.infrastructure.LedgerJpa;
 import org.hibernate.annotations.Fetch;
 import org.springframework.transaction.annotation.Transactional;
 import com.finance.project.modules.group.domain.GroupID;
-import com.finance.project.domainLayer.domainEntities.vosShared.LedgerID;
+import com.finance.project.modules.ledger.domain.LedgerID;
 import com.finance.project.modules.person.domain.PersonID;
 
 import javax.persistence.*;

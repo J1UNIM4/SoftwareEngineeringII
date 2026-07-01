@@ -1,5 +1,8 @@
 package com.finance.project.dtos.dtos;
 
+import com.finance.project.modules.ledger.domain.Category;
+import com.finance.project.modules.ledger.domain.Transaction;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
 import java.util.Objects;

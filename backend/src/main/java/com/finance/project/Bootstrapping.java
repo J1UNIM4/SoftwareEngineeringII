@@ -1,10 +1,13 @@
 package com.finance.project;
 
+import com.finance.project.modules.ledger.domain.Account;
+import com.finance.project.modules.ledger.domain.Transaction;
+
 import com.finance.project.modules.person.application.CreatePersonService;
 import com.finance.project.modules.group.application.CreateGroupService;
 import com.finance.project.modules.person.domain.Address;
-import com.finance.project.domainLayer.domainEntities.vosShared.AccountID;
-import com.finance.project.domainLayer.domainEntities.vosShared.CategoryID;
+import com.finance.project.modules.ledger.domain.AccountID;
+import com.finance.project.modules.ledger.domain.CategoryID;
 import com.finance.project.modules.group.domain.GroupID;
 import com.finance.project.modules.person.domain.PersonID;
 import com.finance.project.dtos.dtos.CreatePersonAccountDTO;

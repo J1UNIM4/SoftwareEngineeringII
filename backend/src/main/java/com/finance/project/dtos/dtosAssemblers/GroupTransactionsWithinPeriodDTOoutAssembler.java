@@ -2,7 +2,7 @@ package com.finance.project.dtos.dtosAssemblers;
 
 import com.finance.project.dtos.dtos.GroupTransactionsWithinPeriodDTOout;
 import com.finance.project.dtos.dtos.TransactionDTOout;
-import com.finance.project.domainLayer.domainEntities.aggregates.ledger.Transaction;
+import com.finance.project.modules.ledger.domain.Transaction;
 
 import java.util.ArrayList;
 

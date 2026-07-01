@@ -1,7 +1,10 @@
 package com.finance.project.modules.scheduling.domain;
 
-import com.finance.project.domainLayer.domainEntities.aggregates.ledger.Ledger;
+import com.finance.project.modules.ledger.domain.Ledger;
 import com.finance.project.domainLayer.domainEntities.vosShared.*;
+import com.finance.project.modules.ledger.domain.Ledger;
+import com.finance.project.modules.ledger.domain.AccountID;
+import com.finance.project.modules.ledger.domain.CategoryID;
 import com.finance.project.domainLayer.entitiesInterfaces.Entity;
 
 
