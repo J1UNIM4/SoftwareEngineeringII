@@ -1,12 +1,13 @@
 package com.finance.project.applicationLayer.applicationServices.groupServices;
 
 import com.finance.project.controllerLayer.integrationTests.AbstractTest;
-import com.finance.project.domainLayer.domainEntities.aggregates.group.Group;
+import com.finance.project.modules.group.domain.Group;
 import com.finance.project.domainLayer.domainEntities.vosShared.*;
+import com.finance.project.modules.group.domain.GroupID;
 import com.finance.project.domainLayer.exceptions.InvalidArgumentsBusinessException;
 import com.finance.project.domainLayer.exceptions.NotFoundArgumentsBusinessException;
 import com.finance.project.domainLayer.repositoriesInterfaces.IAccountRepository;
-import com.finance.project.domainLayer.repositoriesInterfaces.IGroupRepository;
+import com.finance.project.modules.group.domain.IGroupRepository;
 import com.finance.project.dtos.dtosAssemblers.CreateGroupAccountDTOAssembler;
 import com.finance.project.modules.person.domain.PersonID;
 import org.junit.jupiter.api.BeforeEach;

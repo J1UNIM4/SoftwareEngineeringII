@@ -2,6 +2,7 @@ package com.finance.project.domainLayer.domainEntities.aggregates.person;
 
 import com.finance.project.domainLayer.domainEntities.aggregates.ledger.Ledger;
 import com.finance.project.domainLayer.domainEntities.vosShared.*;
+import com.finance.project.modules.group.domain.GroupID;
 import com.finance.project.modules.person.domain.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

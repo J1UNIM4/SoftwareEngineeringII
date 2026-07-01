@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.finance.project.domainLayer.domainEntities.aggregates.category.Category;
 import com.finance.project.domainLayer.domainEntities.vosShared.CategoryID;
-import com.finance.project.domainLayer.domainEntities.vosShared.GroupID;
+import com.finance.project.modules.group.domain.GroupID;
 import com.finance.project.modules.person.domain.PersonID;
 
 import java.util.ArrayList;

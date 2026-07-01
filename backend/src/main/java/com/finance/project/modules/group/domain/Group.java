@@ -1,4 +1,4 @@
-package com.finance.project.domainLayer.domainEntities.aggregates.group;
+package com.finance.project.modules.group.domain;
 
 import com.finance.project.domainLayer.domainEntities.vosShared.*;
 import com.finance.project.domainLayer.entitiesInterfaces.Entity;

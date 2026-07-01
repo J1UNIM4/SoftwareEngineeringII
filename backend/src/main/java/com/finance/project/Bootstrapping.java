@@ -5,7 +5,7 @@ import com.finance.project.applicationLayer.applicationServices.groupServices.Cr
 import com.finance.project.modules.person.domain.Address;
 import com.finance.project.domainLayer.domainEntities.vosShared.AccountID;
 import com.finance.project.domainLayer.domainEntities.vosShared.CategoryID;
-import com.finance.project.domainLayer.domainEntities.vosShared.GroupID;
+import com.finance.project.modules.group.domain.GroupID;
 import com.finance.project.modules.person.domain.PersonID;
 import com.finance.project.dtos.dtos.CreatePersonAccountDTO;
 import com.finance.project.dtos.dtos.CreatePersonCategoryDTO;

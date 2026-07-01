@@ -3,7 +3,7 @@ package com.finance.project.persistenceLayer.repositoriesJPA;
 
 import com.finance.project.dataModel.dataModel.GroupJpa;
 import org.springframework.data.repository.CrudRepository;
-import com.finance.project.domainLayer.domainEntities.vosShared.GroupID;
+import com.finance.project.modules.group.domain.GroupID;
 
 import java.util.List;
 import java.util.Optional;
