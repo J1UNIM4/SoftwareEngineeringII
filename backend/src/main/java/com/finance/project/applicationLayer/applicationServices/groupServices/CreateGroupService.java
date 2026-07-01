@@ -6,6 +6,8 @@ import com.finance.project.domainLayer.exceptions.NotFoundArgumentsBusinessExcep
 import com.finance.project.domainLayer.repositoriesInterfaces.*;
 import com.finance.project.dtos.dtos.*;
 import com.finance.project.dtos.dtosAssemblers.*;
+import com.finance.project.modules.person.domain.IPersonRepository;
+import com.finance.project.modules.person.domain.PersonID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,7 +15,7 @@ import com.finance.project.domainLayer.domainEntities.aggregates.account.Account
 import com.finance.project.domainLayer.domainEntities.aggregates.category.Category;
 import com.finance.project.domainLayer.domainEntities.aggregates.group.Group;
 import com.finance.project.domainLayer.domainEntities.aggregates.ledger.Ledger;
-import com.finance.project.domainLayer.domainEntities.aggregates.person.Person;
+import com.finance.project.modules.person.domain.Person;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

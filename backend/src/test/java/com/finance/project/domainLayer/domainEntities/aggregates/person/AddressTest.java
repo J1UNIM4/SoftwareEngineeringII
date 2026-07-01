@@ -1,5 +1,6 @@
 package com.finance.project.domainLayer.domainEntities.aggregates.person;
 
+import com.finance.project.modules.person.domain.Address;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

@@ -1,10 +1,10 @@
 package com.finance.project.applicationLayer.applicationServices.otherServices;
 
 import com.finance.project.domainLayer.domainEntities.vosShared.GroupID;
-import com.finance.project.domainLayer.domainEntities.vosShared.PersonID;
+import com.finance.project.modules.person.domain.PersonID;
 import com.finance.project.domainLayer.exceptions.NotFoundArgumentsBusinessException;
 import com.finance.project.domainLayer.repositoriesInterfaces.IGroupRepository;
-import com.finance.project.domainLayer.repositoriesInterfaces.IPersonRepository;
+import com.finance.project.modules.person.domain.IPersonRepository;
 import com.finance.project.dtos.dtosAssemblers.GroupIDDTOAssembler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ import com.finance.project.dtos.dtosAssemblers.GroupDTOAssembler;
 import com.finance.project.dtos.dtosAssemblers.GroupMembersDTOAssembler;
 import com.finance.project.dtos.dtosAssemblers.GroupsThatAreFamilyDTOAssembler;
 import com.finance.project.domainLayer.domainEntities.aggregates.group.Group;
-import com.finance.project.domainLayer.domainEntities.aggregates.person.Person;
+import com.finance.project.modules.person.domain.Person;
 
 import java.util.ArrayList;
 import java.util.List;

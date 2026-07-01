@@ -4,7 +4,7 @@ import com.finance.project.domainLayer.domainEntities.aggregates.ledger.Ledger;
 import com.finance.project.domainLayer.domainEntities.aggregates.scheduling.Scheduling;
 import com.finance.project.domainLayer.domainEntities.vosShared.AccountID;
 import com.finance.project.domainLayer.domainEntities.vosShared.CategoryID;
-import com.finance.project.domainLayer.domainEntities.vosShared.PersonID;
+import com.finance.project.modules.person.domain.PersonID;
 import com.finance.project.domainLayer.domainEntities.vosShared.ScheduleID;
 import com.finance.project.domainLayer.repositoriesInterfaces.IScheduleRepository;
 import org.junit.jupiter.api.Assertions;

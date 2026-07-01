@@ -1,6 +1,6 @@
 package com.finance.project;
 
-import com.finance.project.applicationLayer.applicationServices.personServices.CreatePersonService;
+import com.finance.project.modules.person.application.CreatePersonService;
 import com.finance.project.applicationLayer.applicationServices.groupServices.CreateGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;

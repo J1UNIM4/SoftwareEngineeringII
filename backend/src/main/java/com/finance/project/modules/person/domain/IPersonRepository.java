@@ -1,8 +1,6 @@
-package com.finance.project.domainLayer.repositoriesInterfaces;
+package com.finance.project.modules.person.domain;
 
 import org.springframework.stereotype.Repository;
-import com.finance.project.domainLayer.domainEntities.aggregates.person.Person;
-import com.finance.project.domainLayer.domainEntities.vosShared.PersonID;
 
 import java.util.List;
 import java.util.Optional;

@@ -2,7 +2,7 @@ package com.finance.project.dataModel.dataAssemblers;
 
 import com.finance.project.dataModel.dataModel.AccountJpa;
 import com.finance.project.domainLayer.domainEntities.aggregates.account.Account;
-import com.finance.project.domainLayer.domainEntities.vosShared.PersonID;
+import com.finance.project.modules.person.domain.PersonID;
 import com.finance.project.domainLayer.entitiesInterfaces.OwnerID;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

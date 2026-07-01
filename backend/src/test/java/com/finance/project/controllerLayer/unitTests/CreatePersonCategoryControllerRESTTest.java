@@ -1,9 +1,8 @@
 package com.finance.project.controllerLayer.unitTests;
 
-import com.finance.project.applicationLayer.applicationServices.personServices.CreatePersonCategoryService;
-import com.finance.project.controllerLayer.controllersREST.personControllers.CreatePersonCategoryControllerREST;
+import com.finance.project.modules.person.application.CreatePersonCategoryService;
+import com.finance.project.modules.person.presentation.CreatePersonCategoryControllerREST;
 import com.finance.project.controllerLayer.integrationTests.AbstractTest;
-import com.finance.project.domainLayer.exceptions.InvalidArgumentsBusinessException;
 import com.finance.project.domainLayer.exceptions.NotFoundArgumentsBusinessException;
 import com.finance.project.dtos.dtosAssemblers.CreatePersonCategoryDTOAssembler;
 import org.junit.jupiter.api.Test;

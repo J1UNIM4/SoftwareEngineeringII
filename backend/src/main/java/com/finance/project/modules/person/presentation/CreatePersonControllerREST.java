@@ -1,6 +1,6 @@
-package com.finance.project.controllerLayer.controllersREST.personControllers;
+package com.finance.project.modules.person.presentation;
 
-import com.finance.project.applicationLayer.applicationServices.personServices.CreatePersonService;
+import com.finance.project.modules.person.application.CreatePersonService;
 import com.finance.project.controllerLayer.controllersREST.groupControllers.CreateGroupControllerREST;
 import com.finance.project.dtos.dtos.*;
 import com.finance.project.dtos.dtosAssemblers.CreatePersonDTOAssembler;

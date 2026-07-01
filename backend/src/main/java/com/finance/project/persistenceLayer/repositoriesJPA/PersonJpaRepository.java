@@ -1,9 +1,9 @@
 package com.finance.project.persistenceLayer.repositoriesJPA;
 
 
-import com.finance.project.dataModel.dataModel.PersonJpa;
+import com.finance.project.modules.person.infrastructure.PersonJpa;
 import org.springframework.data.repository.CrudRepository;
-import com.finance.project.domainLayer.domainEntities.vosShared.PersonID;
+import com.finance.project.modules.person.domain.PersonID;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,5 +1,6 @@
-package com.finance.project.domainLayer.domainEntities.vosShared;
+package com.finance.project.modules.person.domain;
 
+import com.finance.project.domainLayer.domainEntities.vosShared.Email;
 import com.finance.project.domainLayer.entitiesInterfaces.OwnerID;
 import com.finance.project.domainLayer.entitiesInterfaces.ValueObject;
 

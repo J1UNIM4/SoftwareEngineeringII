@@ -4,7 +4,7 @@ import org.hibernate.annotations.Fetch;
 import org.springframework.transaction.annotation.Transactional;
 import com.finance.project.domainLayer.domainEntities.vosShared.GroupID;
 import com.finance.project.domainLayer.domainEntities.vosShared.LedgerID;
-import com.finance.project.domainLayer.domainEntities.vosShared.PersonID;
+import com.finance.project.modules.person.domain.PersonID;
 
 import javax.persistence.*;
 import java.util.ArrayList;

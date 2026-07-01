@@ -3,7 +3,7 @@ package com.finance.project.applicationLayer.applicationServices.groupServices;
 import com.finance.project.domainLayer.exceptions.InvalidArgumentsBusinessException;
 import com.finance.project.domainLayer.exceptions.NotFoundArgumentsBusinessException;
 import com.finance.project.domainLayer.repositoriesInterfaces.IGroupRepository;
-import com.finance.project.domainLayer.repositoriesInterfaces.IPersonRepository;
+import com.finance.project.modules.person.domain.IPersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,7 +12,7 @@ import com.finance.project.dtos.dtos.GroupDTO;
 import com.finance.project.dtos.dtosAssemblers.GroupDTOAssembler;
 import com.finance.project.domainLayer.domainEntities.aggregates.group.Group;
 import com.finance.project.domainLayer.domainEntities.vosShared.GroupID;
-import com.finance.project.domainLayer.domainEntities.vosShared.PersonID;
+import com.finance.project.modules.person.domain.PersonID;
 
 import java.util.Optional;
 

@@ -7,7 +7,7 @@ import com.finance.project.domainLayer.domainEntities.aggregates.group.Group;
 import com.finance.project.domainLayer.domainEntities.vosShared.AccountID;
 import com.finance.project.domainLayer.domainEntities.vosShared.CategoryID;
 import com.finance.project.domainLayer.domainEntities.vosShared.GroupID;
-import com.finance.project.domainLayer.domainEntities.vosShared.PersonID;
+import com.finance.project.modules.person.domain.PersonID;
 import com.finance.project.persistenceLayer.repositoriesJPA.AccountJpaRepository;
 import com.finance.project.persistenceLayer.repositoriesJPA.GroupJpaRepository;
 import com.finance.project.persistenceLayer.repositoriesJPA.LedgerJpaRepository;

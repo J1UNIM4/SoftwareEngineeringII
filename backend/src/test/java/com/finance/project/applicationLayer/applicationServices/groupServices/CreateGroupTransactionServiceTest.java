@@ -2,31 +2,24 @@ package com.finance.project.applicationLayer.applicationServices.groupServices;
 
 
 import com.finance.project.controllerLayer.integrationTests.AbstractTest;
-import com.finance.project.domainLayer.domainEntities.aggregates.account.Account;
-import com.finance.project.domainLayer.domainEntities.aggregates.category.Category;
 import com.finance.project.domainLayer.domainEntities.aggregates.group.Group;
 import com.finance.project.domainLayer.domainEntities.aggregates.ledger.Ledger;
 import com.finance.project.domainLayer.domainEntities.aggregates.ledger.Transaction;
 import com.finance.project.domainLayer.domainEntities.vosShared.*;
-import com.finance.project.domainLayer.exceptions.InvalidArgumentsBusinessException;
-import com.finance.project.domainLayer.exceptions.NotFoundArgumentsBusinessException;
 import com.finance.project.domainLayer.repositoriesInterfaces.IAccountRepository;
 import com.finance.project.domainLayer.repositoriesInterfaces.ICategoryRepository;
 import com.finance.project.domainLayer.repositoriesInterfaces.IGroupRepository;
 import com.finance.project.domainLayer.repositoriesInterfaces.ILedgerRepository;
 import com.finance.project.dtos.dtosAssemblers.CreateGroupTransactionDTOAssembler;
+import com.finance.project.modules.person.domain.PersonID;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import com.finance.project.dtos.dtos.CreateGroupTransactionDTO;
-import com.finance.project.dtos.dtos.DeleteGroupTransactionDTO;
 import com.finance.project.dtos.dtos.GroupDTO;
-import com.finance.project.dtos.dtos.UpdateGroupTransactionDTO;
-import com.finance.project.dtos.dtosAssemblers.DeleteGroupTransactionDTOAssembler;
 import com.finance.project.dtos.dtosAssemblers.GroupDTOAssembler;
-import com.finance.project.dtos.dtosAssemblers.UpdateGroupTransactionDTOAssembler;
 
 import java.time.LocalDate;
 import java.util.Optional;

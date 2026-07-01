@@ -4,7 +4,7 @@ import com.finance.project.controllerLayer.integrationTests.AbstractTest;
 import com.finance.project.domainLayer.domainEntities.aggregates.group.Group;
 import com.finance.project.domainLayer.domainEntities.vosShared.GroupID;
 import com.finance.project.domainLayer.domainEntities.vosShared.LedgerID;
-import com.finance.project.domainLayer.domainEntities.vosShared.PersonID;
+import com.finance.project.modules.person.domain.PersonID;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

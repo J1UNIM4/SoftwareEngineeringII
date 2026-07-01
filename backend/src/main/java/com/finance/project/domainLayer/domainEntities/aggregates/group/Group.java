@@ -3,6 +3,7 @@ package com.finance.project.domainLayer.domainEntities.aggregates.group;
 import com.finance.project.domainLayer.domainEntities.vosShared.*;
 import com.finance.project.domainLayer.entitiesInterfaces.Entity;
 import com.finance.project.domainLayer.entitiesInterfaces.Owner;
+import com.finance.project.modules.person.domain.PersonID;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

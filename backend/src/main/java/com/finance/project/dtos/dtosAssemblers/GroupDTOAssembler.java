@@ -2,6 +2,7 @@ package com.finance.project.dtos.dtosAssemblers;
 
 import com.finance.project.domainLayer.domainEntities.vosShared.*;
 import com.finance.project.dtos.dtos.GroupDTO;
+import com.finance.project.modules.person.domain.PersonID;
 
 import java.util.ArrayList;
 import java.util.List;

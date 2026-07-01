@@ -4,7 +4,7 @@ import com.finance.project.domainLayer.entitiesInterfaces.OwnerID;
 import org.springframework.stereotype.Service;
 import com.finance.project.domainLayer.domainEntities.aggregates.category.Category;
 import com.finance.project.domainLayer.domainEntities.vosShared.GroupID;
-import com.finance.project.domainLayer.domainEntities.vosShared.PersonID;
+import com.finance.project.modules.person.domain.PersonID;
 import com.finance.project.dataModel.dataModel.CategoryJpa;
 
 @Service

@@ -1,10 +1,11 @@
-package com.finance.project.controllerLayer.controllersREST.personControllers;
+package com.finance.project.modules.person.presentation;
 
-import com.finance.project.applicationLayer.applicationServices.personServices.CreatePersonAccountService;
+import com.finance.project.modules.person.application.CreatePersonAccountService;
 import com.finance.project.dtos.dtosAssemblers.CreatePersonAccountDTOAssembler;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Link;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,8 +33,8 @@ public class CreatePersonAccountControllerREST {
 
         PersonDTO result = service.createAccount(createPersonAccountDTO);
 
-        Link link_to_siblings = linkTo(methodOn(CreatePersonControllerREST.class).getPersonSiblings(personEmail)).withRel("siblings");
-        Link link_to_personLedger = linkTo(methodOn(PersonSearchAccountRecordsControllerREST.class).searchPersonRecords("", "", "", personEmail)).withRel("records");
+        Link link_to_siblings = WebMvcLinkBuilder.linkTo(methodOn(CreatePersonControllerREST.class).getPersonSiblings(personEmail)).withRel("siblings");
+        Link link_to_personLedger = WebMvcLinkBuilder.linkTo(methodOn(PersonSearchAccountRecordsControllerREST.class).searchPersonRecords("", "", "", personEmail)).withRel("records");
         Link link_to_personAccounts = linkTo(methodOn(CreatePersonControllerREST.class).getPersonAccounts(personEmail)).withRel("accounts");
         Link link_to_personCategories = linkTo(methodOn(CreatePersonControllerREST.class).getPersonCategories(personEmail)).withRel("categories");
 

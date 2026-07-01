@@ -2,8 +2,8 @@ package com.finance.project.dtos.dtos;
 
 import com.finance.project.domainLayer.domainEntities.aggregates.group.Group;
 import com.finance.project.domainLayer.domainEntities.aggregates.ledger.Ledger;
-import com.finance.project.domainLayer.domainEntities.aggregates.person.Address;
-import com.finance.project.domainLayer.domainEntities.aggregates.person.Person;
+import com.finance.project.modules.person.domain.Address;
+import com.finance.project.modules.person.domain.Person;
 import com.finance.project.dtos.dtosAssemblers.GroupIDDTOAssembler;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -1,17 +1,15 @@
-package com.finance.project.infrastructureLayer.repositories;
+package com.finance.project.modules.person.infrastructure;
 
-import com.finance.project.dataModel.dataAssemblers.PersonDomainDataAssembler;
-import com.finance.project.dataModel.dataModel.PersonJpa;
 import com.finance.project.dataModel.dataModel.SiblingJpa;
 import com.finance.project.persistenceLayer.repositoriesJPA.AddressJpaRepository;
 import com.finance.project.persistenceLayer.repositoriesJPA.PersonJpaRepository;
-import com.finance.project.domainLayer.repositoriesInterfaces.IPersonRepository;
+import com.finance.project.modules.person.domain.IPersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import com.finance.project.domainLayer.domainEntities.aggregates.person.Person;
+import com.finance.project.modules.person.domain.Person;
 import com.finance.project.domainLayer.domainEntities.vosShared.AccountID;
-import com.finance.project.domainLayer.domainEntities.vosShared.PersonID;
+import com.finance.project.modules.person.domain.PersonID;
 
 import java.util.ArrayList;
 import java.util.List;

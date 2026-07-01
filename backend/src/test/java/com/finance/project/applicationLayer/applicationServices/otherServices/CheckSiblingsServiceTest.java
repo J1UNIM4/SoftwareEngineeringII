@@ -2,11 +2,11 @@ package com.finance.project.applicationLayer.applicationServices.otherServices;
 
 
 import com.finance.project.controllerLayer.integrationTests.AbstractTest;
-import com.finance.project.domainLayer.domainEntities.aggregates.person.Person;
-import com.finance.project.domainLayer.domainEntities.vosShared.PersonID;
+import com.finance.project.modules.person.domain.Person;
+import com.finance.project.modules.person.domain.PersonID;
 import com.finance.project.domainLayer.exceptions.InvalidArgumentsBusinessException;
 import com.finance.project.domainLayer.exceptions.NotFoundArgumentsBusinessException;
-import com.finance.project.domainLayer.repositoriesInterfaces.IPersonRepository;
+import com.finance.project.modules.person.domain.IPersonRepository;
 import com.finance.project.dtos.dtosAssemblers.BooleanDTOAssembler;
 import org.junit.jupiter.api.*;
 import org.mockito.Mock;

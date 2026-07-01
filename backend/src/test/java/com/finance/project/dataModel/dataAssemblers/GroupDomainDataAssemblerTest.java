@@ -2,6 +2,7 @@ package com.finance.project.dataModel.dataAssemblers;
 
 import com.finance.project.controllerLayer.integrationTests.AbstractTest;
 import com.finance.project.dataModel.dataModel.*;
+import com.finance.project.modules.person.domain.PersonID;
 import com.finance.project.persistenceLayer.repositoriesJPA.AccountJpaRepository;
 import com.finance.project.persistenceLayer.repositoriesJPA.GroupJpaRepository;
 import com.finance.project.persistenceLayer.repositoriesJPA.LedgerJpaRepository;

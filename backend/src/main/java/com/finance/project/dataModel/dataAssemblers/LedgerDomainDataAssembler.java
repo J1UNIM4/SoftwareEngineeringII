@@ -3,6 +3,7 @@ package com.finance.project.dataModel.dataAssemblers;
 import com.finance.project.dataModel.dataModel.*;
 import com.finance.project.domainLayer.domainEntities.vosShared.*;
 import com.finance.project.domainLayer.entitiesInterfaces.OwnerID;
+import com.finance.project.modules.person.domain.PersonID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.finance.project.domainLayer.domainEntities.aggregates.ledger.Ledger;

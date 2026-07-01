@@ -1,6 +1,6 @@
 package com.finance.project.dtos.dtosAssemblers;
 
-import com.finance.project.domainLayer.domainEntities.vosShared.PersonID;
+import com.finance.project.modules.person.domain.PersonID;
 import com.finance.project.dtos.dtos.SiblingsDTO;
 
 import java.util.ArrayList;

@@ -4,7 +4,7 @@ import com.finance.project.controllerLayer.integrationTests.AbstractTest;
 import com.finance.project.domainLayer.domainEntities.aggregates.account.Account;
 import com.finance.project.domainLayer.domainEntities.vosShared.AccountID;
 import com.finance.project.domainLayer.domainEntities.vosShared.GroupID;
-import com.finance.project.domainLayer.domainEntities.vosShared.PersonID;
+import com.finance.project.modules.person.domain.PersonID;
 import com.finance.project.domainLayer.repositoriesInterfaces.IAccountRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

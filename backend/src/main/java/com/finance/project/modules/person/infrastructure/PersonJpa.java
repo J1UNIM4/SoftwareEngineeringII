@@ -1,8 +1,9 @@
-package com.finance.project.dataModel.dataModel;
+package com.finance.project.modules.person.infrastructure;
 
+import com.finance.project.dataModel.dataModel.*;
 import org.hibernate.annotations.Fetch;
 import com.finance.project.domainLayer.domainEntities.vosShared.LedgerID;
-import com.finance.project.domainLayer.domainEntities.vosShared.PersonID;
+import com.finance.project.modules.person.domain.PersonID;
 
 import javax.persistence.*;
 import java.util.ArrayList;

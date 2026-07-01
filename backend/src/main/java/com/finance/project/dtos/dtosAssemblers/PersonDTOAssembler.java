@@ -1,12 +1,12 @@
 package com.finance.project.dtos.dtosAssemblers;
 
 import com.finance.project.dtos.dtos.PersonDTO;
-import com.finance.project.domainLayer.domainEntities.aggregates.person.Birthdate;
-import com.finance.project.domainLayer.domainEntities.aggregates.person.Birthplace;
-import com.finance.project.domainLayer.domainEntities.aggregates.person.Name;
+import com.finance.project.modules.person.domain.Birthdate;
+import com.finance.project.modules.person.domain.Birthplace;
+import com.finance.project.modules.person.domain.Name;
 import com.finance.project.domainLayer.domainEntities.vosShared.Email;
 import com.finance.project.domainLayer.domainEntities.vosShared.LedgerID;
-import com.finance.project.domainLayer.domainEntities.vosShared.PersonID;
+import com.finance.project.modules.person.domain.PersonID;
 
 
 public class PersonDTOAssembler {

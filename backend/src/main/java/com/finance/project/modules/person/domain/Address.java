@@ -1,4 +1,4 @@
-package com.finance.project.domainLayer.domainEntities.aggregates.person;
+package com.finance.project.modules.person.domain;
 
 import com.finance.project.domainLayer.entitiesInterfaces.ValueObject;
 

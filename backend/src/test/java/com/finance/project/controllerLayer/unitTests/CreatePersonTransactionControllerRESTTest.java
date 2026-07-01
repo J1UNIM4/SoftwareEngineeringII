@@ -1,12 +1,10 @@
 package com.finance.project.controllerLayer.unitTests;
 
-import com.finance.project.applicationLayer.applicationServices.personServices.CreatePersonTransactionService;
-import com.finance.project.controllerLayer.controllersREST.personControllers.CreatePersonTransactionControllerREST;
+import com.finance.project.modules.person.application.CreatePersonTransactionService;
 import com.finance.project.controllerLayer.integrationTests.AbstractTest;
 import com.finance.project.domainLayer.exceptions.NotFoundArgumentsBusinessException;
 import com.finance.project.domainLayer.exceptions.InvalidArgumentsBusinessException;
 import com.finance.project.dtos.dtos.CreatePersonTransactionDTO;
-import com.finance.project.dtos.dtos.NewPersonTransactionInfoDTO;
 import com.finance.project.dtos.dtos.PersonDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

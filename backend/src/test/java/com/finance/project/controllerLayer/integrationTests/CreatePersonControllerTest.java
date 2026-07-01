@@ -1,7 +1,7 @@
 package com.finance.project.controllerLayer.integrationTests;
 
 
-import com.finance.project.applicationLayer.applicationServices.personServices.CreatePersonService;
+import com.finance.project.modules.person.application.CreatePersonService;
 import org.json.JSONObject;
 import org.junit.jupiter.api.*;
 import org.springframework.http.HttpStatus;

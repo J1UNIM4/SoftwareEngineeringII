@@ -2,13 +2,11 @@ package com.finance.project.applicationLayer.applicationServices.otherServices;
 
 import com.finance.project.controllerLayer.integrationTests.AbstractTest;
 import com.finance.project.domainLayer.domainEntities.aggregates.group.Group;
-import com.finance.project.domainLayer.domainEntities.aggregates.person.Address;
-import com.finance.project.domainLayer.domainEntities.aggregates.person.Person;
+import com.finance.project.modules.person.domain.Address;
+import com.finance.project.modules.person.domain.Person;
 import com.finance.project.domainLayer.domainEntities.vosShared.LedgerID;
-import com.finance.project.domainLayer.domainEntities.vosShared.PersonID;
-import com.finance.project.domainLayer.exceptions.NotFoundArgumentsBusinessException;
 import com.finance.project.domainLayer.repositoriesInterfaces.IGroupRepository;
-import com.finance.project.domainLayer.repositoriesInterfaces.IPersonRepository;
+import com.finance.project.modules.person.domain.IPersonRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,12 +14,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import com.finance.project.dtos.dtos.GroupDTO;
 import com.finance.project.dtos.dtos.GroupIDDTO;
-import com.finance.project.dtos.dtos.GroupMembersDTO;
 import com.finance.project.dtos.dtos.GroupsThatAreFamilyDTO;
-import com.finance.project.dtos.dtosAssemblers.GroupDTOAssembler;
-import com.finance.project.dtos.dtosAssemblers.GroupMembersDTOAssembler;
 import com.finance.project.dtos.dtosAssemblers.GroupsThatAreFamilyDTOAssembler;
 
 

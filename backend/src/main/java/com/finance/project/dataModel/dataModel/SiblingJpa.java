@@ -1,6 +1,7 @@
 package com.finance.project.dataModel.dataModel;
 
-import com.finance.project.domainLayer.domainEntities.vosShared.PersonID;
+import com.finance.project.modules.person.domain.PersonID;
+import com.finance.project.modules.person.infrastructure.PersonJpa;
 
 import javax.persistence.*;
 import java.io.Serializable;

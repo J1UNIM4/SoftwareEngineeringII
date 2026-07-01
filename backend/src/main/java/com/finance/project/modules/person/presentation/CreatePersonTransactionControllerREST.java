@@ -1,6 +1,6 @@
-package com.finance.project.controllerLayer.controllersREST.personControllers;
+package com.finance.project.modules.person.presentation;
 
-import com.finance.project.applicationLayer.applicationServices.personServices.CreatePersonTransactionService;
+import com.finance.project.modules.person.application.CreatePersonTransactionService;
 import com.finance.project.domainLayer.exceptions.InvalidArgumentsBusinessException;
 import com.finance.project.domainLayer.exceptions.NotFoundArgumentsBusinessException;
 import com.finance.project.dtos.dtos.*;
@@ -8,8 +8,10 @@ import com.finance.project.dtos.dtosAssemblers.CreatePersonTransactionDTOAssembl
 import com.finance.project.dtos.dtosAssemblers.DeletePersonTransactionDTOAssembler;
 import com.finance.project.dtos.dtosAssemblers.UpdatePersonTransactionDTOAssembler;
 import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Link;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -95,7 +97,7 @@ public class CreatePersonTransactionControllerREST {
     // M7: Variables renombradas a camelCase (linkToSiblings vs link_to_siblings)
     private void addHateoasLinks(PersonDTO result, String personEmail) {
         Link linkToSiblings   = linkTo(methodOn(CreatePersonControllerREST.class).getPersonSiblings(personEmail)).withRel(REL_SIBLINGS);
-        Link linkToRecords    = linkTo(methodOn(PersonSearchAccountRecordsControllerREST.class).searchPersonRecords("", "", "", personEmail)).withRel(REL_RECORDS);
+        Link linkToRecords    = WebMvcLinkBuilder.linkTo(methodOn(PersonSearchAccountRecordsControllerREST.class).searchPersonRecords("", "", "", personEmail)).withRel(REL_RECORDS);
         Link linkToAccounts   = linkTo(methodOn(CreatePersonControllerREST.class).getPersonAccounts(personEmail)).withRel(REL_ACCOUNTS);
         Link linkToCategories = linkTo(methodOn(CreatePersonControllerREST.class).getPersonCategories(personEmail)).withRel(REL_CATEGORIES);
         result.add(linkToSiblings);

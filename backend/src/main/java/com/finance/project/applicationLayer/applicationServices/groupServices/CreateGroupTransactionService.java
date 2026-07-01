@@ -7,6 +7,7 @@ import com.finance.project.domainLayer.repositoriesInterfaces.IAccountRepository
 import com.finance.project.domainLayer.repositoriesInterfaces.ICategoryRepository;
 import com.finance.project.domainLayer.repositoriesInterfaces.IGroupRepository;
 import com.finance.project.domainLayer.repositoriesInterfaces.ILedgerRepository;
+import com.finance.project.modules.person.domain.PersonID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.finance.project.dtos.dtos.CreateGroupTransactionDTO;

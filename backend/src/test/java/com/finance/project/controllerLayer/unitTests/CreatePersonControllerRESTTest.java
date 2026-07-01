@@ -1,15 +1,13 @@
 package com.finance.project.controllerLayer.unitTests;
 
-import com.finance.project.applicationLayer.applicationServices.personServices.CreatePersonService;
-import com.finance.project.controllerLayer.controllersREST.personControllers.CreatePersonControllerREST;
+import com.finance.project.modules.person.application.CreatePersonService;
+import com.finance.project.modules.person.presentation.CreatePersonControllerREST;
 import com.finance.project.controllerLayer.integrationTests.AbstractTest;
-import com.finance.project.domainLayer.domainEntities.aggregates.person.Birthdate;
-import com.finance.project.domainLayer.domainEntities.aggregates.person.Birthplace;
-import com.finance.project.domainLayer.domainEntities.aggregates.person.Name;
-import com.finance.project.domainLayer.domainEntities.vosShared.CategoryID;
+import com.finance.project.modules.person.domain.Birthdate;
+import com.finance.project.modules.person.domain.Birthplace;
+import com.finance.project.modules.person.domain.Name;
 import com.finance.project.domainLayer.domainEntities.vosShared.Email;
-import com.finance.project.domainLayer.domainEntities.vosShared.PersonID;
-import com.finance.project.domainLayer.entitiesInterfaces.OwnerID;
+import com.finance.project.modules.person.domain.PersonID;
 import com.finance.project.domainLayer.exceptions.InvalidArgumentsBusinessException;
 import com.finance.project.domainLayer.exceptions.NotFoundArgumentsBusinessException;
 import com.finance.project.dtos.dtos.*;

@@ -14,7 +14,7 @@ import com.finance.project.domainLayer.domainEntities.aggregates.ledger.Ledger;
 import com.finance.project.domainLayer.domainEntities.aggregates.ledger.Transaction;
 import com.finance.project.domainLayer.domainEntities.vosShared.GroupID;
 import com.finance.project.domainLayer.domainEntities.vosShared.LedgerID;
-import com.finance.project.domainLayer.domainEntities.vosShared.PersonID;
+import com.finance.project.modules.person.domain.PersonID;
 
 import java.util.ArrayList;
 

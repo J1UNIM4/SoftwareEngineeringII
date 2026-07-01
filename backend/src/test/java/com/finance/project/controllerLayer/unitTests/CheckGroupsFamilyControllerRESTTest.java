@@ -3,25 +3,8 @@ package com.finance.project.controllerLayer.unitTests;
 import com.finance.project.applicationLayer.applicationServices.otherServices.CheckGroupsFamilyService;
 import com.finance.project.controllerLayer.controllersREST.otherControllers.CheckGroupsFamilyControllerREST;
 import com.finance.project.controllerLayer.integrationTests.AbstractTest;
-import com.finance.project.domainLayer.domainEntities.vosShared.DateOfCreation;
-import com.finance.project.domainLayer.domainEntities.vosShared.Denomination;
-import com.finance.project.domainLayer.domainEntities.vosShared.Description;
-import com.finance.project.domainLayer.domainEntities.vosShared.PersonID;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import com.finance.project.dtos.dtos.GroupDTO;
-import com.finance.project.dtos.dtos.GroupMembersDTO;
-import com.finance.project.dtos.dtosAssemblers.GroupDTOAssembler;
-import com.finance.project.dtos.dtosAssemblers.GroupMembersDTOAssembler;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

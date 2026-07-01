@@ -1,12 +1,12 @@
 package com.finance.project;
 
-import com.finance.project.applicationLayer.applicationServices.personServices.CreatePersonService;
+import com.finance.project.modules.person.application.CreatePersonService;
 import com.finance.project.applicationLayer.applicationServices.groupServices.CreateGroupService;
-import com.finance.project.domainLayer.domainEntities.aggregates.person.Address;
+import com.finance.project.modules.person.domain.Address;
 import com.finance.project.domainLayer.domainEntities.vosShared.AccountID;
 import com.finance.project.domainLayer.domainEntities.vosShared.CategoryID;
 import com.finance.project.domainLayer.domainEntities.vosShared.GroupID;
-import com.finance.project.domainLayer.domainEntities.vosShared.PersonID;
+import com.finance.project.modules.person.domain.PersonID;
 import com.finance.project.dtos.dtos.CreatePersonAccountDTO;
 import com.finance.project.dtos.dtos.CreatePersonCategoryDTO;
 import com.finance.project.dtos.dtos.CreatePersonDTO;

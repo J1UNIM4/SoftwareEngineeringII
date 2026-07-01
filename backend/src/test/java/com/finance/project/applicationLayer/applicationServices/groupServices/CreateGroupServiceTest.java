@@ -1,19 +1,21 @@
 package com.finance.project.applicationLayer.applicationServices.groupServices;
 
 import com.finance.project.controllerLayer.integrationTests.AbstractTest;
-import com.finance.project.dataModel.dataModel.PersonJpa;
+import com.finance.project.modules.person.infrastructure.PersonJpa;
 import com.finance.project.domainLayer.domainEntities.aggregates.account.Account;
 import com.finance.project.domainLayer.domainEntities.aggregates.category.Category;
 import com.finance.project.domainLayer.domainEntities.aggregates.group.Group;
 import com.finance.project.domainLayer.domainEntities.aggregates.ledger.Ledger;
-import com.finance.project.domainLayer.domainEntities.aggregates.person.Address;
-import com.finance.project.domainLayer.domainEntities.aggregates.person.Person;
+import com.finance.project.modules.person.domain.Address;
+import com.finance.project.modules.person.domain.IPersonRepository;
+import com.finance.project.modules.person.domain.Person;
 import com.finance.project.domainLayer.domainEntities.vosShared.*;
 import com.finance.project.domainLayer.exceptions.InvalidArgumentsBusinessException;
 import com.finance.project.domainLayer.exceptions.NotFoundArgumentsBusinessException;
 import com.finance.project.domainLayer.repositoriesInterfaces.*;
 import com.finance.project.dtos.dtos.*;
 import com.finance.project.dtos.dtosAssemblers.*;
+import com.finance.project.modules.person.domain.PersonID;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

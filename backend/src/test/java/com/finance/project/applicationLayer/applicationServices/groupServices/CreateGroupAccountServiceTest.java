@@ -8,6 +8,7 @@ import com.finance.project.domainLayer.exceptions.NotFoundArgumentsBusinessExcep
 import com.finance.project.domainLayer.repositoriesInterfaces.IAccountRepository;
 import com.finance.project.domainLayer.repositoriesInterfaces.IGroupRepository;
 import com.finance.project.dtos.dtosAssemblers.CreateGroupAccountDTOAssembler;
+import com.finance.project.modules.person.domain.PersonID;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

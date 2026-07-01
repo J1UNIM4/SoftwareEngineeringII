@@ -1,17 +1,17 @@
-package com.finance.project.applicationLayer.applicationServices.personServices;
+package com.finance.project.modules.person.application;
 
 import com.finance.project.domainLayer.exceptions.InvalidArgumentsBusinessException;
 import com.finance.project.domainLayer.exceptions.NotFoundArgumentsBusinessException;
 import com.finance.project.domainLayer.repositoriesInterfaces.ICategoryRepository;
-import com.finance.project.domainLayer.repositoriesInterfaces.IPersonRepository;
+import com.finance.project.modules.person.domain.IPersonRepository;
 import com.finance.project.dtos.dtosAssemblers.PersonDTOAssembler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.finance.project.dtos.dtos.CreatePersonCategoryDTO;
 import com.finance.project.dtos.dtos.PersonDTO;
-import com.finance.project.domainLayer.domainEntities.aggregates.person.Person;
+import com.finance.project.modules.person.domain.Person;
 import com.finance.project.domainLayer.domainEntities.vosShared.CategoryID;
-import com.finance.project.domainLayer.domainEntities.vosShared.PersonID;
+import com.finance.project.modules.person.domain.PersonID;
 
 import java.util.Optional;
 

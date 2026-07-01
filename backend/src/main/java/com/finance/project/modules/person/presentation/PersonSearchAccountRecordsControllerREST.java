@@ -1,7 +1,7 @@
-package com.finance.project.controllerLayer.controllersREST.personControllers;
+package com.finance.project.modules.person.presentation;
 
-import com.finance.project.applicationLayer.applicationServices.personServices.CreatePersonService;
-import com.finance.project.applicationLayer.applicationServices.personServices.PersonSearchAccountRecordsService;
+import com.finance.project.modules.person.application.CreatePersonService;
+import com.finance.project.modules.person.application.PersonSearchAccountRecordsService;
 import com.finance.project.dtos.dtosAssemblers.PersonSearchAccountRecordsInDTOAssembler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Link;
