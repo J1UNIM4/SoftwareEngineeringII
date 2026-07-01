@@ -1,4 +1,4 @@
-package com.finance.project.domainLayer.domainEntities.aggregates.scheduling;
+package com.finance.project.modules.scheduling.domain;
 
 import com.finance.project.domainLayer.domainEntities.aggregates.ledger.Ledger;
 import com.finance.project.domainLayer.domainEntities.vosShared.*;

@@ -1,12 +1,13 @@
 package com.finance.project.infrastructureLayer.repositories;
+import com.finance.project.modules.scheduling.infrastructure.ScheduleRepository;
 
 import com.finance.project.domainLayer.domainEntities.aggregates.ledger.Ledger;
-import com.finance.project.domainLayer.domainEntities.aggregates.scheduling.Scheduling;
+import com.finance.project.modules.scheduling.domain.Scheduling;
 import com.finance.project.domainLayer.domainEntities.vosShared.AccountID;
 import com.finance.project.domainLayer.domainEntities.vosShared.CategoryID;
 import com.finance.project.modules.person.domain.PersonID;
 import com.finance.project.domainLayer.domainEntities.vosShared.ScheduleID;
-import com.finance.project.domainLayer.repositoriesInterfaces.IScheduleRepository;
+import com.finance.project.modules.scheduling.domain.IScheduleRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

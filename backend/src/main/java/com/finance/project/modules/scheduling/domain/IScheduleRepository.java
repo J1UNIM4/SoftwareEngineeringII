@@ -1,7 +1,7 @@
-package com.finance.project.domainLayer.repositoriesInterfaces;
+package com.finance.project.modules.scheduling.domain;
 
 import org.springframework.stereotype.Repository;
-import com.finance.project.domainLayer.domainEntities.aggregates.scheduling.Scheduling;
+import com.finance.project.modules.scheduling.domain.Scheduling;
 import com.finance.project.domainLayer.domainEntities.vosShared.ScheduleID;
 
 import java.util.List;
