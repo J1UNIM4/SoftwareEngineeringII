@@ -1,8 +1,8 @@
 package com.finance.project.domainLayer.domainEntities.vosShared;
 
 import com.finance.project.domainLayer.entitiesInterfaces.ValueObject;
-import com.finance.project.domainLayer.domainEntities.aggregates.scheduling.Periodicity;
-import com.finance.project.domainLayer.domainEntities.aggregates.scheduling.TriggerDate;
+import com.finance.project.modules.scheduling.domain.Periodicity;
+import com.finance.project.modules.scheduling.domain.TriggerDate;
 
 import java.time.LocalDate;
 import java.util.Objects;
