@@ -10,6 +10,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.httpBasic;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -31,6 +32,7 @@ public class ValidationIntegrationTest {
                 "}";
 
         mockMvc.perform(post("/persons/miguel@gmail.com/ledgers/records")
+                        .with(httpBasic("miguel@gmail.com", "password123"))
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(invalidBody))
                 .andExpect(status().isBadRequest());
@@ -49,6 +51,7 @@ public class ValidationIntegrationTest {
                 "}";
 
         mockMvc.perform(post("/persons/miguel@gmail.com/ledgers/records")
+                        .with(httpBasic("miguel@gmail.com", "password123"))
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(invalidBody))
                 .andExpect(status().isBadRequest());
@@ -64,6 +67,7 @@ public class ValidationIntegrationTest {
                 "}";
 
         mockMvc.perform(post("/persons")
+                        .with(httpBasic("miguel@gmail.com", "password123"))
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(invalidBody))
                 .andExpect(status().isBadRequest());
