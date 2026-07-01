@@ -1,8 +1,6 @@
-package com.finance.project.infrastructureLayer.repositories;
+package com.finance.project.modules.group.infrastructure;
 
-import com.finance.project.dataModel.dataAssemblers.GroupDomainDataAssembler;
 import com.finance.project.dataModel.dataModel.AdminJpa;
-import com.finance.project.dataModel.dataModel.GroupJpa;
 import com.finance.project.persistenceLayer.repositoriesJPA.GroupJpaRepository;
 import com.finance.project.modules.group.domain.IGroupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
