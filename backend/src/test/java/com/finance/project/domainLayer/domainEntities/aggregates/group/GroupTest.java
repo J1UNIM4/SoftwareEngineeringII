@@ -1,6 +1,13 @@
 package com.finance.project.domainLayer.domainEntities.aggregates.group;
 
 import com.finance.project.domainLayer.domainEntities.vosShared.*;
+import com.finance.project.modules.ledger.domain.Account;
+import com.finance.project.modules.ledger.domain.Category;
+import com.finance.project.modules.ledger.domain.Ledger;
+import com.finance.project.modules.ledger.domain.Transaction;
+import com.finance.project.modules.ledger.domain.AccountID;
+import com.finance.project.modules.ledger.domain.CategoryID;
+import com.finance.project.modules.ledger.domain.LedgerID;
 import com.finance.project.modules.group.domain.Group;
 import com.finance.project.modules.group.domain.GroupID;
 import com.finance.project.modules.person.domain.PersonID;

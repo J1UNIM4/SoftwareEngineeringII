@@ -1,5 +1,7 @@
 package com.finance.project.controllerLayer.unitTests;
 
+import com.finance.project.modules.ledger.domain.Account;
+
 
 import com.finance.project.modules.person.application.CreatePersonAccountService;
 import com.finance.project.modules.person.presentation.CreatePersonAccountControllerREST;

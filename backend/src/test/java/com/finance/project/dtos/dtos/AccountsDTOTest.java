@@ -1,5 +1,7 @@
 package com.finance.project.dtos.dtos;
 
+import com.finance.project.modules.ledger.domain.Account;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import com.finance.project.dtos.dtosAssemblers.AccountDTOAssembler;

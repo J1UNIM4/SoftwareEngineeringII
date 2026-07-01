@@ -1,12 +1,15 @@
 package com.finance.project.infrastructureLayer.repositories;
 
+import com.finance.project.modules.ledger.domain.Account;
+
 import com.finance.project.controllerLayer.integrationTests.AbstractTest;
-import com.finance.project.domainLayer.domainEntities.aggregates.ledger.Ledger;
-import com.finance.project.domainLayer.domainEntities.aggregates.ledger.Transaction;
+import com.finance.project.modules.ledger.infrastructure.LedgerRepository;
+import com.finance.project.modules.ledger.domain.Ledger;
+import com.finance.project.modules.ledger.domain.Transaction;
 import com.finance.project.modules.person.domain.Person;
-import com.finance.project.domainLayer.domainEntities.vosShared.AccountID;
-import com.finance.project.domainLayer.domainEntities.vosShared.CategoryID;
-import com.finance.project.domainLayer.domainEntities.vosShared.LedgerID;
+import com.finance.project.modules.ledger.domain.AccountID;
+import com.finance.project.modules.ledger.domain.CategoryID;
+import com.finance.project.modules.ledger.domain.LedgerID;
 import com.finance.project.modules.person.domain.PersonID;
 import com.finance.project.dtos.dtosAssemblers.DeletePersonTransactionDTOAssembler;
 import org.junit.jupiter.api.DisplayName;

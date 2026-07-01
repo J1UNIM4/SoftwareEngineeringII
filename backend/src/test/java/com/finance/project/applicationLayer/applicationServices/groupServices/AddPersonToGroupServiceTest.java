@@ -4,7 +4,7 @@ import com.finance.project.modules.group.application.AddPersonToGroupService;
 import com.finance.project.controllerLayer.integrationTests.AbstractTest;
 import com.finance.project.modules.group.domain.Group;
 import com.finance.project.modules.group.domain.GroupID;
-import com.finance.project.domainLayer.domainEntities.vosShared.LedgerID;
+import com.finance.project.modules.ledger.domain.LedgerID;
 import com.finance.project.modules.person.domain.PersonID;
 import com.finance.project.domainLayer.exceptions.InvalidArgumentsBusinessException;
 import com.finance.project.domainLayer.exceptions.NotFoundArgumentsBusinessException;

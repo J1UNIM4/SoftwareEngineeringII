@@ -1,5 +1,7 @@
 package com.finance.project.controllerLayer.integrationTests;
 
+import com.finance.project.modules.ledger.domain.Account;
+
 import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;

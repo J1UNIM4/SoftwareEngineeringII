@@ -1,14 +1,16 @@
 package com.finance.project.applicationLayer.applicationServices.personServices;
 
+import com.finance.project.modules.ledger.domain.Category;
+
 
 import com.finance.project.controllerLayer.integrationTests.AbstractTest;
 import com.finance.project.modules.person.application.CreatePersonCategoryService;
 import com.finance.project.modules.person.domain.Person;
-import com.finance.project.domainLayer.domainEntities.vosShared.CategoryID;
+import com.finance.project.modules.ledger.domain.CategoryID;
 import com.finance.project.modules.person.domain.PersonID;
 import com.finance.project.domainLayer.exceptions.InvalidArgumentsBusinessException;
 import com.finance.project.domainLayer.exceptions.NotFoundArgumentsBusinessException;
-import com.finance.project.domainLayer.repositoriesInterfaces.ICategoryRepository;
+import com.finance.project.modules.ledger.domain.ICategoryRepository;
 import com.finance.project.modules.person.domain.IPersonRepository;
 import com.finance.project.dtos.dtosAssemblers.CreatePersonCategoryDTOAssembler;
 import com.finance.project.dtos.dtosAssemblers.PersonDTOAssembler;

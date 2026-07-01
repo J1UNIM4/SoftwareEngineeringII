@@ -4,7 +4,7 @@ import com.finance.project.modules.person.domain.Birthdate;
 import com.finance.project.modules.person.domain.Birthplace;
 import com.finance.project.modules.person.domain.Name;
 import com.finance.project.domainLayer.domainEntities.vosShared.Email;
-import com.finance.project.domainLayer.domainEntities.vosShared.LedgerID;
+import com.finance.project.modules.ledger.domain.LedgerID;
 import com.finance.project.modules.person.domain.PersonID;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

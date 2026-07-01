@@ -1,5 +1,7 @@
 package com.finance.project.controllerLayer.integrationTests;
 
+import com.finance.project.modules.ledger.domain.Ledger;
+
 
 import com.finance.project.modules.person.application.CreatePersonService;
 import org.json.JSONObject;

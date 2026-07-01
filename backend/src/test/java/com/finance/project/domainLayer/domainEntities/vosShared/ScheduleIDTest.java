@@ -1,5 +1,7 @@
 package com.finance.project.domainLayer.domainEntities.vosShared;
 
+import com.finance.project.modules.ledger.domain.TransactionType;
+
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

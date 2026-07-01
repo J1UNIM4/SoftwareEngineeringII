@@ -1,5 +1,7 @@
 package com.finance.project.controllerLayer.integrationTests;
 
+import com.finance.project.modules.ledger.domain.Account;
+
 import com.finance.project.modules.person.application.CreatePersonAccountService;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Assertions;

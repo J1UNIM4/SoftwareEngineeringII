@@ -1,5 +1,9 @@
 package com.finance.project.domainLayer.domainEntities.vosShared;
 
+import com.finance.project.modules.ledger.domain.Category;
+import com.finance.project.modules.ledger.domain.CategoryID;
+import com.finance.project.modules.ledger.domain.LedgerID;
+
 import com.finance.project.modules.group.domain.GroupID;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
