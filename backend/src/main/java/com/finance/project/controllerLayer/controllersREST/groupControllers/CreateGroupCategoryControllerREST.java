@@ -1,6 +1,6 @@
 package com.finance.project.controllerLayer.controllersREST.groupControllers;
 
-import com.finance.project.applicationLayer.applicationServices.groupServices.CreateGroupCategoryService;
+import com.finance.project.modules.group.application.CreateGroupCategoryService;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Link;

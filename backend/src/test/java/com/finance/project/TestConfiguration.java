@@ -1,6 +1,6 @@
 package com.finance.project;
 
-import com.finance.project.applicationLayer.applicationServices.groupServices.*;
+import com.finance.project.modules.group.application.*;
 import com.finance.project.applicationLayer.applicationServices.otherServices.CheckSiblingsService;
 import com.finance.project.applicationLayer.applicationServices.otherServices.CheckGroupsFamilyService;
 import com.finance.project.modules.person.application.*;

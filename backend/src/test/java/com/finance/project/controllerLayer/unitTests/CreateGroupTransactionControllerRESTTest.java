@@ -1,6 +1,6 @@
 package com.finance.project.controllerLayer.unitTests;
 
-import com.finance.project.applicationLayer.applicationServices.groupServices.CreateGroupTransactionService;
+import com.finance.project.modules.group.application.CreateGroupTransactionService;
 import com.finance.project.controllerLayer.controllersREST.groupControllers.CreateGroupTransactionControllerREST;
 import com.finance.project.controllerLayer.integrationTests.AbstractTest;
 import com.finance.project.domainLayer.exceptions.InvalidArgumentsBusinessException;

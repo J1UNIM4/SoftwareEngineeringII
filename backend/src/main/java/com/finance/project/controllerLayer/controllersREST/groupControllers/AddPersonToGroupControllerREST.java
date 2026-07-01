@@ -1,6 +1,6 @@
 package com.finance.project.controllerLayer.controllersREST.groupControllers;
 
-import com.finance.project.applicationLayer.applicationServices.groupServices.AddPersonToGroupService;
+import com.finance.project.modules.group.application.AddPersonToGroupService;
 import com.finance.project.dtos.dtosAssemblers.AddPersonToGroupDTOAssembler;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
