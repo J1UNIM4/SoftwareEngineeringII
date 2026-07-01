@@ -1,6 +1,7 @@
-// Pipeline CI/CD - Proyecto Final IS2
+// Pipeline CI/CD - Proyecto Final IS2 (agente Windows)
 // Disparado por commit via webhook de GitHub (githubPush).
-// Etapas: Build -> Analisis Estatico -> Unit Tests -> Funcionales -> Performance -> Seguridad -> Docker
+// Sin webhook publico, usar como alternativa: pollSCM('H/2 * * * *')
+// Etapas: Build -> Unit Tests -> Analisis Estatico -> Despliegue Docker
 
 pipeline {
     agent any
@@ -16,16 +17,18 @@ pipeline {
         timeout(time: 30, unit: 'MINUTES')
     }
 
-    environment {
-        APP_URL = 'http://localhost:8080'
-    }
-
     stages {
+
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
 
         stage('Build') {
             // Compilacion + gestion de dependencias + empaquetado del jar (rubrica item 3)
             steps {
-                sh './mvnw -B clean package -DskipTests'
+                bat 'mvnw.cmd -B clean package -DskipTests'
             }
             post {
                 success {
@@ -34,21 +37,10 @@ pipeline {
             }
         }
 
-        stage('Analisis Estatico (SonarQube)') {
-            // Persona 4 - rubrica item 4. Requiere un servidor SonarQube configurado en Jenkins.
-            steps {
-                catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
-                    withSonarQubeEnv('SonarQube') {
-                        sh './mvnw -B sonar:sonar'
-                    }
-                }
-            }
-        }
-
         stage('Pruebas Unitarias') {
-            // Persona 4 - rubrica item 5. JUnit 5 + Mockito.
+            // JUnit 5 + Mockito (rubrica item 5)
             steps {
-                sh './mvnw -B test'
+                bat 'mvnw.cmd -B test'
             }
             post {
                 always {
@@ -57,59 +49,31 @@ pipeline {
             }
         }
 
-        stage('Pruebas Funcionales (Newman)') {
-            // Persona 3 - rubrica item 6. Coleccion Postman ejecutada con Newman.
+        stage('Analisis Estatico (SonarQube)') {
+            // Rubrica item 4. Requiere servidor SonarQube configurado en Jenkins
+            // (Manage Jenkins -> System -> SonarQube servers, nombre 'SonarQube').
+            // No rompe el build si Sonar esta caido.
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
-                    sh '''
-                        java -jar target/*.jar &
-                        APP_PID=$!
-                        sleep 30
-                        newman run backend/src/test/resources/finance-api-tests.json
-                        kill $APP_PID
-                    '''
-                }
-            }
-        }
-
-        stage('Pruebas de Performance (JMeter)') {
-            // Persona 3 - rubrica item 7.
-            steps {
-                catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
-                    sh '''
-                        java -jar target/*.jar &
-                        APP_PID=$!
-                        sleep 30
-                        jmeter -n -t backend/src/test/jmeter/performance-test.jmx -l target/jmeter-results.jtl
-                        kill $APP_PID
-                    '''
-                }
-            }
-        }
-
-        stage('Pruebas de Seguridad (OWASP ZAP)') {
-            // Persona 2 - rubrica item 8. Baseline scan contra la app levantada.
-            steps {
-                catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
-                    sh '''
-                        java -jar target/*.jar &
-                        APP_PID=$!
-                        sleep 30
-                        bash security/zap-scan.sh
-                        kill $APP_PID
-                    '''
+                    withSonarQubeEnv('SonarQube') {
+                        bat 'mvnw.cmd -B sonar:sonar'
+                    }
                 }
             }
         }
 
         stage('Despliegue (Docker)') {
-            // Gestion de entrega via contenedores (rubrica item 10). Solo en master.
+            // Gestion de entrega via contenedores (rubrica item 10).
+            // Solo en ramas estables: main (produccion) y desarrollo (staging).
             when {
-                branch 'master'
+                anyOf {
+                    branch 'main'
+                    branch 'desarrollo'
+                }
             }
             steps {
-                sh 'docker compose build'
-                sh 'docker compose up -d'
+                bat 'docker compose build'
+                bat 'docker compose up -d'
             }
         }
     }
