@@ -1,6 +1,6 @@
 package com.finance.project.dtos.dtos;
 
-import com.finance.project.domainLayer.domainEntities.aggregates.group.Group;
+import com.finance.project.modules.group.domain.Group;
 import com.finance.project.domainLayer.domainEntities.aggregates.ledger.Ledger;
 import com.finance.project.modules.person.domain.Address;
 import com.finance.project.modules.person.domain.Person;

@@ -2,7 +2,7 @@ package com.finance.project.dataModel.dataModel;
 
 import org.hibernate.annotations.Fetch;
 import org.springframework.transaction.annotation.Transactional;
-import com.finance.project.domainLayer.domainEntities.vosShared.GroupID;
+import com.finance.project.modules.group.domain.GroupID;
 import com.finance.project.domainLayer.domainEntities.vosShared.LedgerID;
 import com.finance.project.modules.person.domain.PersonID;
 

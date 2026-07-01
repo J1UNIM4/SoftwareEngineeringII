@@ -1,7 +1,7 @@
 package com.finance.project.dtos.dtosAssemblers;
 
 import com.finance.project.dtos.dtos.GroupIDDTO;
-import com.finance.project.domainLayer.domainEntities.vosShared.GroupID;
+import com.finance.project.modules.group.domain.GroupID;
 
 /**
  * The type Group iddto assembler.

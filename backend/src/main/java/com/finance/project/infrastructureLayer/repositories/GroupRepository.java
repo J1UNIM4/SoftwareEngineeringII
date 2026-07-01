@@ -4,13 +4,13 @@ import com.finance.project.dataModel.dataAssemblers.GroupDomainDataAssembler;
 import com.finance.project.dataModel.dataModel.AdminJpa;
 import com.finance.project.dataModel.dataModel.GroupJpa;
 import com.finance.project.persistenceLayer.repositoriesJPA.GroupJpaRepository;
-import com.finance.project.domainLayer.repositoriesInterfaces.IGroupRepository;
+import com.finance.project.modules.group.domain.IGroupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import com.finance.project.domainLayer.domainEntities.aggregates.group.Group;
+import com.finance.project.modules.group.domain.Group;
 import com.finance.project.domainLayer.domainEntities.vosShared.AccountID;
-import com.finance.project.domainLayer.domainEntities.vosShared.GroupID;
+import com.finance.project.modules.group.domain.GroupID;
 import com.finance.project.modules.person.domain.PersonID;
 
 import java.util.ArrayList;

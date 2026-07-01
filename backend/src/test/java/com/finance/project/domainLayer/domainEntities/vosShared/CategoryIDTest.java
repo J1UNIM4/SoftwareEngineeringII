@@ -1,6 +1,7 @@
 package com.finance.project.domainLayer.domainEntities.vosShared;
 
 import com.finance.project.domainLayer.entitiesInterfaces.OwnerID;
+import com.finance.project.modules.group.domain.GroupID;
 import com.finance.project.modules.person.domain.PersonID;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

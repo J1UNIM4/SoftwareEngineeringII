@@ -1,11 +1,11 @@
 package com.finance.project.applicationLayer.applicationServices.otherServices;
 
 import com.finance.project.controllerLayer.integrationTests.AbstractTest;
-import com.finance.project.domainLayer.domainEntities.aggregates.group.Group;
+import com.finance.project.modules.group.domain.Group;
 import com.finance.project.modules.person.domain.Address;
 import com.finance.project.modules.person.domain.Person;
 import com.finance.project.domainLayer.domainEntities.vosShared.LedgerID;
-import com.finance.project.domainLayer.repositoriesInterfaces.IGroupRepository;
+import com.finance.project.modules.group.domain.IGroupRepository;
 import com.finance.project.modules.person.domain.IPersonRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
